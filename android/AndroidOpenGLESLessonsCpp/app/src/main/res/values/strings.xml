@@ -47,4 +47,8 @@
     <string name="lesson_eight_subtitle">This lesson looks at index buffer objects (IBOs).</string>
    	<string name="lesson_eight_error_could_not_create_vbo">Could not create vertex buffer object: %s</string>
     <string name="lesson_eight_error_unknown">Unknown error: %s</string>
+    <string name="quantized_color">quantized color squares</string>
+    <string name="quantized_color_subtitle">quantized color squares</string>
+    <string name="bricks_shader">Bricks shader activity</string>
+    <string name="bricks_shader_subtitle">Bricks shader activity</string>
 </resources>

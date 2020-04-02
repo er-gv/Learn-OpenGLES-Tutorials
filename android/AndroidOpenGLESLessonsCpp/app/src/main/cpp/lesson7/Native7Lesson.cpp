@@ -100,9 +100,9 @@ void Native7Lesson::create() {
     mViewMatrix = Matrix::newLookAt(eyeX, eyeY, eyeZ, centerX, centerY, centerZ, upX, upY, upZ);
 
     // Main Program
-    const char *vertex = GLUtils::openTextFile("vertex/lesson_seven_vertex_shader.glsl");
+    const char *vertex = GLUtils::openTextFile("shaders/vertex/lesson_seven_vertex_shader.glsl");
     const char *fragment = GLUtils::openTextFile(
-            "fragment/lesson_seven_fragment_shader.glsl");
+            "shaders/fragment/lesson_seven_fragment_shader.glsl");
 
     // Set program handles
     mProgramHandle = GLUtils::createProgram(&vertex, &fragment);

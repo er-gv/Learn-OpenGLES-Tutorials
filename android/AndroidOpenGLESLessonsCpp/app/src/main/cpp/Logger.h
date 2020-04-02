@@ -1,0 +1,14 @@
+//
+// Created by nathan on 02/04/20.
+//
+
+#ifndef ANDROIDOPENGLESLESSONSCPP_LOGGER_H
+#define ANDROIDOPENGLESLESSONSCPP_LOGGER_H
+
+
+class Logger {
+
+};
+
+
+#endif //ANDROIDOPENGLESLESSONSCPP_LOGGER_H

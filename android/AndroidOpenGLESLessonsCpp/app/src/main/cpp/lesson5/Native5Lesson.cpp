@@ -50,8 +50,8 @@ void Native5Lesson::create() {
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     // Main Program
-    const char *vertex = GLUtils::openTextFile("vertex/color_vertex_shader.glsl");
-    const char *fragment = GLUtils::openTextFile("fragment/color_fragment_shader.glsl");
+    const char *vertex = GLUtils::openTextFile("shaders/vertex/color_vertex_shader.glsl");
+    const char *fragment = GLUtils::openTextFile("shaders/fragment/color_fragment_shader.glsl");
 
     // Set program handles
     mProgramHandle = GLUtils::createProgram(&vertex, &fragment);

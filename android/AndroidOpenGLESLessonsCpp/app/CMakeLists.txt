@@ -9,7 +9,7 @@ cmake_minimum_required(VERSION 3.4.1)
 # or SHARED, and provides the relative paths to its source code.
 # You can define multiple libraries, and CMake builds them for you.
 # Gradle automatically packages shared libraries with your APK.
-
+set(APP_STL "c++_static")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -fno-rtti -fno-exceptions -Wall")
 
@@ -20,6 +20,10 @@ add_library(
 
                 # Sets the library as a shared library.
                 SHARED
+
+                # common
+                src/main/cpp/AbstractSurfaceRendererNative.h
+                src/main/cpp/AbstractSurfaceRendererNative.cpp
 
                 # graphics
                 src/main/cpp/graphics/GLUtils.h
@@ -73,6 +77,14 @@ add_library(
                 src/main/cpp/lesson8/Native8Lesson.h
                 src/main/cpp/lesson8/HeightMap.cpp
                 src/main/cpp/lesson8/HeightMap.h
+
+                #quantized color
+                src/main/cpp/QuantizedColor/QuantizedColorNative.cpp
+                src/main/cpp/QuantizedColor/QuantizedColorNative.h
+
+                #bricks
+                src/main/cpp/BricksShader/BricksShaderNativeRenderer.cpp
+                src/main/cpp/BricksShader/BricksShaderNativeRenderer.h
              )
 
 include_directories(src/main/cpp/)

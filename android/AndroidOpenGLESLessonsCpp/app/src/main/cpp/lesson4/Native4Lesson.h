@@ -7,30 +7,27 @@
 
 #include <GLES2/gl2.h>
 #include <graphics/Matrix.h>
+#include "AbstractSurfaceRendererNative.h"
 
-class Native4Lesson {
+class Native4Lesson : public AbstractSurfaceRendererNative{
 
 public:
 
     Native4Lesson();
 
-    ~Native4Lesson();
+    virtual ~Native4Lesson();
 
-    void create();
+    virtual void create();
 
-    void change(int width, int height);
+    //void change(int width, int height);
 
-    void draw();
+    virtual void draw();
 
 private:
 
     GLsizei mWidth;
     GLsizei mHeight;
 
-    Matrix *mViewMatrix;
-    Matrix *mModelMatrix;
-    Matrix *mProjectionMatrix;
-    Matrix *mMVPMatrix;
     Matrix *mLightModelMatrix;
 
     GLuint mMVPMatrixHandle;

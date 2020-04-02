@@ -17,7 +17,7 @@ static GLint COLOR_DATA_SIZE = 4;
 static GLint NORMAL_DATA_SIZE = 3;
 
 static const char *POINT_VERTEX_SHADER_CODE =
-        "uniform mat4 u_MVPMatrix;      \n"
+                "uniform mat4 u_MVPMatrix;      \n"
                 "attribute vec4 a_Position;     \n"
                 "void main()                    \n"
                 "{                              \n"
@@ -27,7 +27,7 @@ static const char *POINT_VERTEX_SHADER_CODE =
                 "}                              \n";
 
 static const char *POINT_FRAGMENT_SHADER_CODE =
-        "precision mediump float;       \n"
+                "precision mediump float;       \n"
                 "void main()                    \n"
                 "{                              \n"
                 "   gl_FragColor = vec4(1.0,    \n"
@@ -249,14 +249,11 @@ static const GLfloat CUBE_TEXTURE_COORDINATE_DATA[] =
                 1.0f, 0.0f
         };
 
-Native4Lesson::Native4Lesson() {
+Native4Lesson::Native4Lesson(): AbstractSurfaceRendererNative() {
     mWidth = 0;
     mHeight = 0;
 
-    mViewMatrix = NULL;
-    mModelMatrix = NULL;
-    mProjectionMatrix = NULL;
-    mMVPMatrix = NULL;
+
     mLightModelMatrix = NULL;
 
     mMVPMatrixHandle = 0;
@@ -286,12 +283,7 @@ Native4Lesson::Native4Lesson() {
 }
 
 Native4Lesson::~Native4Lesson() {
-    delete mModelMatrix;
-    mModelMatrix = NULL;
-    delete mViewMatrix;
-    mViewMatrix = NULL;
-    delete mProjectionMatrix;
-    mProjectionMatrix = NULL;
+
     delete mLightModelMatrix;
     mLightModelMatrix = NULL;
 }
@@ -306,8 +298,8 @@ void Native4Lesson::create() {
     glEnable(GL_DEPTH_TEST);
 
     // Main Program
-    const char *vertex = GLUtils::openTextFile("vertex/per_pixel_vertex_shader.glsl");
-    const char *fragment = GLUtils::openTextFile("fragment/per_pixel_fragment_shader.glsl");
+    const char *vertex = GLUtils::openTextFile("shaders/vertex/per_pixel_vertex_shader.glsl");
+    const char *fragment = GLUtils::openTextFile("shaders/fragment/per_pixel_fragment_shader.glsl");
 
     // Set program handles
     mPerVertexProgramHandle = GLUtils::createProgram(&vertex, &fragment);
@@ -349,7 +341,7 @@ void Native4Lesson::create() {
     mViewMatrix = Matrix::newLookAt(eyeX, eyeY, eyeZ, centerX, centerY, centerZ, upX, upY, upZ);
 }
 
-void Native4Lesson::change(int width, int height) {
+/*void Native4Lesson::change(int width, int height) {
 
     mWidth = width;
     mHeight = height;
@@ -367,12 +359,12 @@ void Native4Lesson::change(int width, int height) {
     float far = 10.0f;
 
     mProjectionMatrix = Matrix::newFrustum(left, right, bottom, top, near, far);
-}
+}*/
 
 void Native4Lesson::draw() {
 // Set the OpenGL viewport to same size as the surface.
 
-    glClearColor(0, 0, 0, 1);
+    glClearColor(0, 0, 0.1, 1);
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -567,7 +559,7 @@ void Native4Lesson::drawLight() {
 
 ////////////////////////////
 
-Native4Lesson *lesson4;
+static AbstractSurfaceRendererNative* renderer;
 
 extern "C"
 JNIEXPORT void JNICALL
@@ -575,12 +567,12 @@ Java_com_learnopengles_android_lesson4_LessonFourNativeRenderer_nativeSurfaceCre
                                                                                     jclass type,
                                                                                     jobject assetManager) {
     GLUtils::setEnvAndAssetManager(env, assetManager);
-    if (lesson4) {
-        delete lesson4;
-        lesson4 = NULL;
+    if (renderer) {
+        delete renderer;
+        renderer = NULL;
     }
-    lesson4 = new Native4Lesson();
-    lesson4->create();
+    renderer = new Native4Lesson();
+    renderer->create();
 }
 
 extern "C"
@@ -589,8 +581,8 @@ Java_com_learnopengles_android_lesson4_LessonFourNativeRenderer_nativeSurfaceCha
                                                                                     jclass type,
                                                                                     jint width,
                                                                                     jint height) {
-    if (lesson4) {
-        lesson4->change(width, height);
+    if (renderer) {
+        renderer->change(width, height);
     }
 
 }
@@ -600,8 +592,8 @@ JNIEXPORT void JNICALL
 Java_com_learnopengles_android_lesson4_LessonFourNativeRenderer_nativeDrawFrame(JNIEnv *env,
                                                                                 jclass type) {
 
-    if (lesson4) {
-        lesson4->draw();
+    if (renderer) {
+        renderer->draw();
     }
 
 }

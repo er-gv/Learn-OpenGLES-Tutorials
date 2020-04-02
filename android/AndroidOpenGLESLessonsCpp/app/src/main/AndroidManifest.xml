@@ -53,6 +53,14 @@
             android:name="com.learnopengles.android.lesson8.LessonEightActivity"
             android:label="@string/lesson_eight"/>
 
+        <activity
+            android:name="com.learnopengles.android.bricksShader.BricksShaderActivity"
+            android:label="@string/bricks_shader"/>
+
+        <activity
+            android:name="com.learnopengles.android.quantizedColor.QuantizedColorActivity"
+            android:label="@string/quantized_color"/>
+
     </application>
 
 </manifest>

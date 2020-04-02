@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.SimpleAdapter;
 
+import com.learnopengles.android.bricksShader.BricksShaderActivity;
 import com.learnopengles.android.cpp.R;
 import com.learnopengles.android.lesson1.LessonOneActivity;
 import com.learnopengles.android.lesson2.LessonTwoActivity;
@@ -19,6 +20,7 @@ import com.learnopengles.android.lesson5.LessonFiveActivity;
 import com.learnopengles.android.lesson6.LessonSixActivity;
 import com.learnopengles.android.lesson7.LessonSevenActivity;
 import com.learnopengles.android.lesson8.LessonEightActivity;
+import com.learnopengles.android.quantizedColor.QuantizedColorActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -42,6 +44,14 @@ public class TableOfContents extends ListActivity {
 
         int i = 0;
 
+        {
+            final Map<String, Object> item = new HashMap<String, Object>();
+            item.put(ITEM_IMAGE, R.drawable.ic_lesson_one);
+            item.put(ITEM_TITLE, getText(R.string.bricks_shader));
+            item.put(ITEM_SUBTITLE, getText(R.string.bricks_shader_subtitle));
+            data.add(item);
+            activityMapping.put(i++, BricksShaderActivity.class);
+        }
         {
             final Map<String, Object> item = new HashMap<String, Object>();
             item.put(ITEM_IMAGE, R.drawable.ic_lesson_one);
@@ -112,6 +122,15 @@ public class TableOfContents extends ListActivity {
             item.put(ITEM_SUBTITLE, getText(R.string.lesson_eight_subtitle));
             data.add(item);
             activityMapping.put(i++, LessonEightActivity.class);
+        }
+
+        {
+            final Map<String, Object> item = new HashMap<String, Object>();
+            item.put(ITEM_IMAGE, R.drawable.ic_lesson_one);
+            item.put(ITEM_TITLE, getText(R.string.quantized_color));
+            item.put(ITEM_SUBTITLE, getText(R.string.quantized_color_subtitle));
+            data.add(item);
+            activityMapping.put(i++, QuantizedColorActivity.class);
         }
 
         final SimpleAdapter dataAdapter = new SimpleAdapter(this, data, R.layout.toc_item, new String[]{ITEM_IMAGE, ITEM_TITLE, ITEM_SUBTITLE}, new int[]{R.id.Image, R.id.Title, R.id.SubTitle});

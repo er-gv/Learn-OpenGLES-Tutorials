@@ -105,8 +105,8 @@ void Native8Lesson::create() {
     viewMatrix = Matrix::newLookAt(eyeX, eyeY, eyeZ, lookX, lookY, lookZ, upX, upY, upZ);
 
     // Main Program
-    const char *vertex = GLUtils::openTextFile("vertex/per_pixel_vertex_shader_no_tex.glsl");
-    const char *fragment = GLUtils::openTextFile("fragment/per_pixel_fragment_shader_no_tex.glsl");
+    const char *vertex = GLUtils::openTextFile("shaders/vertex/per_pixel_vertex_shader_no_tex.glsl");
+    const char *fragment = GLUtils::openTextFile("shaders/fragment/per_pixel_fragment_shader_no_tex.glsl");
 
     // Set the program.
     program = GLUtils::createProgram(&vertex, &fragment);

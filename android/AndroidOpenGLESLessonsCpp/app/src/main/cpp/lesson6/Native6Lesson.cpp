@@ -299,9 +299,9 @@ void Native6Lesson::create() {
     glEnable(GL_DEPTH_TEST);
 
     // Main Program
-    const char *vertex = GLUtils::openTextFile("vertex/per_pixel_vertex_shader_tex_and_light.glsl");
+    const char *vertex = GLUtils::openTextFile("shaders/vertex/per_pixel_vertex_shader_tex_and_light.glsl");
     const char *fragment = GLUtils::openTextFile(
-            "fragment/per_pixel_fragment_shader_tex_and_light.glsl");
+            "shaders/fragment/per_pixel_fragment_shader_tex_and_light.glsl");
 
     // Set program handles
     mProgramHandle = GLUtils::createProgram(&vertex, &fragment);
