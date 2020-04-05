@@ -5,8 +5,9 @@
 #include <graphics/GLUtils.h>
 #include "Native6Lesson.h"
 #include <android/log.h>
+#include <jni.h>
 
-#define LOG_TAG "Lesson"
+#define LOG_TAG "Lesson6"
 #define LOGI(fmt, args...) __android_log_print(ANDROID_LOG_INFO, LOG_TAG, fmt, ##args)
 #define LOGD(fmt, args...) __android_log_print(ANDROID_LOG_DEBUG, LOG_TAG, fmt, ##args)
 #define LOGE(fmt, args...) __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, fmt, ##args)
@@ -312,9 +313,9 @@ void Native6Lesson::create() {
 
     // Main Program
     const char *pointVertex = GLUtils::openTextFile(
-            "vertex/point_vertex_shader.glsl");
+            "shaders/vertex/point_vertex_shader.glsl");
     const char *pointFragment = GLUtils::openTextFile(
-            "fragment/point_fragment_shader.glsl");
+            "shaders/fragment/point_fragment_shader.glsl");
 
     // Set program handles
     mPointProgramHandle = GLUtils::createProgram(&pointVertex, &pointFragment);

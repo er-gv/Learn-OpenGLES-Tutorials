@@ -6,6 +6,7 @@
 #include <graphics/GLUtils.h>
 #include "Native5Lesson.h"
 #include <android/log.h>
+#include <jni.h>
 
 #define LOG_TAG "Lesson"
 #define LOGI(fmt, args...) __android_log_print(ANDROID_LOG_INFO, LOG_TAG, fmt, ##args)

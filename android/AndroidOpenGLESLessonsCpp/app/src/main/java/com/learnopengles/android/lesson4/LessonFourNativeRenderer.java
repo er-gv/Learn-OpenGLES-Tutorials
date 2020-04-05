@@ -4,29 +4,28 @@ import android.app.Activity;
 import android.content.res.AssetManager;
 import android.opengl.GLSurfaceView;
 
-import com.learnopengles.android.AbstractSurfaceRendererNative;
-
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-public class LessonFourNativeRenderer extends AbstractSurfaceRendererNative {
+
+public class LessonFourNativeRenderer implements GLSurfaceView.Renderer {
 
     static {
         System.loadLibrary("lesson-lib");
     }
 
+    private Activity mActivity;
 
 
     public LessonFourNativeRenderer(Activity activity) {
-        super(activity);
+        mActivity = activity;
     }
 
+    public static native void nativeSurfaceCreate(AssetManager assetManager);
 
-    public native void nativeSurfaceCreate(AssetManager assetManager);
+    public static native void nativeSurfaceChange(int width, int height);
 
-    public native void nativeSurfaceChange(int width, int height);
-
-    public native void nativeDrawFrame();
+    public static native void nativeDrawFrame();
 
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {

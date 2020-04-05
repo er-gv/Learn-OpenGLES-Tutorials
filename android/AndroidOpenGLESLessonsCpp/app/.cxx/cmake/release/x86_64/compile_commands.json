@@ -1,0 +1,127 @@
+[
+{
+  "directory": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/.cxx/cmake/release/x86_64",
+  "command": "/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=x86_64-none-linux-android21 --gcc-toolchain=/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -Dlesson_lib_EXPORTS -I../../../../src/main/cpp  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC   -o CMakeFiles/lesson-lib.dir/src/main/cpp/graphics/GLUtils.cpp.o -c /home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/graphics/GLUtils.cpp",
+  "file": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/graphics/GLUtils.cpp"
+},
+
+{
+  "directory": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/.cxx/cmake/release/x86_64",
+  "command": "/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=x86_64-none-linux-android21 --gcc-toolchain=/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -Dlesson_lib_EXPORTS -I../../../../src/main/cpp  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC   -o CMakeFiles/lesson-lib.dir/src/main/cpp/graphics/Matrix.cpp.o -c /home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/graphics/Matrix.cpp",
+  "file": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/graphics/Matrix.cpp"
+},
+
+{
+  "directory": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/.cxx/cmake/release/x86_64",
+  "command": "/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=x86_64-none-linux-android21 --gcc-toolchain=/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -Dlesson_lib_EXPORTS -I../../../../src/main/cpp  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC   -o CMakeFiles/lesson-lib.dir/src/main/cpp/graphics/Camera.cpp.o -c /home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/graphics/Camera.cpp",
+  "file": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/graphics/Camera.cpp"
+},
+
+{
+  "directory": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/.cxx/cmake/release/x86_64",
+  "command": "/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=x86_64-none-linux-android21 --gcc-toolchain=/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -Dlesson_lib_EXPORTS -I../../../../src/main/cpp  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC   -o CMakeFiles/lesson-lib.dir/src/main/cpp/Logger.cpp.o -c /home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/Logger.cpp",
+  "file": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/Logger.cpp"
+},
+
+{
+  "directory": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/.cxx/cmake/release/x86_64",
+  "command": "/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=x86_64-none-linux-android21 --gcc-toolchain=/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -Dlesson_lib_EXPORTS -I../../../../src/main/cpp  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC   -o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson1/Native1Lesson.cpp.o -c /home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/lesson1/Native1Lesson.cpp",
+  "file": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/lesson1/Native1Lesson.cpp"
+},
+
+{
+  "directory": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/.cxx/cmake/release/x86_64",
+  "command": "/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=x86_64-none-linux-android21 --gcc-toolchain=/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -Dlesson_lib_EXPORTS -I../../../../src/main/cpp  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC   -o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson2/Native2Lesson.cpp.o -c /home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/lesson2/Native2Lesson.cpp",
+  "file": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/lesson2/Native2Lesson.cpp"
+},
+
+{
+  "directory": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/.cxx/cmake/release/x86_64",
+  "command": "/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=x86_64-none-linux-android21 --gcc-toolchain=/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -Dlesson_lib_EXPORTS -I../../../../src/main/cpp  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC   -o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson3/Native3Lesson.cpp.o -c /home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/lesson3/Native3Lesson.cpp",
+  "file": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/lesson3/Native3Lesson.cpp"
+},
+
+{
+  "directory": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/.cxx/cmake/release/x86_64",
+  "command": "/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=x86_64-none-linux-android21 --gcc-toolchain=/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -Dlesson_lib_EXPORTS -I../../../../src/main/cpp  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC   -o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson4/Native4Lesson.cpp.o -c /home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/lesson4/Native4Lesson.cpp",
+  "file": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/lesson4/Native4Lesson.cpp"
+},
+
+{
+  "directory": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/.cxx/cmake/release/x86_64",
+  "command": "/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=x86_64-none-linux-android21 --gcc-toolchain=/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -Dlesson_lib_EXPORTS -I../../../../src/main/cpp  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC   -o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson5/Native5Lesson.cpp.o -c /home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/lesson5/Native5Lesson.cpp",
+  "file": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/lesson5/Native5Lesson.cpp"
+},
+
+{
+  "directory": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/.cxx/cmake/release/x86_64",
+  "command": "/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=x86_64-none-linux-android21 --gcc-toolchain=/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -Dlesson_lib_EXPORTS -I../../../../src/main/cpp  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC   -o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson6/Native6Lesson.cpp.o -c /home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/lesson6/Native6Lesson.cpp",
+  "file": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/lesson6/Native6Lesson.cpp"
+},
+
+{
+  "directory": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/.cxx/cmake/release/x86_64",
+  "command": "/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=x86_64-none-linux-android21 --gcc-toolchain=/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -Dlesson_lib_EXPORTS -I../../../../src/main/cpp  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC   -o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/Native7Lesson.cpp.o -c /home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/lesson7/Native7Lesson.cpp",
+  "file": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/lesson7/Native7Lesson.cpp"
+},
+
+{
+  "directory": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/.cxx/cmake/release/x86_64",
+  "command": "/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=x86_64-none-linux-android21 --gcc-toolchain=/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -Dlesson_lib_EXPORTS -I../../../../src/main/cpp  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC   -o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/Cubes.cpp.o -c /home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/lesson7/Cubes.cpp",
+  "file": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/lesson7/Cubes.cpp"
+},
+
+{
+  "directory": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/.cxx/cmake/release/x86_64",
+  "command": "/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=x86_64-none-linux-android21 --gcc-toolchain=/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -Dlesson_lib_EXPORTS -I../../../../src/main/cpp  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC   -o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/CubesClientSide.cpp.o -c /home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/lesson7/CubesClientSide.cpp",
+  "file": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/lesson7/CubesClientSide.cpp"
+},
+
+{
+  "directory": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/.cxx/cmake/release/x86_64",
+  "command": "/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=x86_64-none-linux-android21 --gcc-toolchain=/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -Dlesson_lib_EXPORTS -I../../../../src/main/cpp  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC   -o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/CubesClientSideWithStride.cpp.o -c /home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/lesson7/CubesClientSideWithStride.cpp",
+  "file": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/lesson7/CubesClientSideWithStride.cpp"
+},
+
+{
+  "directory": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/.cxx/cmake/release/x86_64",
+  "command": "/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=x86_64-none-linux-android21 --gcc-toolchain=/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -Dlesson_lib_EXPORTS -I../../../../src/main/cpp  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC   -o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/CubesWithVbo.cpp.o -c /home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/lesson7/CubesWithVbo.cpp",
+  "file": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/lesson7/CubesWithVbo.cpp"
+},
+
+{
+  "directory": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/.cxx/cmake/release/x86_64",
+  "command": "/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=x86_64-none-linux-android21 --gcc-toolchain=/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -Dlesson_lib_EXPORTS -I../../../../src/main/cpp  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC   -o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/CubesWithVboWithStride.cpp.o -c /home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/lesson7/CubesWithVboWithStride.cpp",
+  "file": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/lesson7/CubesWithVboWithStride.cpp"
+},
+
+{
+  "directory": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/.cxx/cmake/release/x86_64",
+  "command": "/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=x86_64-none-linux-android21 --gcc-toolchain=/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -Dlesson_lib_EXPORTS -I../../../../src/main/cpp  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC   -o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/GenData.cpp.o -c /home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/lesson7/GenData.cpp",
+  "file": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/lesson7/GenData.cpp"
+},
+
+{
+  "directory": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/.cxx/cmake/release/x86_64",
+  "command": "/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=x86_64-none-linux-android21 --gcc-toolchain=/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -Dlesson_lib_EXPORTS -I../../../../src/main/cpp  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC   -o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson8/Native8Lesson.cpp.o -c /home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/lesson8/Native8Lesson.cpp",
+  "file": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/lesson8/Native8Lesson.cpp"
+},
+
+{
+  "directory": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/.cxx/cmake/release/x86_64",
+  "command": "/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=x86_64-none-linux-android21 --gcc-toolchain=/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -Dlesson_lib_EXPORTS -I../../../../src/main/cpp  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC   -o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson8/HeightMap.cpp.o -c /home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/lesson8/HeightMap.cpp",
+  "file": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/lesson8/HeightMap.cpp"
+},
+
+{
+  "directory": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/.cxx/cmake/release/x86_64",
+  "command": "/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=x86_64-none-linux-android21 --gcc-toolchain=/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -Dlesson_lib_EXPORTS -I../../../../src/main/cpp  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC   -o CMakeFiles/lesson-lib.dir/src/main/cpp/QuantizedColor/QuantizedColorNative.cpp.o -c /home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/QuantizedColor/QuantizedColorNative.cpp",
+  "file": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/QuantizedColor/QuantizedColorNative.cpp"
+},
+
+{
+  "directory": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/.cxx/cmake/release/x86_64",
+  "command": "/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=x86_64-none-linux-android21 --gcc-toolchain=/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -Dlesson_lib_EXPORTS -I../../../../src/main/cpp  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC   -o CMakeFiles/lesson-lib.dir/src/main/cpp/BricksShader/BricksShaderNativeRenderer.cpp.o -c /home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/BricksShader/BricksShaderNativeRenderer.cpp",
+  "file": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/BricksShader/BricksShaderNativeRenderer.cpp"
+}
+]

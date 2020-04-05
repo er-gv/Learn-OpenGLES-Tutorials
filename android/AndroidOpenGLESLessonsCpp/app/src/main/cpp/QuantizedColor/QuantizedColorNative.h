@@ -9,9 +9,9 @@
 
 #include <GLES2/gl2.h>
 #include "../graphics/Matrix.h"
-#include "AbstractSurfaceRendererNative.h"
 
-class QuantizedColorNative: public AbstractSurfaceRendererNative {
+
+class QuantizedColorNative {
 
 public:
 
@@ -33,6 +33,33 @@ private:
     GLuint mPositionHandle;
     GLuint mColorHandle;
     GLfloat mQuantaHandle;
+
+    GLsizei mWidth;
+    GLsizei mHeight;
+
+    Matrix *mLightModelMatrix;
+
+    GLuint mMVPMatrixHandle;
+    GLuint mMVMatrixHandle;
+    GLuint mLightPosHandle;
+
+    GLuint mNormalHandle;
+
+    GLuint mTextureCoordinateHandle;
+
+
+    GLuint mPointProgramHandle;
+
+    float mLightPosInModelSpace[4];
+    float mLightPosInWorldSpace[4];
+    float mLightPosInEyeSpace[4];
+
+    Matrix *mViewMatrix;
+    Matrix *mModelMatrix;
+    Matrix *mProjectionMatrix;
+    Matrix *mMVPMatrix;
+    GLuint mProgram;
+
 
     static GLfloat *getTriangleData(uint8_t triangleIndex) {
         static constexpr GLfloat triangleVerticesData[][18] = {

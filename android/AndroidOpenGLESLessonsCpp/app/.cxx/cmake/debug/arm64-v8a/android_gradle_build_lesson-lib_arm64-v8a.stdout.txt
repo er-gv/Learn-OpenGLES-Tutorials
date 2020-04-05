@@ -1,0 +1,8 @@
+ninja: Entering directory `/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/.cxx/cmake/debug/arm64-v8a'
+[1/2] Building CXX object CMakeFiles/lesson-lib.dir/src/main/cpp/lesson4/Native4Lesson.cpp.o
+In file included from ../../../../src/main/cpp/lesson4/Native4Lesson.cpp:6:
+../../../../src/main/cpp/lesson4/Native4Lesson.h:54:12: warning: private field 'mProgram' is not used [-Wunused-private-field]
+    GLuint mProgram;
+           ^
+1 warning generated.
+[2/2] Linking CXX shared library ../../../../build/intermediates/cmake/debug/obj/arm64-v8a/liblesson-lib.so

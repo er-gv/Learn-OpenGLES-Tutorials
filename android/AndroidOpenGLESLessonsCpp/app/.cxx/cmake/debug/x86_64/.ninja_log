@@ -1,0 +1,27 @@
+# ninja log v5
+87	143	1586115567	CMakeFiles/lesson-lib.dir/src/main/cpp/Logger.cpp.o	d9f86835adfe3e21
+2	255	1586115567	CMakeFiles/lesson-lib.dir/src/main/cpp/graphics/Matrix.cpp.o	497318f2c072f0d9
+4146	4304	1586115571	CMakeFiles/lesson-lib.dir/src/main/cpp/QuantizedColor/QuantizedColorNative.cpp.o	4aef3920ef2b1789
+43	1047	1586114745	CMakeFiles/lesson-lib.dir/src/main/cpp/AbstractSurfaceRendererNative.cpp.o	389f57e44eef56e5
+853	3178	1586115570	CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/GenData.cpp.o	346f2fb36b6b0c49
+692	853	1586115567	CMakeFiles/lesson-lib.dir/src/main/cpp/lesson6/Native6Lesson.cpp.o	5b1a9b219877791a
+1246	2336	1586115569	CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/CubesClientSide.cpp.o	60c7579b5dde7737
+728	2664	1586115569	CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/Native7Lesson.cpp.o	6bd3a1b4ce198bfa
+0	32	1586115541	build.ninja	174ec174e637877b
+4806	4866	1586115571	../../../../build/intermediates/cmake/debug/obj/x86_64/liblesson-lib.so	a280034850f0bff1
+3178	4146	1586115571	CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/CubesWithVboWithStride.cpp.o	5c3ecce3b201c8cc
+2	87	1586115566	CMakeFiles/lesson-lib.dir/src/main/cpp/graphics/Camera.cpp.o	7614b94e4a9a9de7
+2665	3684	1586115570	CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/CubesWithVbo.cpp.o	cac036c97bcb1286
+451	560	1586115567	CMakeFiles/lesson-lib.dir/src/main/cpp/lesson3/Native3Lesson.cpp.o	f5deaa41a3d4a9b7
+1	266	1586115567	CMakeFiles/lesson-lib.dir/src/main/cpp/graphics/GLUtils.cpp.o	79ea66624a133064
+144	1246	1586115568	CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/Cubes.cpp.o	2759504d8db0eb8c
+3684	4806	1586115571	CMakeFiles/lesson-lib.dir/src/main/cpp/lesson8/Native8Lesson.cpp.o	97fd8e3e148e4190
+4304	4545	1586115571	CMakeFiles/lesson-lib.dir/src/main/cpp/BricksShader/BricksShaderNativeRenderer.cpp.o	a3ef8bd55559656f
+266	494	1586115567	CMakeFiles/lesson-lib.dir/src/main/cpp/lesson2/Native2Lesson.cpp.o	638e1eb5764b68bf
+3229	4667	1586115571	CMakeFiles/lesson-lib.dir/src/main/cpp/lesson8/HeightMap.cpp.o	90e8699619d3a74d
+494	727	1586115567	CMakeFiles/lesson-lib.dir/src/main/cpp/lesson4/Native4Lesson.cpp.o	5816394973c98b04
+255	451	1586115567	CMakeFiles/lesson-lib.dir/src/main/cpp/lesson1/Native1Lesson.cpp.o	6dad5d43026e7771
+560	692	1586115567	CMakeFiles/lesson-lib.dir/src/main/cpp/lesson5/Native5Lesson.cpp.o	d3c69a1f11eec4fe
+2336	3229	1586115570	CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/CubesClientSideWithStride.cpp.o	8d3ad5c1049701ca
+2	107	1586116099	CMakeFiles/lesson-lib.dir/src/main/cpp/lesson4/Native4Lesson.cpp.o	5816394973c98b04
+107	165	1586116099	../../../../build/intermediates/cmake/debug/obj/x86_64/liblesson-lib.so	a280034850f0bff1

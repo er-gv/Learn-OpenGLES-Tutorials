@@ -249,7 +249,7 @@ static const GLfloat CUBE_TEXTURE_COORDINATE_DATA[] =
                 1.0f, 0.0f
         };
 
-Native4Lesson::Native4Lesson(): AbstractSurfaceRendererNative() {
+Native4Lesson::Native4Lesson(){
     mWidth = 0;
     mHeight = 0;
 
@@ -341,7 +341,7 @@ void Native4Lesson::create() {
     mViewMatrix = Matrix::newLookAt(eyeX, eyeY, eyeZ, centerX, centerY, centerZ, upX, upY, upZ);
 }
 
-/*void Native4Lesson::change(int width, int height) {
+void Native4Lesson::change(int width, int height) {
 
     mWidth = width;
     mHeight = height;
@@ -359,12 +359,12 @@ void Native4Lesson::create() {
     float far = 10.0f;
 
     mProjectionMatrix = Matrix::newFrustum(left, right, bottom, top, near, far);
-}*/
+}
 
 void Native4Lesson::draw() {
 // Set the OpenGL viewport to same size as the surface.
 
-    glClearColor(0, 0, 0.1, 1);
+    glClearColor(0, 0, 0.0, 1);
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -559,13 +559,12 @@ void Native4Lesson::drawLight() {
 
 ////////////////////////////
 
-static AbstractSurfaceRendererNative* renderer;
+static Native4Lesson* renderer;
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_learnopengles_android_lesson4_LessonFourNativeRenderer_nativeSurfaceCreate(JNIEnv *env,
-                                                                                    jclass type,
-                                                                                    jobject assetManager) {
+Java_com_learnopengles_android_lesson4_LessonFourNativeRenderer_nativeSurfaceCreate(
+        JNIEnv *env, jclass type, jobject assetManager) {
     GLUtils::setEnvAndAssetManager(env, assetManager);
     if (renderer) {
         delete renderer;
@@ -575,12 +574,9 @@ Java_com_learnopengles_android_lesson4_LessonFourNativeRenderer_nativeSurfaceCre
     renderer->create();
 }
 
-extern "C"
-JNIEXPORT void JNICALL
-Java_com_learnopengles_android_lesson4_LessonFourNativeRenderer_nativeSurfaceChange(JNIEnv *env,
-                                                                                    jclass type,
-                                                                                    jint width,
-                                                                                    jint height) {
+extern "C" JNIEXPORT void JNICALL
+Java_com_learnopengles_android_lesson4_LessonFourNativeRenderer_nativeSurfaceChange(
+        JNIEnv *env, jclass type, jint width, jint height) {
     if (renderer) {
         renderer->change(width, height);
     }
@@ -589,8 +585,8 @@ Java_com_learnopengles_android_lesson4_LessonFourNativeRenderer_nativeSurfaceCha
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_learnopengles_android_lesson4_LessonFourNativeRenderer_nativeDrawFrame(JNIEnv *env,
-                                                                                jclass type) {
+Java_com_learnopengles_android_lesson4_LessonFourNativeRenderer_nativeDrawFrame(
+        JNIEnv *env, jclass type){
 
     if (renderer) {
         renderer->draw();

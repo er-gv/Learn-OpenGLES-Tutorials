@@ -23,7 +23,7 @@ static void checkGlError(const char *op) {
 }
 
 
-QuantizedColorNative::QuantizedColorNative() : AbstractSurfaceRendererNative(){
+QuantizedColorNative::QuantizedColorNative() {
 
 }
 
@@ -71,6 +71,25 @@ void QuantizedColorNative::create() {
     mViewMatrix = Matrix::newLookAt(eyeX, eyeY, eyeZ, centerX, centerY, centerZ, upX, upY, upZ);
 }
 
+void QuantizedColorNative::change(int width, int height) {
+
+    mWidth = width;
+    mHeight = height;
+
+    glViewport(0, 0, mWidth, mHeight);
+
+    // Create a new perspective projection matrix. The height will stay the same
+    // while the width will vary as per aspect ratio.
+    float ratio = (float) width / height;
+    float left = -ratio;
+    float right = ratio;
+    float bottom = -1.0f;
+    float top = 1.0f;
+    float near = 1.0f;
+    float far = 10.0f;
+
+    mProjectionMatrix = Matrix::newFrustum(left, right, bottom, top, near, far);
+}
 
 void QuantizedColorNative::draw() {
     glClearColor(0.5F, 0.5F, 0.5F, 0.5F);
@@ -89,14 +108,14 @@ void QuantizedColorNative::draw() {
     // Draw the triangle facing straight on.
     mModelMatrix->identity();
     mModelMatrix->rotate(angleInDegrees, 0.0f, 0.0f, 1.0f);
-    drawTriangle(QuantizedColorNative::getTriangleData(0), 5.0f);
+    drawTriangle(QuantizedColorNative::getTriangleData(0), 45.0f);
 
     // Draw one translated a bit down and rotated to be flat on the ground.
     mModelMatrix->identity();
     mModelMatrix->translate(0.0f, -1.0f, 0.0f);
     mModelMatrix->rotate(90.0f, 1.0f, 0.0f, 0.0f);
     mModelMatrix->rotate(angleInDegrees, 0.0f, 0.0f, 1.0f);
-    drawTriangle(QuantizedColorNative::getTriangleData(1), 5.0f);
+    drawTriangle(QuantizedColorNative::getTriangleData(1), 15.0f);
 
     // Draw one translated a bit to the right and rotated to be facing to the left.
     mModelMatrix->identity();
@@ -143,7 +162,7 @@ void QuantizedColorNative::drawTriangle(const GLfloat *verticesData, const GLflo
 
 /// =======================================================
 
-static AbstractSurfaceRendererNative *renderer;
+static QuantizedColorNative *renderer;
 
 extern "C" JNIEXPORT void JNICALL
 Java_com_learnopengles_android_quantizedColor_QuantizedColorNativeRenderer_nativeSurfaceCreate(

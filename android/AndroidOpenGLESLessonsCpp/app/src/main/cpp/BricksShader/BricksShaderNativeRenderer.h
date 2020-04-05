@@ -6,9 +6,11 @@
 #define ANDROIDOPENGLESLESSONSCPP_BRICKSSHADERNATIVERENDERER_H
 
 
-
+#include <jni.h>
 #include <GLES2/gl2.h>
+#include "../graphics/GLUtils.h"
 #include "../graphics/Matrix.h"
+#include "../Logger.h"
 
 class BricksShaderNativeRenderer {
 
@@ -19,71 +21,57 @@ public:
     ~BricksShaderNativeRenderer();
 
     void create();
-
     void change(int width, int height);
-
     void draw();
-
-    void drawTriangle(const GLfloat *verticesData);
+    void destroy();
+    inline static void log(int type, ...);
 
 private:
+    void drawCube(const GLfloat brickColor[3], const GLfloat mortarColor[3],
+                  const GLfloat brickSize[2], const GLfloat brickPct[2]);
+    void drawLight();
 
+    static const GLint POSITION_DATA_SIZE = 3;
+    static const GLint NORMAL_DATA_SIZE = 3;
+
+    //scene size
+    GLsizei mWidth;
+    GLsizei mHeight;
+
+    //programHandlers
+    GLuint mLightProgram;
+    GLuint mBricksProgram;
+
+    //uniform handlers
+    GLuint mMVPMatrixHandle;
+    GLuint mMVMatrixHandle;
+    GLuint mLightPosHandle;
+
+    GLuint mBrickColorHandle;
+    GLuint mMortarColorHandle;
+    GLuint mBrickSizeHandle;
+    GLuint mBrickPctHandle;
+
+    //attrib handlers
+    GLuint mPositionHandle;
+    GLuint mNormalHandle;
+
+    //matricias
     Matrix *mViewMatrix;
     Matrix *mModelMatrix;
     Matrix *mProjectionMatrix;
+    Matrix *mMVMatrix;
     Matrix *mMVPMatrix;
+    Matrix *mLightModelMatrix;
+    Matrix *mNormalMatrix;
 
-    GLuint mProgram;
-
-    GLuint mMVPMatrixHandle;
-    GLuint mPositionHandle;
-    GLuint mColorHandle;
-
-    static const GLfloat* getModelData(int modelIndex) {
-
-// This triangle is red, green, and blue.
-        static constexpr GLfloat triangleVerticesData[] = {
+    //light data
+    float mLightPosInModelSpace[4];
+    float mLightPosInWorldSpace[4];
+    float mLightPosInEyeSpace[4];
 
 
-// This triangle is yellow, cyan, and magenta.
 
-                // X, Y, Z,
-                // R, G, B, A
-                -0.5f, -0.25f, 0.0f,
-                1.0f, 1.0f, 0.0f, 1.0f,
-
-                0.5f, -0.25f, 0.0f,
-                0.0f, 1.0f, 1.0f, 1.0f,
-
-                0.0f, 0.559016994f, 0.0f,
-                1.0f, 0.0f, 1.0f, 1.0f,
-
-// This triangle is red, green and blue.
-                // X, Y, Z,
-                // R, G, B, A
-                -0.5f, -0.25f, 0.0f,
-                1.0f, 0.0f, 0.0f, 1.0f,
-
-                0.5f, -0.25f, 0.0f,
-                0.0f, 0.0f, 1.0f, 1.0f,
-
-                0.0f, 0.559016994f, 0.0f,
-                0.0f, 1.0f, 0.0f, 1.0f,
-// This triangle is white, gray, and black.
-                // X, Y, Z,
-                // R, G, B, A
-                -0.5f, -0.25f, 0.0f,
-                1.0f, 1.0f, 1.0f, 1.0f,
-
-                0.5f, -0.25f, 0.0f,
-                0.5f, 0.5f, 0.5f, 1.0f,
-
-                0.0f, 0.559016994f, 0.0f,
-                0.0f, 0.0f, 0.0f, 1.0f};
-
-
-        return  &triangleVerticesData[modelIndex*21];
-    }
 
 };
 

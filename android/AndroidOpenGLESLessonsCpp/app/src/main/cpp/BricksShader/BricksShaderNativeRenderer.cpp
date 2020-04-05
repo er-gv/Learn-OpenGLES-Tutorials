@@ -2,82 +2,305 @@
 // Created by nathan on 30/03/20.
 //
 
-//
-// Created by biezhihua on 2017/7/9.
-//
 
 #include "BricksShaderNativeRenderer.h"
-#include "../graphics/GLUtils.h"
 #include <android/log.h>
 
-#define  LOG_TAG    "lesson1"
+#define  LOG_TAG    "bricks_shader"
 #define  LOGI(...)  __android_log_print(ANDROID_LOG_INFO,LOG_TAG,__VA_ARGS__)
 #define  LOGD(...)  __android_log_print(ANDROID_LOG_DEBUG,LOG_TAG,__VA_ARGS__)
 #define  LOGE(...)  __android_log_print(ANDROID_LOG_ERROR,LOG_TAG,__VA_ARGS__)
 
 static void printGLString(const char *name, GLenum s) {
     const char *v = (const char *) glGetString(s);
-    LOGI("GL %s = %s \n", name, v);
+    LOGD(LOG_TAG, "GL %s = %s \n", name, v);
 }
 
 static void checkGlError(const char *op) {
     for (GLint error = glGetError(); error; error = glGetError()) {
-        LOGI("after %s() glError (0x%x)\n", op, error);
+        LOGI(LOG_TAG, "after %s() glError (0x%x)\n", op, error);
     }
 }
 
-static const char *VERTEX_SHADER =
-        "uniform mat4 u_MVPMatrix;        \n"     // A constant representing the combined model/view/projection matrix.
-        "attribute vec4 a_Position;     \n"     // Per-vertex position information we will pass in.
-        "attribute vec4 a_Color;        \n"     // Per-vertex color information we will pass in.
-        "varying vec4 v_Color;          \n"     // This will be passed into the fragment shader.
-        "void main()                    \n"     // The entry point for our vertex shader.
-        "{                              \n"
-        "   v_Color = a_Color;          \n"     // Pass the color through to the fragment shader.
-        "   gl_Position = u_MVPMatrix * a_Position; \n"     // gl_Position is a special variable used to store the final position.
-        "}                              \n";    // normalized screen coordinates.
 
 
-const static char *FRAGMENT_SHADER = "precision mediump float;         \n"     // Set the default precision to medium. We don't need as high of a
-                              "varying vec4 v_Color;          \n"     // This is the color from the vertex shader interpolated across the
-                              "void main()                    \n"     // The entry point for our fragment shader.
-                              "{                              \n"
-                              "   gl_FragColor = v_Color;     \n"     // Pass the color directly through the pipeline.
-                              "}                              \n";
+const static GLfloat CUBE_POSITION_DATA[] = {
+        // Front face
+        -1.0f, 1.0f, 1.0f,
+        -1.0f, -1.0f, 1.0f,
+        1.0f, 1.0f, 1.0f,
+        -1.0f, -1.0f, 1.0f,
+        1.0f, -1.0f, 1.0f,
+        1.0f, 1.0f, 1.0f,
+
+        // Right face
+        1.0f, 1.0f, 1.0f,
+        1.0f, -1.0f, 1.0f,
+        1.0f, 1.0f, -1.0f,
+        1.0f, -1.0f, 1.0f,
+        1.0f, -1.0f, -1.0f,
+        1.0f, 1.0f, -1.0f,
+
+        // Back face
+        1.0f, 1.0f, -1.0f,
+        1.0f, -1.0f, -1.0f,
+        -1.0f, 1.0f, -1.0f,
+        1.0f, -1.0f, -1.0f,
+        -1.0f, -1.0f, -1.0f,
+        -1.0f, 1.0f, -1.0f,
+
+        // Left face
+        -1.0f, 1.0f, -1.0f,
+        -1.0f, -1.0f, -1.0f,
+        -1.0f, 1.0f, 1.0f,
+        -1.0f, -1.0f, -1.0f,
+        -1.0f, -1.0f, 1.0f,
+        -1.0f, 1.0f, 1.0f,
+
+        // Top face
+        -1.0f, 1.0f, -1.0f,
+        -1.0f, 1.0f, 1.0f,
+        1.0f, 1.0f, -1.0f,
+        -1.0f, 1.0f, 1.0f,
+        1.0f, 1.0f, 1.0f,
+        1.0f, 1.0f, -1.0f,
+
+        // Bottom face
+        1.0f, -1.0f, -1.0f,
+        1.0f, -1.0f, 1.0f,
+        -1.0f, -1.0f, -1.0f,
+        1.0f, -1.0f, 1.0f,
+        -1.0f, -1.0f, 1.0f,
+        -1.0f, -1.0f, -1.0f,
+};
+
+/*static const GLfloat CUBE_COLOR_DATA[] = {
+        // R, G, B, A
+
+        // Front face (red)
+        1.0f, 0.0f, 0.0f, 1.0f,
+        1.0f, 0.0f, 0.0f, 1.0f,
+        1.0f, 0.0f, 0.0f, 1.0f,
+        1.0f, 0.0f, 0.0f, 1.0f,
+        1.0f, 0.0f, 0.0f, 1.0f,
+        1.0f, 0.0f, 0.0f, 1.0f,
+
+        // Right face (green)
+        0.0f, 1.0f, 0.0f, 1.0f,
+        0.0f, 1.0f, 0.0f, 1.0f,
+        0.0f, 1.0f, 0.0f, 1.0f,
+        0.0f, 1.0f, 0.0f, 1.0f,
+        0.0f, 1.0f, 0.0f, 1.0f,
+        0.0f, 1.0f, 0.0f, 1.0f,
+
+        // Back face (blue)
+        0.0f, 0.0f, 1.0f, 1.0f,
+        0.0f, 0.0f, 1.0f, 1.0f,
+        0.0f, 0.0f, 1.0f, 1.0f,
+        0.0f, 0.0f, 1.0f, 1.0f,
+        0.0f, 0.0f, 1.0f, 1.0f,
+        0.0f, 0.0f, 1.0f, 1.0f,
+
+        // Left face (yellow)
+        1.0f, 1.0f, 0.0f, 1.0f,
+        1.0f, 1.0f, 0.0f, 1.0f,
+        1.0f, 1.0f, 0.0f, 1.0f,
+        1.0f, 1.0f, 0.0f, 1.0f,
+        1.0f, 1.0f, 0.0f, 1.0f,
+        1.0f, 1.0f, 0.0f, 1.0f,
+
+        // Top face (cyan)
+        0.0f, 1.0f, 1.0f, 1.0f,
+        0.0f, 1.0f, 1.0f, 1.0f,
+        0.0f, 1.0f, 1.0f, 1.0f,
+        0.0f, 1.0f, 1.0f, 1.0f,
+        0.0f, 1.0f, 1.0f, 1.0f,
+        0.0f, 1.0f, 1.0f, 1.0f,
+
+        // Bottom face (magenta)
+        1.0f, 0.0f, 1.0f, 1.0f,
+        1.0f, 0.0f, 1.0f, 1.0f,
+        1.0f, 0.0f, 1.0f, 1.0f,
+        1.0f, 0.0f, 1.0f, 1.0f,
+        1.0f, 0.0f, 1.0f, 1.0f,
+        1.0f, 0.0f, 1.0f, 1.0f
+};*/
+
+// X, Y, Z
+// The normal is used in light calculations and is a vector which points
+// orthogonal to the plane of the surface. For a cube model, the normals
+// should be orthogonal to the points of each face.
+static const GLfloat CUBE_NORMAL_DATA[] = {
+        // Front face
+        0.0f, 0.0f, 1.0f,
+        0.0f, 0.0f, 1.0f,
+        0.0f, 0.0f, 1.0f,
+        0.0f, 0.0f, 1.0f,
+        0.0f, 0.0f, 1.0f,
+        0.0f, 0.0f, 1.0f,
+
+        // Right face
+        1.0f, 0.0f, 0.0f,
+        1.0f, 0.0f, 0.0f,
+        1.0f, 0.0f, 0.0f,
+        1.0f, 0.0f, 0.0f,
+        1.0f, 0.0f, 0.0f,
+        1.0f, 0.0f, 0.0f,
+
+        // Back face
+        0.0f, 0.0f, -1.0f,
+        0.0f, 0.0f, -1.0f,
+        0.0f, 0.0f, -1.0f,
+        0.0f, 0.0f, -1.0f,
+        0.0f, 0.0f, -1.0f,
+        0.0f, 0.0f, -1.0f,
+
+        // Left face
+        -1.0f, 0.0f, 0.0f,
+        -1.0f, 0.0f, 0.0f,
+        -1.0f, 0.0f, 0.0f,
+        -1.0f, 0.0f, 0.0f,
+        -1.0f, 0.0f, 0.0f,
+        -1.0f, 0.0f, 0.0f,
+
+        // Top face
+        0.0f, 1.0f, 0.0f,
+        0.0f, 1.0f, 0.0f,
+        0.0f, 1.0f, 0.0f,
+        0.0f, 1.0f, 0.0f,
+        0.0f, 1.0f, 0.0f,
+        0.0f, 1.0f, 0.0f,
+
+        // Bottom face
+        0.0f, -1.0f, 0.0f,
+        0.0f, -1.0f, 0.0f,
+        0.0f, -1.0f, 0.0f,
+        0.0f, -1.0f, 0.0f,
+        0.0f, -1.0f, 0.0f,
+        0.0f, -1.0f, 0.0f
+};
+
+static const GLfloat mBrickColor[][3] {
+        {0.75390625f, 0.73828125f, 0.69921875f},
+        {0.952f, 0.0901f, 0.188f},
+        {0.117f, 0.094f, 0.129f},
+        {0.635f, 0.305f, 0.007f},
+        {0.788f, 0.968f, 0.0392f}
+};
+
+static const GLfloat mMortarColor[][3] {
+    {0.359375f, 0.26953125f, 0.05078125f},
+    {0.050f, 0.368f, 0.647f},
+    {0.988f, 0.870f, 0.909f},
+    {0.007f, 0.588f, 0.635f},
+    {0.007f, 0.635f, 0.349f}
+};
+
+static const GLfloat mBrickSize[][2]{
+    {0.3f, 0.15f},
+    {0.15f, 0.075f},
+    {0.3f, 0.15f},
+    {0.3f, 0.15f},
+    {0.3f, 0.15f}
+};
+
+static const GLfloat mBrickPct[][2] {
+    {0.9f, 0.85},
+    {0.45f, 0.4},
+    {0.9f, 0.85},
+    {0.9f, 0.85},
+    {0.9f, 0.85}
+
+};
 
 BricksShaderNativeRenderer::BricksShaderNativeRenderer() {
-    mModelMatrix = NULL;
-    mMVPMatrix = NULL;
-    mProjectionMatrix = NULL;
-    mViewMatrix = NULL;
-}
 
-BricksShaderNativeRenderer::~BricksShaderNativeRenderer() {
-    delete mModelMatrix;
-    mModelMatrix = NULL;
-    delete mMVPMatrix;
-    mMVPMatrix = NULL;
-    delete mProjectionMatrix;
-    mProjectionMatrix = NULL;
-    delete mViewMatrix;
+    mWidth = 0;
+    mHeight = 0;
+
     mViewMatrix = NULL;
+    mModelMatrix = NULL;
+    mProjectionMatrix = NULL;
+    mMVPMatrix = NULL;
+    mLightModelMatrix = NULL;
+
+    mLightProgram = 0;
+    mBricksProgram = 0;
+
+    //handlers for the vertex shader
+    mMVPMatrixHandle = 0;
+    mMVMatrixHandle = 0;
+    mNormalHandle = 0;
+    mPositionHandle = 0;
+
+    mBrickColorHandle = 0;
+    mMortarColorHandle = 0;
+    mBrickSizeHandle = 0;
+    mBrickPctHandle = 0;
+
+
+    mLightPosHandle = 0;
+
+    //mColorHandle = 0;
+
+    mLightPosInModelSpace[0] = 0.0f;
+    mLightPosInModelSpace[1] = 0.0f;
+    mLightPosInModelSpace[2] = 0.0f;
+    mLightPosInModelSpace[3] = 1.0f;
+
+    mLightPosInWorldSpace[0] = 0.0f;
+    mLightPosInWorldSpace[1] = 0.0f;
+    mLightPosInWorldSpace[2] = 0.0f;
+    mLightPosInWorldSpace[3] = 0.0f;
+
+    mLightPosInEyeSpace[0] = 0.0f;
+    mLightPosInEyeSpace[1] = 0.0f;
+    mLightPosInEyeSpace[2] = 0.0f;
+    mLightPosInEyeSpace[3] = 0.0f;
+
+    LOGD("Create BricksShader instance successful");
 }
 
 void BricksShaderNativeRenderer::create() {
+    LOGD("BricksShader create");
 
-    printGLString("Version", GL_VERSION);
-    printGLString("Vendor", GL_VENDOR);
-    printGLString("Renderer", GL_RENDERER);
-    printGLString("Extensions", GL_EXTENSIONS);
+    // Use culling to remove back face.
+    glEnable(GL_CULL_FACE);
 
-    mProgram = GLUtils::createProgram(&VERTEX_SHADER, &FRAGMENT_SHADER);
-    if (!mProgram) {
-        LOGD("Could not create program");
-        return;
+    // Enable depth testing
+    glEnable(GL_DEPTH_TEST);
+
+
+
+    // Set bricks and mortar program handle
+    {
+        const char* vertex = GLUtils::openTextFile("shaders/vertex/bricks_vertex_shader.glsl");
+        const char* fragment = GLUtils::openTextFile("shaders/fragment/bricks_fragment_shader.glsl");
+        mBricksProgram = GLUtils::createProgram(&vertex, &fragment);
+        if (!mBricksProgram) {
+            LOGD("Could not create program");
+            return;
+        }
+    }
+
+    // Set Point program handle
+    {
+        const char *vertex = GLUtils::openTextFile("shaders/vertex/point_vertex_shader.glsl");
+        const char *fragment = GLUtils::openTextFile("shaders/fragment/point_fragment_shader.glsl");
+
+        // Set program handles
+        mLightProgram = GLUtils::createProgram(&vertex, &fragment);
+        if (!mLightProgram) {
+            LOGD("Could not create program");
+            return;
+        }
     }
 
     mModelMatrix = new Matrix();
+    mNormalMatrix = new Matrix();
     mMVPMatrix = new Matrix();
+
+    mLightModelMatrix = new Matrix();
 
     // Position the eye in front of the origin.
     float eyeX = 0.0f;
@@ -87,7 +310,7 @@ void BricksShaderNativeRenderer::create() {
     // We are looking at the origin
     float centerX = 0.0f;
     float centerY = 0.0f;
-    float centerZ = 0.0f;
+    float centerZ = -5.0f;
 
     // Set our up vector.
     float upX = 0.0f;
@@ -99,8 +322,12 @@ void BricksShaderNativeRenderer::create() {
 }
 
 void BricksShaderNativeRenderer::change(int width, int height) {
+    LOGD("BricksShader change");
 
-    glViewport(0, 0, width, height);
+    mWidth = width;
+    mHeight = height;
+
+    glViewport(0, 0, mWidth, mHeight);
 
     // Create a new perspective projection matrix. The height will stay the same
     // while the width will vary as per aspect ratio.
@@ -110,104 +337,229 @@ void BricksShaderNativeRenderer::change(int width, int height) {
     float bottom = -1.0f;
     float top = 1.0f;
     float near = 1.0f;
-    float far = 2.0f;
+    float far = 10.0f;
 
     mProjectionMatrix = Matrix::newFrustum(left, right, bottom, top, near, far);
 }
 
 void BricksShaderNativeRenderer::draw() {
-    glClearColor(0.5F, 0.5F, 0.5F, 0.5F);
-    glClear(GL_COLOR_BUFFER_BIT);
-    checkGlError("glClear");
+    // Set the OpenGL viewport to same size as the surface.
+    //scean->render();
+    glClearColor(0, 0, 0, 1);
 
-    glUseProgram(mProgram);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    mMVPMatrixHandle = (GLuint) glGetUniformLocation(mProgram, "u_MVPMatrix");
-    mPositionHandle = (GLuint) glGetAttribLocation(mProgram, "a_Position");
-    mColorHandle = (GLuint) glGetAttribLocation(mProgram, "a_Color");
-
+    // Do a compile rotation every 10 seconds;
     long time = GLUtils::currentTimeMillis() % 10000L;
     float angleInDegrees = (360.0f / 10000.0f) * ((int) time);
 
-    // Draw the triangle facing straight on.
-    mModelMatrix->identity();
-    mModelMatrix->rotate(angleInDegrees, 0.0f, 0.0f, 1.0f);
-    drawTriangle(BricksShaderNativeRenderer::getModelData(0));
+    // Set out pre-vertex lighting program.
+    glUseProgram(mBricksProgram);
 
-    // Draw one translated a bit down and rotated to be flat on the ground.
-    mModelMatrix->identity();
-    mModelMatrix->translate(0.0f, -1.0f, 0.0f);
-    mModelMatrix->rotate(90.0f, 1.0f, 0.0f, 0.0f);
-    mModelMatrix->rotate(angleInDegrees, 0.0f, 0.0f, 1.0f);
-    drawTriangle(BricksShaderNativeRenderer::getModelData(1));
+    // Set program handle for cube drawing.
+    mMVPMatrixHandle = (GLuint) glGetUniformLocation(mBricksProgram, "u_MVPMatrix");
+    mMVMatrixHandle = (GLuint) glGetUniformLocation(mBricksProgram, "u_MVMatrix");
+    mLightPosHandle = (GLuint) glGetUniformLocation(mBricksProgram, "u_LightPosition");
 
-    // Draw one translated a bit to the right and rotated to be facing to the left.
+    mPositionHandle = (GLuint) glGetAttribLocation(mBricksProgram, "MCvertex");
+    mNormalHandle = (GLuint) glGetAttribLocation(mBricksProgram, "MCnormal");
+
+
+    mBrickColorHandle = (GLuint) glGetUniformLocation(mBricksProgram, "u_BrickColor");
+    mMortarColorHandle = (GLuint) glGetUniformLocation(mBricksProgram, "u_MortarColor");
+    mBrickSizeHandle = (GLuint) glGetUniformLocation(mBricksProgram, "u_BrickSize");
+    mBrickPctHandle = (GLuint) glGetUniformLocation(mBricksProgram, "u_BrickPct");
+
+    // Calculate position of the light
+    // Rotate and then push into the distance.
+    mLightModelMatrix->identity();
+    mLightModelMatrix->translate(0, 0, -5);
+    mLightModelMatrix->rotate(angleInDegrees, 0, 1, 0);
+    mLightModelMatrix->translate(0, 0, 2);
+
+    Matrix::multiplyMV(mLightPosInWorldSpace, mLightModelMatrix->mData, mLightPosInModelSpace);
+    Matrix::multiplyMV(mLightPosInEyeSpace, mViewMatrix->mData, mLightPosInWorldSpace);
+
+    // right
     mModelMatrix->identity();
-    mModelMatrix->translate(1.0f, 0.0f, 0.0f);
-    mModelMatrix->rotate(90.0f, 0.0f, 1.0f, 0.0f);
-    mModelMatrix->rotate(angleInDegrees, 0.0f, 0.0f, 1.0f);
-    drawTriangle(BricksShaderNativeRenderer::getModelData(2));
+    mModelMatrix->translate(4.0f, 0.0f, -7.0f);
+    mModelMatrix->rotate(angleInDegrees, 1.0f, 0.0f, 0.0f);
+
+    drawCube(mBrickColor[0], mMortarColor[0], mBrickPct[0], mBrickPct[0]);
+
+    // left
+    mModelMatrix->identity();
+    mModelMatrix->translate(-4.0f, 0.0f, -7.0f);
+    mModelMatrix->rotate(angleInDegrees, 0.0f, 1.0f, 0.0f);
+    drawCube(mBrickColor[1], mMortarColor[1], mBrickPct[1], mBrickPct[1]);
+
+    // top
+    mModelMatrix->identity();
+    mModelMatrix->translate(0.0f, 4.0f, -7.0f);
+    mModelMatrix->rotate(angleInDegrees, 0.0f, 1.0f, 0.0f);
+    drawCube(mBrickColor[2], mMortarColor[2], mBrickPct[2], mBrickPct[2]);
+
+    // bottom
+    mModelMatrix->identity();
+    mModelMatrix->translate(0.0f, -4.0f, -7.0f);
+    mModelMatrix->rotate(angleInDegrees, 0.0f, 1.0f, 0.0f);
+    drawCube(mBrickColor[3], mMortarColor[3], mBrickPct[3], mBrickPct[3]);
+
+    // center
+    mModelMatrix->identity();
+    mModelMatrix->translate(0.0f, 0.0f, -5.0f);
+    mModelMatrix->rotate(angleInDegrees, 1.0f, 1.0f, 1.0f);
+    drawCube(mBrickColor[4], mMortarColor[4], mBrickPct[4], mBrickPct[4]);
+
+    // Draw a point to indicate the light
+    glUseProgram(mLightProgram);
+    drawLight();
 }
 
-void BricksShaderNativeRenderer::drawTriangle(const GLfloat *verticesData) {
+void BricksShaderNativeRenderer::destroy() {
+    delete mModelMatrix;
+    mModelMatrix = NULL;
+    delete mViewMatrix;
+    mViewMatrix = NULL;
+    delete mProjectionMatrix;
+    mProjectionMatrix = NULL;
+    delete mLightModelMatrix;
+    mLightModelMatrix = NULL;
+}
 
+BricksShaderNativeRenderer::~BricksShaderNativeRenderer() {
+    destroy();
+}
+
+void BricksShaderNativeRenderer::drawCube(
+        const GLfloat brickColor[3], const GLfloat mortarColor[3],
+        const GLfloat brickSize[2], const GLfloat brickPct[2]) {
+
+    // Pass in the position info
     glVertexAttribPointer(
-            (GLuint) mPositionHandle,
-            3,
-            GL_FLOAT,
-            GL_FALSE,
-            4 * 7,
-            verticesData
+            mPositionHandle, POSITION_DATA_SIZE,
+            GL_FLOAT, GL_FALSE, 0, CUBE_POSITION_DATA
     );
-    glEnableVertexAttribArray((GLuint) mPositionHandle);
+    glEnableVertexAttribArray(mPositionHandle);
 
-    glVertexAttribPointer(
-            (GLuint) mColorHandle,
-            4,
-            GL_FLOAT,
-            GL_FALSE,
-            4 * 7,
-            verticesData + 3
+    // Pass in the normal information
+    glVertexAttribPointer(mNormalHandle, NORMAL_DATA_SIZE,
+            GL_FLOAT, GL_FALSE, 0, CUBE_NORMAL_DATA
     );
-    glEnableVertexAttribArray((GLuint) mColorHandle);
+    glEnableVertexAttribArray(mNormalHandle);
 
-    // model * view
+    // This multiplies the view by the model matrix
+    // and stores the result the MVP matrix.
+    // which currently contains model * view
     mMVPMatrix->multiply(*mViewMatrix, *mModelMatrix);
 
-    // model * view * projection
+    // Pass in the model view matrix
+    glUniformMatrix4fv( mMVMatrixHandle, 1, GL_FALSE, mMVPMatrix->mData );
+
+    // This multiplies the model view matrix by the projection matrix
+    // and stores the result in the MVP matrix.
+    // which no contains model * view * projection
     mMVPMatrix->multiply(*mProjectionMatrix, *mMVPMatrix);
 
+    // Pass in the model view projection matrix
     glUniformMatrix4fv(mMVPMatrixHandle, 1, GL_FALSE, mMVPMatrix->mData);
 
-    glDrawArrays(GL_TRIANGLES, 0, 3);
-    checkGlError("glDrawArrays");
+    // Pass in the light position in eye space
+    glUniform3f(mLightPosHandle,
+                mLightPosInEyeSpace[0],
+                mLightPosInEyeSpace[1],
+                mLightPosInEyeSpace[2]
+    );
+
+    glUniform3f(mBrickColorHandle, brickColor[0], brickColor[1], brickColor[2]);
+
+    glUniform3f(mMortarColorHandle, mortarColor[0], mortarColor[1], mortarColor[2]);
+
+    glUniform2f(mBrickSizeHandle, brickSize[0], brickSize[1]);
+
+    glUniform2f( mBrickPctHandle, brickPct[0], brickPct[1]);
+
+    // Draw the cube
+    glDrawArrays(GL_TRIANGLES, 0, 36);
+}
+
+void BricksShaderNativeRenderer::drawLight() {
+
+    GLint pointMVPMatrixHandle = glGetUniformLocation(mLightProgram, "u_MVPMatrix");
+    GLint pointPositionHandle = glGetAttribLocation(mLightProgram, "a_Position");
+
+    // Pass in the position
+    glVertexAttrib3f(
+            pointPositionHandle,
+            mLightPosInModelSpace[0],
+            mLightPosInModelSpace[1],
+            mLightPosInModelSpace[2]);
+
+    // Since we are not using a buffer object,
+    // disable vertex arrays for the attribute
+    glDisableVertexAttribArray(pointPositionHandle);
+
+    // Pass in the transformation matrix.
+    mMVPMatrix->identity();
+    mMVPMatrix->multiply(*mViewMatrix, *mLightModelMatrix);
+    mMVPMatrix->multiply(*mProjectionMatrix, *mMVPMatrix);
+
+    glUniformMatrix4fv(
+            pointMVPMatrixHandle,
+            1,
+            GL_FALSE,
+            mMVPMatrix->mData
+    );
+
+    glDrawArrays(GL_POINTS, 0, 1);
 }
 
 
-/// =======================================================
+///=======
 
 static BricksShaderNativeRenderer *renderer;
 
-extern "C"
-JNIEXPORT void JNICALL
-Java_com_learnopengles_android_bricksShader_BricksShaderNativeRenderer_nativeSurfaceCreate( JNIEnv *env, jclass type) {
-    renderer = new BricksShaderNativeRenderer();
-    if (renderer != nullptr) {
-        renderer->create();
+
+extern "C" JNIEXPORT void JNICALL
+Java_com_learnopengles_android_bricksShader_BricksShaderNativeRenderer_nativeSurfaceCreate(
+        JNIEnv *env,
+        jclass type,
+        jobject asset_manager) {
+
+    GLUtils::setEnvAndAssetManager(env, asset_manager);
+    if (renderer) {
+        delete renderer;
+        renderer = NULL;
     }
+
+    // Print some OpenGL info
+    printGLString("Version", GL_VERSION);
+    printGLString("Vendor", GL_VENDOR);
+    printGLString("Renderer", GL_RENDERER);
+    printGLString("Extensions", GL_EXTENSIONS);
+
+    renderer = new BricksShaderNativeRenderer();
+    renderer->create();
+
 }
 
 extern "C" JNIEXPORT void JNICALL
-Java_com_learnopengles_android_bricksShader_BricksShaderNativeRenderer_nativeSurfaceChange( JNIEnv *env,
-jclass type,   jint width, jint height) {
-    if (renderer != nullptr) {
+Java_com_learnopengles_android_bricksShader_BricksShaderNativeRenderer_nativeSurfaceChange(
+        JNIEnv *env,
+        jclass type,
+        jint width, jint height) {
+
+    if (renderer) {
         renderer->change(width, height);
     }
+
 }
 
 extern "C" JNIEXPORT void JNICALL
-Java_com_learnopengles_android_bricksShader_BricksShaderNativeRenderer_nativeDrawFrame( JNIEnv *env, jclass type) {
-    if (renderer != nullptr) {
+Java_com_learnopengles_android_bricksShader_BricksShaderNativeRenderer_nativeDrawFrame(
+        JNIEnv *env, jclass type) {
+
+    if (renderer) {
         renderer->draw();
     }
 }

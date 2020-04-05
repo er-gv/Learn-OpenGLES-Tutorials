@@ -7,9 +7,8 @@
 
 #include <GLES2/gl2.h>
 #include <graphics/Matrix.h>
-#include "AbstractSurfaceRendererNative.h"
 
-class Native4Lesson : public AbstractSurfaceRendererNative{
+class Native4Lesson {
 
 public:
 
@@ -19,7 +18,7 @@ public:
 
     virtual void create();
 
-    //void change(int width, int height);
+    void change(int width, int height);
 
     virtual void draw();
 
@@ -47,6 +46,12 @@ private:
     float mLightPosInModelSpace[4];
     float mLightPosInWorldSpace[4];
     float mLightPosInEyeSpace[4];
+
+    Matrix *mViewMatrix;
+    Matrix *mModelMatrix;
+    Matrix *mProjectionMatrix;
+    Matrix *mMVPMatrix;
+    GLuint mProgram;
 
     void drawCube();
 

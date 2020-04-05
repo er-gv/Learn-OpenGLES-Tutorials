@@ -21,17 +21,23 @@ add_library(
                 # Sets the library as a shared library.
                 SHARED
 
+                # Provides a relative path to your source file(s).
                 # common
-                src/main/cpp/AbstractSurfaceRendererNative.h
-                src/main/cpp/AbstractSurfaceRendererNative.cpp
+                # src/main/cpp/AbstractSurfaceRendererNative.h
+                # src/main/cpp/AbstractSurfaceRendererNative.cpp
 
-                # graphics
+        # graphics
                 src/main/cpp/graphics/GLUtils.h
                 src/main/cpp/graphics/GLUtils.cpp
                 src/main/cpp/graphics/Matrix.h
                 src/main/cpp/graphics/Matrix.cpp
+                src/main/cpp/graphics/Camera.h
+                src/main/cpp/graphics/Camera.cpp
 
-                # Provides a relative path to your source file(s).
+                # utils
+        src/main/cpp/Logger.h
+        src/main/cpp/Logger.cpp
+
                 # lesson1
                 src/main/cpp/lesson1/Native1Lesson.cpp
                 src/main/cpp/lesson1/Native1Lesson.h
@@ -105,7 +111,7 @@ target_link_libraries( # Specifies the target library.
                        lesson-lib
                        EGL
                        GLESv2
-                       android
+                        android
                        # Links the target library to the log library
                        # included in the NDK.
                        ${log-lib} )

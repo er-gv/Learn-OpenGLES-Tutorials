@@ -3,11 +3,10 @@
 attribute vec4 MCvertex;
 attribute vec3 MCnormal;
 
-uniform mat4 MVMatrix;
-uniform mat4 MVPMatrix;
-uniform mat4 NormalMatrix;
+uniform mat4 u_MVMatrix;
+uniform mat4 u_MVPMatrix;
 
-uniform vec3 LightPosition;
+uniform vec3 u_LightPosition;
 
 
 
@@ -19,9 +18,9 @@ void main(){
 	const float SpecularContribution = 0.3;
 	const float DiffuseContribution = 1.0 - SpecularContribution;
 
-	vec3 ecPosition = vec3(MVMatrix * MCvertex);
+	vec3 ecPosition = vec3(u_MVMatrix * MCvertex);
 	vec3 tnorm = normalize(MCnormal);
-	vec3 lightVec = normalize(LightPosition - ecPosition);
+	vec3 lightVec = normalize(u_LightPosition - ecPosition);
 	vec3 reflectVec = reflect(-lightVec, tnorm);
 	vec3 viewVec = normalize(-ecPosition);
 	float diffuse = max(dot(lightVec, tnorm), 0.0);
@@ -33,6 +32,11 @@ void main(){
 	}
 	
 	LightIntensity = DiffuseContribution * diffuse + SpecularContribution * spec;
-	MCposition = MCvertex.xy;
-	gl_Position = MVPMatrix * MCvertex;    
+	if(MCnormal.x != 0.0f)
+		MCposition = MCvertex.yz;
+	else if (MCnormal.y != 0.0f)
+		MCposition = MCvertex.zx;
+	else
+		MCposition = MCvertex.yx;
+	gl_Position = u_MVPMatrix * MCvertex;
 }
