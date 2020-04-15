@@ -51,4 +51,8 @@
     <string name="quantized_color_subtitle">quantized color squares</string>
     <string name="bricks_shader">Bricks shader activity</string>
     <string name="bricks_shader_subtitle">Bricks shader activity</string>
+    <string name="julia_set_subtitle">The Julia Set animation</string>
+    <string name="julia_set">The Julia Set animation</string>
+    <string name="polyhedrons">Spining polyhedrons</string>
+    <string name="polyhedrons_subtitle">Spining polyhedrons</string>
 </resources>

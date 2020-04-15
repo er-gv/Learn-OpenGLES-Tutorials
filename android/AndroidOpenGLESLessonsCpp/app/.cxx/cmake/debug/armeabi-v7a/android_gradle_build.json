@@ -36,7 +36,7 @@
           "workingDirectoryOrdinal": 0
         },
         {
-          "src": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/Logger.cpp",
+          "src": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/utils/Scene.cpp",
           "flagsOrdinal": 1,
           "workingDirectoryOrdinal": 0
         },
@@ -124,6 +124,16 @@
           "src": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/BricksShader/BricksShaderNativeRenderer.cpp",
           "flagsOrdinal": 1,
           "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/JuliaSet/JuliaSetRenderer.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/Polyhedrons/PolyhedronsRenderer.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
         }
       ],
       "headers": [
@@ -140,7 +150,11 @@
           "workingDirectoryOrdinal": 0
         },
         {
-          "header": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/Logger.h",
+          "header": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/utils/Logger.h",
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "header": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/utils/Scene.h",
           "workingDirectoryOrdinal": 0
         },
         {
@@ -209,6 +223,14 @@
         },
         {
           "header": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/BricksShader/BricksShaderNativeRenderer.h",
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "header": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/JuliaSet/JuliaSetRenderer.h",
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "header": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/Polyhedrons/PolyhedronsRenderer.h",
           "workingDirectoryOrdinal": 0
         }
       ],

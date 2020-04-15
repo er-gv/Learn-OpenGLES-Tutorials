@@ -1,8 +1,9 @@
 ninja: Entering directory `/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/.cxx/cmake/debug/x86'
-[1/2] Building CXX object CMakeFiles/lesson-lib.dir/src/main/cpp/lesson4/Native4Lesson.cpp.o
-In file included from ../../../../src/main/cpp/lesson4/Native4Lesson.cpp:6:
-../../../../src/main/cpp/lesson4/Native4Lesson.h:54:12: warning: private field 'mProgram' is not used [-Wunused-private-field]
-    GLuint mProgram;
-           ^
+[1/2] Building CXX object CMakeFiles/lesson-lib.dir/src/main/cpp/JuliaSet/JuliaSetRenderer.cpp.o
+In file included from ../../../../src/main/cpp/JuliaSet/JuliaSetRenderer.cpp:5:
+In file included from ../../../../src/main/cpp/JuliaSet/JuliaSetRenderer.h:14:
+../../../../src/main/cpp/JuliaSet/../utils/Logger.h:34:5: warning: 'static' is not permitted on a declaration of a type [-Wmissing-declarations]
+    static enum SEVERITY {
+    ^
 1 warning generated.
 [2/2] Linking CXX shared library ../../../../build/intermediates/cmake/debug/obj/x86/liblesson-lib.so

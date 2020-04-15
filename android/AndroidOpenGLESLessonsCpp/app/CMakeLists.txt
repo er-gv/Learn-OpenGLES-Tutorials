@@ -15,83 +15,93 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -fno-rtti -fno-exceptions -Wa
 
 
 add_library(
-                # Sets the name of the library.
-                lesson-lib
+        # Sets the name of the library.
+        lesson-lib
 
-                # Sets the library as a shared library.
-                SHARED
+        # Sets the library as a shared library.
+        SHARED
 
-                # Provides a relative path to your source file(s).
-                # common
-                # src/main/cpp/AbstractSurfaceRendererNative.h
-                # src/main/cpp/AbstractSurfaceRendererNative.cpp
+        # Provides a relative path to your source file(s).
+        # common
+        # src/main/cpp/AbstractSurfaceRendererNative.h
+        # src/main/cpp/AbstractSurfaceRendererNative.cpp
 
         # graphics
-                src/main/cpp/graphics/GLUtils.h
-                src/main/cpp/graphics/GLUtils.cpp
-                src/main/cpp/graphics/Matrix.h
-                src/main/cpp/graphics/Matrix.cpp
-                src/main/cpp/graphics/Camera.h
-                src/main/cpp/graphics/Camera.cpp
+        src/main/cpp/graphics/GLUtils.h
+        src/main/cpp/graphics/GLUtils.cpp
+        src/main/cpp/graphics/Matrix.h
+        src/main/cpp/graphics/Matrix.cpp
+        src/main/cpp/graphics/Camera.h
+        src/main/cpp/graphics/Camera.cpp
 
-                # utils
-        src/main/cpp/Logger.h
-        src/main/cpp/Logger.cpp
+        # utils
+        src/main/cpp/utils/Logger.h
+        #src/main/cpp/utils/Logger.cpp
+        src/main/cpp/utils/Scene.cpp
+        src/main/cpp/utils/Scene.h
 
-                # lesson1
-                src/main/cpp/lesson1/Native1Lesson.cpp
-                src/main/cpp/lesson1/Native1Lesson.h
+        # lesson1
+        src/main/cpp/lesson1/Native1Lesson.cpp
+        src/main/cpp/lesson1/Native1Lesson.h
 
-                # lesson2
-                src/main/cpp/lesson2/Native2Lesson.cpp
-                src/main/cpp/lesson2/Native2Lesson.h
+        # lesson2
+        src/main/cpp/lesson2/Native2Lesson.cpp
+        src/main/cpp/lesson2/Native2Lesson.h
 
-                # lesson3
-                src/main/cpp/lesson3/Native3Lesson.cpp
-                src/main/cpp/lesson3/Native3Lesson.h
+        # lesson3
+        src/main/cpp/lesson3/Native3Lesson.cpp
+        src/main/cpp/lesson3/Native3Lesson.h
 
-                # lesson4
-                src/main/cpp/lesson4/Native4Lesson.cpp
-                src/main/cpp/lesson4/Native4Lesson.h
+        # lesson4
+        src/main/cpp/lesson4/Native4Lesson.cpp
+        src/main/cpp/lesson4/Native4Lesson.h
 
-                # lesson5
-                src/main/cpp/lesson5/Native5Lesson.cpp
-                src/main/cpp/lesson5/Native5Lesson.h
+        # lesson5
+        src/main/cpp/lesson5/Native5Lesson.cpp
+        src/main/cpp/lesson5/Native5Lesson.h
 
-                # lesson6
-                src/main/cpp/lesson6/Native6Lesson.cpp
-                src/main/cpp/lesson6/Native6Lesson.h
+        # lesson6
+        src/main/cpp/lesson6/Native6Lesson.cpp
+        src/main/cpp/lesson6/Native6Lesson.h
 
-                # lesson7
-                src/main/cpp/lesson7/Native7Lesson.cpp
-                src/main/cpp/lesson7/Native7Lesson.h
-                src/main/cpp/lesson7/Cubes.cpp
-                src/main/cpp/lesson7/Cubes.h
-                src/main/cpp/lesson7/CubesClientSide.cpp
-                src/main/cpp/lesson7/CubesClientSide.h
-                src/main/cpp/lesson7/CubesClientSideWithStride.cpp
-                src/main/cpp/lesson7/CubesClientSideWithStride.h
-                src/main/cpp/lesson7/CubesWithVbo.cpp
-                src/main/cpp/lesson7/CubesWithVbo.h
-                src/main/cpp/lesson7/CubesWithVboWithStride.cpp
-                src/main/cpp/lesson7/CubesWithVboWithStride.h
-                src/main/cpp/lesson7/GenData.cpp
-                src/main/cpp/lesson7/GenData.h
+        # lesson7
+        src/main/cpp/lesson7/Native7Lesson.cpp
+        src/main/cpp/lesson7/Native7Lesson.h
+        src/main/cpp/lesson7/Cubes.cpp
+        src/main/cpp/lesson7/Cubes.h
+        src/main/cpp/lesson7/CubesClientSide.cpp
+        src/main/cpp/lesson7/CubesClientSide.h
+        src/main/cpp/lesson7/CubesClientSideWithStride.cpp
+        src/main/cpp/lesson7/CubesClientSideWithStride.h
+        src/main/cpp/lesson7/CubesWithVbo.cpp
+        src/main/cpp/lesson7/CubesWithVbo.h
+        src/main/cpp/lesson7/CubesWithVboWithStride.cpp
+        src/main/cpp/lesson7/CubesWithVboWithStride.h
+        src/main/cpp/lesson7/GenData.cpp
+        src/main/cpp/lesson7/GenData.h
 
-                # lesson8
-                src/main/cpp/lesson8/Native8Lesson.cpp
-                src/main/cpp/lesson8/Native8Lesson.h
-                src/main/cpp/lesson8/HeightMap.cpp
-                src/main/cpp/lesson8/HeightMap.h
+        # lesson8
+        src/main/cpp/lesson8/Native8Lesson.cpp
+        src/main/cpp/lesson8/Native8Lesson.h
+        src/main/cpp/lesson8/HeightMap.cpp
+        src/main/cpp/lesson8/HeightMap.h
 
-                #quantized color
-                src/main/cpp/QuantizedColor/QuantizedColorNative.cpp
-                src/main/cpp/QuantizedColor/QuantizedColorNative.h
+        #quantized color
+        src/main/cpp/QuantizedColor/QuantizedColorNative.cpp
+        src/main/cpp/QuantizedColor/QuantizedColorNative.h
 
-                #bricks
-                src/main/cpp/BricksShader/BricksShaderNativeRenderer.cpp
-                src/main/cpp/BricksShader/BricksShaderNativeRenderer.h
-             )
+        #bricks
+        src/main/cpp/BricksShader/BricksShaderNativeRenderer.cpp
+        src/main/cpp/BricksShader/BricksShaderNativeRenderer.h
+
+        #Julia
+        src/main/cpp/JuliaSet/JuliaSetRenderer.cpp
+        src/main/cpp/JuliaSet/JuliaSetRenderer.h
+
+        #polyhedrons
+        src/main/cpp/Polyhedrons/PolyhedronsRenderer.cpp
+        src/main/cpp/Polyhedrons/PolyhedronsRenderer.h
+)
 
 include_directories(src/main/cpp/)
 
@@ -108,10 +118,10 @@ find_library(log-lib log)
 # build script, prebuilt third-party libraries, or system libraries.
 
 target_link_libraries( # Specifies the target library.
-                       lesson-lib
-                       EGL
-                       GLESv2
-                        android
-                       # Links the target library to the log library
-                       # included in the NDK.
-                       ${log-lib} )
+        lesson-lib
+        EGL
+        GLESv2
+        android
+        # Links the target library to the log library
+        # included in the NDK.
+        ${log-lib} )

@@ -10,6 +10,8 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.SimpleAdapter;
 
+import com.learnopengles.android.JuliaSet.JuliaSetActivity;
+import com.learnopengles.android.Polyhedrons.PolyhedronsActivity;
 import com.learnopengles.android.bricksShader.BricksShaderActivity;
 import com.learnopengles.android.cpp.R;
 import com.learnopengles.android.lesson1.LessonOneActivity;
@@ -44,6 +46,22 @@ public class TableOfContents extends ListActivity {
 
         int i = 0;
 
+        {
+            final Map<String, Object> item = new HashMap<String, Object>();
+            item.put(ITEM_IMAGE, R.drawable.bricks_icon);
+            item.put(ITEM_TITLE, getText(R.string.julia_set));
+            item.put(ITEM_SUBTITLE, getText(R.string.julia_set_subtitle));
+            data.add(item);
+            activityMapping.put(i++, JuliaSetActivity.class);
+        }
+        {
+            final Map<String, Object> item = new HashMap<String, Object>();
+            item.put(ITEM_IMAGE, R.drawable.bricks_icon);
+            item.put(ITEM_TITLE, getText(R.string.polyhedrons));
+            item.put(ITEM_SUBTITLE, getText(R.string.polyhedrons_subtitle));
+            data.add(item);
+            activityMapping.put(i++, PolyhedronsActivity.class);
+        }
         {
             final Map<String, Object> item = new HashMap<String, Object>();
             item.put(ITEM_IMAGE, R.drawable.bricks_icon);

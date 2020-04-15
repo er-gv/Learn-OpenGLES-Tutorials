@@ -77,13 +77,13 @@ build CMakeFiles/lesson-lib.dir/src/main/cpp/graphics/Camera.cpp.o: CXX_COMPILER
   INCLUDES = -I../../../../src/main/cpp
   OBJECT_DIR = CMakeFiles/lesson-lib.dir
   OBJECT_FILE_DIR = CMakeFiles/lesson-lib.dir/src/main/cpp/graphics
-build CMakeFiles/lesson-lib.dir/src/main/cpp/Logger.cpp.o: CXX_COMPILER__lesson-lib ../../../../src/main/cpp/Logger.cpp || cmake_object_order_depends_target_lesson-lib
+build CMakeFiles/lesson-lib.dir/src/main/cpp/utils/Scene.cpp.o: CXX_COMPILER__lesson-lib ../../../../src/main/cpp/utils/Scene.cpp || cmake_object_order_depends_target_lesson-lib
   DEFINES = -Dlesson_lib_EXPORTS
-  DEP_FILE = CMakeFiles/lesson-lib.dir/src/main/cpp/Logger.cpp.o.d
+  DEP_FILE = CMakeFiles/lesson-lib.dir/src/main/cpp/utils/Scene.cpp.o.d
   FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC
   INCLUDES = -I../../../../src/main/cpp
   OBJECT_DIR = CMakeFiles/lesson-lib.dir
-  OBJECT_FILE_DIR = CMakeFiles/lesson-lib.dir/src/main/cpp
+  OBJECT_FILE_DIR = CMakeFiles/lesson-lib.dir/src/main/cpp/utils
 build CMakeFiles/lesson-lib.dir/src/main/cpp/lesson1/Native1Lesson.cpp.o: CXX_COMPILER__lesson-lib ../../../../src/main/cpp/lesson1/Native1Lesson.cpp || cmake_object_order_depends_target_lesson-lib
   DEFINES = -Dlesson_lib_EXPORTS
   DEP_FILE = CMakeFiles/lesson-lib.dir/src/main/cpp/lesson1/Native1Lesson.cpp.o.d
@@ -203,6 +203,20 @@ build CMakeFiles/lesson-lib.dir/src/main/cpp/BricksShader/BricksShaderNativeRend
   INCLUDES = -I../../../../src/main/cpp
   OBJECT_DIR = CMakeFiles/lesson-lib.dir
   OBJECT_FILE_DIR = CMakeFiles/lesson-lib.dir/src/main/cpp/BricksShader
+build CMakeFiles/lesson-lib.dir/src/main/cpp/JuliaSet/JuliaSetRenderer.cpp.o: CXX_COMPILER__lesson-lib ../../../../src/main/cpp/JuliaSet/JuliaSetRenderer.cpp || cmake_object_order_depends_target_lesson-lib
+  DEFINES = -Dlesson_lib_EXPORTS
+  DEP_FILE = CMakeFiles/lesson-lib.dir/src/main/cpp/JuliaSet/JuliaSetRenderer.cpp.o.d
+  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC
+  INCLUDES = -I../../../../src/main/cpp
+  OBJECT_DIR = CMakeFiles/lesson-lib.dir
+  OBJECT_FILE_DIR = CMakeFiles/lesson-lib.dir/src/main/cpp/JuliaSet
+build CMakeFiles/lesson-lib.dir/src/main/cpp/Polyhedrons/PolyhedronsRenderer.cpp.o: CXX_COMPILER__lesson-lib ../../../../src/main/cpp/Polyhedrons/PolyhedronsRenderer.cpp || cmake_object_order_depends_target_lesson-lib
+  DEFINES = -Dlesson_lib_EXPORTS
+  DEP_FILE = CMakeFiles/lesson-lib.dir/src/main/cpp/Polyhedrons/PolyhedronsRenderer.cpp.o.d
+  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC
+  INCLUDES = -I../../../../src/main/cpp
+  OBJECT_DIR = CMakeFiles/lesson-lib.dir
+  OBJECT_FILE_DIR = CMakeFiles/lesson-lib.dir/src/main/cpp/Polyhedrons
 
 # =============================================================================
 # Link build statements for SHARED_LIBRARY target lesson-lib
@@ -211,7 +225,7 @@ build CMakeFiles/lesson-lib.dir/src/main/cpp/BricksShader/BricksShaderNativeRend
 #############################################
 # Link the shared library ../../../../build/intermediates/cmake/release/obj/x86/liblesson-lib.so
 
-build ../../../../build/intermediates/cmake/release/obj/x86/liblesson-lib.so: CXX_SHARED_LIBRARY_LINKER__lesson-lib CMakeFiles/lesson-lib.dir/src/main/cpp/graphics/GLUtils.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/graphics/Matrix.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/graphics/Camera.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/Logger.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson1/Native1Lesson.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson2/Native2Lesson.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson3/Native3Lesson.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson4/Native4Lesson.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson5/Native5Lesson.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson6/Native6Lesson.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/Native7Lesson.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/Cubes.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/CubesClientSide.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/CubesClientSideWithStride.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/CubesWithVbo.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/CubesWithVboWithStride.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/GenData.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson8/Native8Lesson.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson8/HeightMap.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/QuantizedColor/QuantizedColorNative.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/BricksShader/BricksShaderNativeRenderer.cpp.o | /home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/i686-linux-android/21/liblog.so
+build ../../../../build/intermediates/cmake/release/obj/x86/liblesson-lib.so: CXX_SHARED_LIBRARY_LINKER__lesson-lib CMakeFiles/lesson-lib.dir/src/main/cpp/graphics/GLUtils.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/graphics/Matrix.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/graphics/Camera.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/utils/Scene.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson1/Native1Lesson.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson2/Native2Lesson.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson3/Native3Lesson.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson4/Native4Lesson.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson5/Native5Lesson.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson6/Native6Lesson.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/Native7Lesson.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/Cubes.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/CubesClientSide.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/CubesClientSideWithStride.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/CubesWithVbo.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/CubesWithVboWithStride.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/GenData.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson8/Native8Lesson.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson8/HeightMap.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/QuantizedColor/QuantizedColorNative.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/BricksShader/BricksShaderNativeRenderer.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/JuliaSet/JuliaSetRenderer.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/Polyhedrons/PolyhedronsRenderer.cpp.o | /home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/i686-linux-android/21/liblog.so
   LANGUAGE_COMPILE_FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG
   LINK_FLAGS = -Wl,--exclude-libs,libgcc_real.a -Wl,--exclude-libs,libatomic.a -static-libstdc++ -Wl,--build-id -Wl,--fatal-warnings -Wl,--no-undefined -Qunused-arguments
   LINK_LIBRARIES = -lEGL -lGLESv2 -landroid /home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/i686-linux-android/21/liblog.so -latomic -lm

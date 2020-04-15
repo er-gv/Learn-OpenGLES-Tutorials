@@ -61,6 +61,13 @@
             android:name="com.learnopengles.android.quantizedColor.QuantizedColorActivity"
             android:label="@string/quantized_color"/>
 
+        <activity
+            android:name="com.learnopengles.android.JuliaSet.JuliaSetActivity"
+            android:label="@string/julia_set"/>
+        <activity
+            android:name="com.learnopengles.android.Polyhedrons.PolyhedronsActivity"
+            android:label="@string/polyhedrons"/>
+
     </application>
 
 </manifest>

@@ -10,7 +10,7 @@
 #include <GLES2/gl2.h>
 #include "../graphics/GLUtils.h"
 #include "../graphics/Matrix.h"
-#include "../Logger.h"
+//#include "utils/Logger.h"
 
 class BricksShaderNativeRenderer {
 

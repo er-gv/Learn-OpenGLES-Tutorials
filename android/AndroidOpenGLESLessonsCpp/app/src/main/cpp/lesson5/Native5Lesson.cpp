@@ -24,13 +24,15 @@ Native5Lesson::Native5Lesson() :
 
 Native5Lesson::~Native5Lesson() {
     delete mModelMatrix;
-    mModelMatrix = NULL;
     delete mViewMatrix;
-    mViewMatrix = NULL;
     delete mProjectionMatrix;
-    mProjectionMatrix = NULL;
     delete mMVPMatrix;
-    mMVPMatrix = NULL;
+
+    Matrix* mViewMatrix;
+    Matrix* mProjectionMatrix;
+    Matrix* mMVPMatrix;
+
+    Matrix* mLightModelMatrix;
 }
 
 void Native5Lesson::create() {

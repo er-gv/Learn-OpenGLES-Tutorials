@@ -7,6 +7,7 @@
 
 #include <GLES2/gl2.h>
 #include <graphics/Matrix.h>
+//#include "../utils/Logger.h"
 
 class Native4Lesson {
 
