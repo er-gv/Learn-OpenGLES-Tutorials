@@ -12,6 +12,7 @@
 #include "../graphics/GLUtils.h"
 #include "../graphics/Matrix.h"
 #include "../utils/Logger.h"
+//#include <glm/mat4x4.hpp>
 
 
 class JuliaSetRenderer {
@@ -24,7 +25,6 @@ private:
     Matrix* mViewMatrix;
     Matrix* mProjectionMatrix;
     Matrix* mMVPMatrix;
-
     Matrix* mLightModelMatrix;
 
     /** handlers for shader attribs and uniforms. */

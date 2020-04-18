@@ -1,5 +1,3 @@
-package Polyhedrons;
-
 import java.util.Random;
 
 import android.graphics.Bitmap;

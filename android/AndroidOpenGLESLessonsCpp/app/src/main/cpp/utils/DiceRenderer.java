@@ -1,6 +1,3 @@
-package Polyhedrons;
-
-
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
@@ -13,7 +10,6 @@ import android.os.SystemClock;
 
 import badlogic.gdx.backends.android.AndroidGL20;
 
-import com.learnopengles.android.Polyhedrons.ShaderClass;
 import com.learnopengles.android.cpp.R;
 
 import com.learnopengles.android.common.RawResourceReader;

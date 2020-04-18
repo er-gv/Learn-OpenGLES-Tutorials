@@ -7,7 +7,7 @@
 
 #include <GLES2/gl2.h>
 #include "../graphics/Matrix.h"
-
+#include <glm/vec2.hpp>
 class Native1Lesson {
 
 public:
@@ -36,6 +36,7 @@ private:
     GLuint mMVPMatrixHandle;
     GLuint mPositionHandle;
     GLuint mColorHandle;
+    glm::vec2 hey, bee, see;
 
 
 };

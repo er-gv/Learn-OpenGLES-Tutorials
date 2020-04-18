@@ -12,7 +12,9 @@ cmake_minimum_required(VERSION 3.4.1)
 set(APP_STL "c++_static")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -fno-rtti -fno-exceptions -Wall")
+set(GLM_HOME "/usr/include/glm")
 
+include_directories(${GLM_HOME})
 
 add_library(
         # Sets the name of the library.
@@ -101,9 +103,27 @@ add_library(
         #polyhedrons
         src/main/cpp/Polyhedrons/PolyhedronsRenderer.cpp
         src/main/cpp/Polyhedrons/PolyhedronsRenderer.h
+        src/main/cpp/Polyhedrons/Mesh.h
+        src/main/cpp/Polyhedrons/Mesh.cpp
+        src/main/cpp/Polyhedrons/Polyhedron.h
+        src/main/cpp/Polyhedrons/Polyhedron.cpp
+        src/main/cpp/Polyhedrons/Tetrahedron.h
+        src/main/cpp/Polyhedrons/Tetrahedron.cpp
+        src/main/cpp/Polyhedrons/Cube.h
+        src/main/cpp/Polyhedrons/Cube.cpp
+        src/main/cpp/Polyhedrons/Octahedron.h
+        src/main/cpp/Polyhedrons/Octahedron.cpp
+        src/main/cpp/Polyhedrons/Dodecahedron.h
+        src/main/cpp/Polyhedrons/Dodecahedron.cpp
+        src/main/cpp/Polyhedrons/Icosahedron.h
+        src/main/cpp/Polyhedrons/Icosahedron.cpp
+
+        src/main/cpp/graphics/PerlinNoiseGenerator.h
+        src/main/cpp/graphics/PerlinNoiseGenerator.cpp
 )
 
 include_directories(src/main/cpp/)
+
 
 # Searches for a specified prebuilt library and stores the path as a
 # variable. Because CMake includes system libraries in the search path by

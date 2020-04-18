@@ -8,6 +8,11 @@
 #include "../graphics/GLUtils.h"
 #include <jni.h>
 
+struct Bounderies{
+
+    GLint64 front, back, left, right, top, bottom;
+};
+
 class Scene {
 
     //light sources
@@ -17,6 +22,8 @@ class Scene {
 public:
     Scene();
     ~Scene();
+    Bounderies bounderyBox;
+
 };
 
 

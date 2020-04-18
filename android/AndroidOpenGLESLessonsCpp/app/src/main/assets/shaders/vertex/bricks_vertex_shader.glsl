@@ -32,9 +32,9 @@ void main(){
 	}
 	
 	LightIntensity = DiffuseContribution * diffuse + SpecularContribution * spec;
-	if(MCnormal.x != 0.0f)
+	if(MCvertex.x != 0.0f)
 		MCposition = MCvertex.yz;
-	else if (MCnormal.y != 0.0f)
+	else if (MCvertex.y != 0.0f)
 		MCposition = MCvertex.zx;
 	else
 		MCposition = MCvertex.yx;

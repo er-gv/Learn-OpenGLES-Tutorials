@@ -1,5 +1,3 @@
-package com.learnopengles.android.Polyhedrons;
-
 import java.util.ArrayList;
 
 import com.learnopengles.android.common.ShaderHelper;

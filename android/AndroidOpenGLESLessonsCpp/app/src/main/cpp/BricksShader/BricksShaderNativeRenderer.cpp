@@ -5,7 +5,7 @@
 
 #include "BricksShaderNativeRenderer.h"
 #include <android/log.h>
-
+#include <glm/vec3.hpp>
 #define  LOG_TAG    "bricks_shader"
 #define  LOGI(...)  __android_log_print(ANDROID_LOG_INFO,LOG_TAG,__VA_ARGS__)
 #define  LOGD(...)  __android_log_print(ANDROID_LOG_DEBUG,LOG_TAG,__VA_ARGS__)
@@ -14,6 +14,7 @@
 static void printGLString(const char *name, GLenum s) {
     const char *v = (const char *) glGetString(s);
     LOGD(LOG_TAG, "GL %s = %s \n", name, v);
+    glm::vec3 viki = glm::vec3(2,4,66);
 }
 
 static void checkGlError(const char *op) {

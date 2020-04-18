@@ -1,5 +1,3 @@
-package Polyhedrons;
-
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
@@ -7,7 +5,7 @@ import java.nio.ShortBuffer;
 
 import android.opengl.GLES20;
 
-import com.learnopengles.android.Polyhedrons.ShaderClass;
+import ShaderClass;
 import com.learnopengles.android.Polyhedrons.Vector3D;
 
 import badlogic.gdx.backends.android.AndroidGL20;

@@ -1,4 +1,4 @@
-package Polyhedrons;
+/*package Polyhedrons;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -7,7 +7,7 @@ import java.nio.ShortBuffer;
 
 import android.opengl.GLES20;
 
-import com.learnopengles.android.Polyhedrons.ShaderClass;
+import ShaderClass;
 import com.learnopengles.android.Polyhedrons.Vector3D;
 
 import badlogic.gdx.backends.android.AndroidGL20;
@@ -81,10 +81,10 @@ public class Dodecahedron extends AbstractPolyhedron {
 
 	@Override
 	protected void buildVertices() {
-		float phiaAngles  = 52.62263590f; /* the phi angle needed for generation */
+		float phiaAngles  = 52.62263590f; /* the phi angle needed for generation *
 
 		float r = 1.0f; /* any radius in which the polyhedron is inscribed */
-		/* first vertex */
+		/* first vertex *
 		float phiRadians = (float) (Math.PI*phiaAngles/180.0); 
 		float deltaTheta = (float) (Math.PI*72.0/180.0);
 		float rCosPhi = r*  (float) Math.cos(phiRadians);
@@ -133,7 +133,7 @@ public class Dodecahedron extends AbstractPolyhedron {
 	@Override
 	protected void buildNormals() {
 		Polygon[] faces = new Polygon[12];
-		/* map vertices to 12 faces */
+		/ map vertices to 12 faces *
 			
 		faces[0] =  new Polygon(new int[]{0,1,2,3,4});
 		faces[1] =  new Polygon(new int[]{0,1,6,10,5});
@@ -158,9 +158,9 @@ public class Dodecahedron extends AbstractPolyhedron {
 			);
 		}
 		
-		/*
+		/
 		
-		 * */
+		 * *
 		this.vertexNormals[0] = Vector3D.avarage(new Vector3D[]{faceNormals[0], faceNormals[1], faceNormals[5]}); 
 		this.vertexNormals[1] = Vector3D.avarage(new Vector3D[]{faceNormals[0], faceNormals[1], faceNormals[2]});
 		this.vertexNormals[2] = Vector3D.avarage(new Vector3D[]{faceNormals[0], faceNormals[2], faceNormals[3]});
@@ -197,7 +197,7 @@ public class Dodecahedron extends AbstractPolyhedron {
 				
 				float[] verticesData = new float[]{
 					
-					 /* spatial data*/ 
+					 /* spatial data*
 						0.607f,  0.000f,  0.795f, 
 						0.188f,  0.577f,  0.795f, 
 					   -0.491f,  0.357f,  0.795f, 
@@ -265,3 +265,4 @@ public class Dodecahedron extends AbstractPolyhedron {
 	}
 
 }
+*/

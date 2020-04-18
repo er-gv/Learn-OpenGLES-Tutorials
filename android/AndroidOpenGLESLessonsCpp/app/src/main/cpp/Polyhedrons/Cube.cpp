@@ -4,10 +4,25 @@
 
 #include "Cube.h"
 
-Cube::Cube(): Mesh(){
+Polyhedrons::Cube::Cube(): Polyhedron(){
 
 }
 
-virtual Cube::~Cube(){
+Polyhedrons::Cube::~Cube(){
 
+}
+
+float* Polyhedrons::Cube::getVertices(){
+    static float spatial[]={
+            -0.5f, -0.5f, -0.5f,
+            +0.5f, -0.5f, -0.5f,
+            +0.5f, +0.5f, -0.5f,
+            +0.5f, -0.5f, -0.5f,
+            -0.5f, -0.5f, +0.5f,
+            +0.5f, -0.5f, +0.5f,
+            +0.5f, +0.5f, +0.5f,
+            +0.5f, -0.5f, +0.5f
+
+    };
+    return spatial;
 }
