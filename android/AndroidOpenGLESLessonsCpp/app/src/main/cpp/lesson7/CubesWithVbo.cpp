@@ -5,7 +5,7 @@
 #include "CubesWithVbo.h"
 
 void CubesWithVbo::renderer() {
-    // Pass in the position information
+    // Pass in the mPosition information
     glBindBuffer(GL_ARRAY_BUFFER, mCubePositionsBufferIdx);
     glEnableVertexAttribArray(mPositionHandle);
     glVertexAttribPointer(mPositionHandle, Cubes::POSITION_DATA_SIZE, GL_FLOAT, GL_FALSE, 0, 0);

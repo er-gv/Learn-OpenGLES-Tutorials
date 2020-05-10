@@ -37,7 +37,7 @@ static const char *VERTEX_SHADER_CODE =
         "uniform mat4 u_MVPMatrix;      \n"        // A constant representing the combined model/view/projection matrix.
                 "uniform mat4 u_MVMatrix;       \n"        // A constant representing the combined model/view matrix.
 
-                "attribute vec4 a_Position;     \n"        // Per-vertex position information we will pass in.
+                "attribute vec4 a_Position;     \n"        // Per-vertex mPosition information we will pass in.
                 "attribute vec4 a_Color;        \n"        // Per-vertex color information we will pass in.
                 "attribute vec3 a_Normal;       \n"        // Per-vertex normal information we will pass in.
 
@@ -54,7 +54,7 @@ static const char *VERTEX_SHADER_CODE =
                 "   v_Color = a_Color;                                      \n"
                 // Transform the normal's orientation into eye space.
                 "   v_Normal = vec3(u_MVMatrix * vec4(a_Normal, 0.0));      \n"
-                // gl_Position is a special variable used to store the final position.
+                // gl_Position is a special variable used to store the final mPosition.
                 // Multiply the vertex by the matrix to get the final point in normalized screen coordinates.
                 "   gl_Position = u_MVPMatrix * a_Position;                 \n"
                 "}";
@@ -62,9 +62,9 @@ static const char *VERTEX_SHADER_CODE =
 static const char *FRAGMENT_SHADER_CODE =
         "precision mediump float;       \n"        // Set the default precision to medium. We don't need as high of a
                 // precision in the fragment shader.
-                "uniform vec3 u_LightPos;       \n"        // The position of the light in eye space.
+                "uniform vec3 u_LightPos;       \n"        // The mPosition of the light in eye space.
 
-                "varying vec3 v_Position;		\n"        // Interpolated position for this fragment.
+                "varying vec3 v_Position;		\n"        // Interpolated mPosition for this fragment.
                 "varying vec4 v_Color;          \n"        // This is the color from the vertex shader interpolated across the
                 // triangle per fragment.
                 "varying vec3 v_Normal;         \n"        // Interpolated normal for this fragment.
@@ -378,7 +378,7 @@ void Native3Lesson::draw() {
     mColorHandle = (GLuint) glGetAttribLocation(mPerVertexProgramHandle, "a_Color");
     mNormalHandle = (GLuint) glGetAttribLocation(mPerVertexProgramHandle, "a_Normal");
 
-    // Calculate position of the light
+    // Calculate mPosition of the light
     // Rotate and then push into the distance.
     mLightModelMatrix->identity();
     mLightModelMatrix->translate(0, 0, -5);
@@ -425,7 +425,7 @@ void Native3Lesson::draw() {
 
 void Native3Lesson::drawCube() {
 
-    // Pass in the position info
+    // Pass in the mPosition info
     glVertexAttribPointer(
             mPositionHandle,
             POSITION_DATA_SIZE,
@@ -484,7 +484,7 @@ void Native3Lesson::drawCube() {
             mMVPMatrix->mData
     );
 
-    // Pass in the light position in eye space
+    // Pass in the light mPosition in eye space
     glUniform3f(mLightPosHandle,
                 mLightPosInEyeSpace[0],
                 mLightPosInEyeSpace[1],
@@ -500,7 +500,7 @@ void Native3Lesson::drawLight() {
     GLint pointMVPMatrixHandle = glGetUniformLocation(mPointProgramHandle, "u_MVPMatrix");
     GLint pointPositionHandle = glGetAttribLocation(mPointProgramHandle, "a_Position");
 
-    // Pass in the position
+    // Pass in the mPosition
     glVertexAttrib3f(
             pointPositionHandle,
             mLightPosInModelSpace[0],

@@ -55,4 +55,6 @@
     <string name="julia_set">The Julia Set animation</string>
     <string name="polyhedrons">Spining polyhedrons</string>
     <string name="polyhedrons_subtitle">Spining polyhedrons</string>
+    <string name="spinning_polyhedrons">Spinning polyhedrons</string>
+    <string name="spinning_polyhedrons_subtitle">Spinning Polyhedrons</string>
 </resources>

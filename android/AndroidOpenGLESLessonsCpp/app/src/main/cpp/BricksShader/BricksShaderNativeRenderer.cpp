@@ -371,7 +371,7 @@ void BricksShaderNativeRenderer::draw() {
     mBrickSizeHandle = (GLuint) glGetUniformLocation(mBricksProgram, "u_BrickSize");
     mBrickPctHandle = (GLuint) glGetUniformLocation(mBricksProgram, "u_BrickPct");
 
-    // Calculate position of the light
+    // Calculate mPosition of the light
     // Rotate and then push into the distance.
     mLightModelMatrix->identity();
     mLightModelMatrix->translate(0, 0, -5);
@@ -436,7 +436,7 @@ void BricksShaderNativeRenderer::drawCube(
         const GLfloat brickColor[3], const GLfloat mortarColor[3],
         const GLfloat brickSize[2], const GLfloat brickPct[2]) {
 
-    // Pass in the position info
+    // Pass in the mPosition info
     glVertexAttribPointer(
             mPositionHandle, POSITION_DATA_SIZE,
             GL_FLOAT, GL_FALSE, 0, CUBE_POSITION_DATA
@@ -465,7 +465,7 @@ void BricksShaderNativeRenderer::drawCube(
     // Pass in the model view projection matrix
     glUniformMatrix4fv(mMVPMatrixHandle, 1, GL_FALSE, mMVPMatrix->mData);
 
-    // Pass in the light position in eye space
+    // Pass in the light mPosition in eye space
     glUniform3f(mLightPosHandle,
                 mLightPosInEyeSpace[0],
                 mLightPosInEyeSpace[1],
@@ -489,7 +489,7 @@ void BricksShaderNativeRenderer::drawLight() {
     GLint pointMVPMatrixHandle = glGetUniformLocation(mLightProgram, "u_MVPMatrix");
     GLint pointPositionHandle = glGetAttribLocation(mLightProgram, "a_Position");
 
-    // Pass in the position
+    // Pass in the mPosition
     glVertexAttrib3f(
             pointPositionHandle,
             mLightPosInModelSpace[0],

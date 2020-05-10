@@ -12,7 +12,7 @@ public class PolyhedronsActivity extends Activity {
 
 	private GLSurfaceView mGLSurfaceView;
 
-	public  PolyhedronsActivity (Bundle savedInstanceState){
+	public void onCreate (Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 
 		mGLSurfaceView = new GLSurfaceView(this);

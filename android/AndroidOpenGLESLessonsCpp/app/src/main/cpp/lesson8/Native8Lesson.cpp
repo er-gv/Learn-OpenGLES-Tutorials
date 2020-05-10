@@ -98,7 +98,7 @@ void Native8Lesson::create() {
     float upZ = 0.0f;
 
     // Set the view matrix. This matrix can be said to represent the camera
-    // position.
+    // mPosition.
     // NOTE: In OpenGL 1, a ModelView matrix is used, which is a combination
     // of a model and view matrix. In OpenGL 2, we can keep track of these
     // matrices separately if we choose.
@@ -165,7 +165,7 @@ void Native8Lesson::draw() {
         heightMap->setColorAttribute((GLuint) colorAttribute);
     }
 
-    // Calculate position of the light. Push into the distance.
+    // Calculate mPosition of the light. Push into the distance.
     lightModelMatrix->identity();
     lightModelMatrix->translate(0.0f, 7.5f, -8.0f);
 

@@ -46,7 +46,7 @@ public class DiceRenderer implements GLSurfaceView.Renderer
 	private float[] mMVPMatrix = new float[16];
 	
 	/** 
-	 * Stores a copy of the model matrix specifically for the light position.
+	 * Stores a copy of the model matrix specifically for the light mPosition.
 	 */
 	private float[] mLightModelMatrix = new float[16];	
 	
@@ -56,7 +56,7 @@ public class DiceRenderer implements GLSurfaceView.Renderer
 	/** This will be used to pass in the modelview matrix. */
 	private int mMVMatrixHandle;
 	
-	/** This will be used to pass in the light position. */
+	/** This will be used to pass in the light mPosition. */
 	private int mLightPosHandle;
 	
 	
@@ -64,10 +64,10 @@ public class DiceRenderer implements GLSurfaceView.Renderer
 	 *  we multiply this by our transformation matrices. */
 	private final float[] mLightPosInModelSpace = new float[] {0.0f, 0.0f, 0.0f, 1.0f};
 	
-	/** Used to hold the current position of the light in world space (after transformation via model matrix). */
+	/** Used to hold the current mPosition of the light in world space (after transformation via model matrix). */
 	private final float[] mLightPosInWorldSpace = new float[4];
 	
-	/** Used to hold the transformed position of the light in eye space (after transformation via modelview matrix) */
+	/** Used to hold the transformed mPosition of the light in eye space (after transformation via modelview matrix) */
 	private final float[] mLightPosInEyeSpace = new float[4];
 	
 	/** This is a handle to our light point program. */
@@ -182,7 +182,7 @@ public class DiceRenderer implements GLSurfaceView.Renderer
 		final float upY = 1.0f;
 		final float upZ = 0.0f;
 
-		// Set the view matrix. This matrix can be said to represent the camera position.
+		// Set the view matrix. This matrix can be said to represent the camera mPosition.
 		// NOTE: In OpenGL 1, a ModelView matrix is used, which is a combination of a model and
 		// view matrix. In OpenGL 2, we can keep track of these matrices separately if we choose.
 		Matrix.setLookAtM(mViewMatrix, 0, eyeX, eyeY, eyeZ, lookX, lookY, lookZ, upX, upY, upZ);
@@ -221,7 +221,7 @@ public class DiceRenderer implements GLSurfaceView.Renderer
         long time = SystemClock.uptimeMillis() % 2500L;        
         float angleInDegrees = (360.0f / 2500.0f) * ((int) time);                
         
-        // Calculate position of the light. Rotate and then push into the distance.
+        // Calculate mPosition of the light. Rotate and then push into the distance.
         Matrix.setIdentityM(mLightModelMatrix, 0);
         Matrix.translateM(mLightModelMatrix, 0, 0.0f, 0.0f, -2.0f);      
                
@@ -259,7 +259,7 @@ public class DiceRenderer implements GLSurfaceView.Renderer
         // Pass in the combined matrix.
         GLES20.glUniformMatrix4fv(mMVPMatrixHandle, 1, false, mMVPMatrix, 0);
         
-        // Pass in the light position in eye space.        
+        // Pass in the light mPosition in eye space.
         //GLES20.glUniform3f(mLightPosHandle, mLightPosInEyeSpace[0], mLightPosInEyeSpace[1], mLightPosInEyeSpace[2]);
         
         //render the tetrahedron
@@ -370,7 +370,7 @@ public class DiceRenderer implements GLSurfaceView.Renderer
       
       
         
-        // Pass in the light position in eye space.
+        // Pass in the light mPosition in eye space.
         mLightPosHandle = this.mWoodShader.getUniformLoc("u_LightPos");
         GLES20.glUniform3f(mLightPosHandle, mLightPosInEyeSpace[0], mLightPosInEyeSpace[1], mLightPosInEyeSpace[2]);
      // Pass in the light scale.
@@ -450,14 +450,14 @@ public class DiceRenderer implements GLSurfaceView.Renderer
 	}
 		
 	/**
-	 * Draws a point representing the position of the light.
+	 * Draws a point representing the mPosition of the light.
 	 */
 	private void drawLight()
 	{
 		final int pointMVPMatrixHandle = mLightShader.getUniformLoc("u_MVPMatrix");
         final int pointPositionHandle  = mLightShader.getAttribLoc("a_Position");
         
-		// Pass in the position.
+		// Pass in the mPosition.
 		GLES20.glVertexAttrib3f(pointPositionHandle, mLightPosInModelSpace[0], mLightPosInModelSpace[1], mLightPosInModelSpace[2]);
 
 		// Since we are not using a buffer object, disable vertex arrays for this attribute.

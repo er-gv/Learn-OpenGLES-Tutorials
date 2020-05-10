@@ -17,7 +17,7 @@
       ],
       "buildRoot": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/.cxx/cmake/debug/x86",
       "cmakeToolchain": "/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/build/cmake/android.toolchain.cmake",
-      "cmakeExecutable": "/home/nathan/DevTool/Android-SDK/cmake/3.10.2.4988404/bin/cmake",
+      "cmakeExecutable": "/home/nathan/DevTool/Android-SDK/cmake/3.6.4111459/bin/cmake",
       "variables": [
         {
           "name": "CMAKE_CXX_FLAGS",
@@ -61,7 +61,7 @@
         },
         {
           "name": "CMAKE_MAKE_PROGRAM",
-          "value": "/home/nathan/DevTool/Android-SDK/cmake/3.10.2.4988404/bin/ninja"
+          "value": "/home/nathan/DevTool/Android-SDK/cmake/3.6.4111459/bin/ninja"
         },
         {
           "name": "CMAKE_SYSTEM_NAME",
@@ -110,9 +110,9 @@
     "module": {
       "buildSystem": "CMAKE",
       "cmake": {
-        "cmakeExe": "/home/nathan/DevTool/Android-SDK/cmake/3.10.2.4988404/bin/cmake",
-        "minimumCmakeVersion": "3.10.2",
-        "ninjaExe": "/home/nathan/DevTool/Android-SDK/cmake/3.10.2.4988404/bin/ninja"
+        "cmakeExe": "/home/nathan/DevTool/Android-SDK/cmake/3.6.4111459/bin/cmake",
+        "minimumCmakeVersion": "3.6.0",
+        "ninjaExe": "/home/nathan/DevTool/Android-SDK/cmake/3.6.4111459/bin/ninja"
       },
       "cmakeToolchainFile": "/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/build/cmake/android.toolchain.cmake",
       "cxxFolder": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/.cxx",

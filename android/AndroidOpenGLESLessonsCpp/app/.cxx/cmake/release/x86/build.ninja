@@ -60,161 +60,189 @@ build CMakeFiles/lesson-lib.dir/src/main/cpp/graphics/GLUtils.cpp.o: CXX_COMPILE
   DEFINES = -Dlesson_lib_EXPORTS
   DEP_FILE = CMakeFiles/lesson-lib.dir/src/main/cpp/graphics/GLUtils.cpp.o.d
   FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC
-  INCLUDES = -I../../../../src/main/cpp
+  INCLUDES = -I/usr/include/glm -I../../../../src/main/cpp
   OBJECT_DIR = CMakeFiles/lesson-lib.dir
   OBJECT_FILE_DIR = CMakeFiles/lesson-lib.dir/src/main/cpp/graphics
 build CMakeFiles/lesson-lib.dir/src/main/cpp/graphics/Matrix.cpp.o: CXX_COMPILER__lesson-lib ../../../../src/main/cpp/graphics/Matrix.cpp || cmake_object_order_depends_target_lesson-lib
   DEFINES = -Dlesson_lib_EXPORTS
   DEP_FILE = CMakeFiles/lesson-lib.dir/src/main/cpp/graphics/Matrix.cpp.o.d
   FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC
-  INCLUDES = -I../../../../src/main/cpp
+  INCLUDES = -I/usr/include/glm -I../../../../src/main/cpp
   OBJECT_DIR = CMakeFiles/lesson-lib.dir
   OBJECT_FILE_DIR = CMakeFiles/lesson-lib.dir/src/main/cpp/graphics
 build CMakeFiles/lesson-lib.dir/src/main/cpp/graphics/Camera.cpp.o: CXX_COMPILER__lesson-lib ../../../../src/main/cpp/graphics/Camera.cpp || cmake_object_order_depends_target_lesson-lib
   DEFINES = -Dlesson_lib_EXPORTS
   DEP_FILE = CMakeFiles/lesson-lib.dir/src/main/cpp/graphics/Camera.cpp.o.d
   FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC
-  INCLUDES = -I../../../../src/main/cpp
+  INCLUDES = -I/usr/include/glm -I../../../../src/main/cpp
+  OBJECT_DIR = CMakeFiles/lesson-lib.dir
+  OBJECT_FILE_DIR = CMakeFiles/lesson-lib.dir/src/main/cpp/graphics
+build CMakeFiles/lesson-lib.dir/src/main/cpp/graphics/Material.cpp.o: CXX_COMPILER__lesson-lib ../../../../src/main/cpp/graphics/Material.cpp || cmake_object_order_depends_target_lesson-lib
+  DEFINES = -Dlesson_lib_EXPORTS
+  DEP_FILE = CMakeFiles/lesson-lib.dir/src/main/cpp/graphics/Material.cpp.o.d
+  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC
+  INCLUDES = -I/usr/include/glm -I../../../../src/main/cpp
+  OBJECT_DIR = CMakeFiles/lesson-lib.dir
+  OBJECT_FILE_DIR = CMakeFiles/lesson-lib.dir/src/main/cpp/graphics
+build CMakeFiles/lesson-lib.dir/src/main/cpp/graphics/Model.cpp.o: CXX_COMPILER__lesson-lib ../../../../src/main/cpp/graphics/Model.cpp || cmake_object_order_depends_target_lesson-lib
+  DEFINES = -Dlesson_lib_EXPORTS
+  DEP_FILE = CMakeFiles/lesson-lib.dir/src/main/cpp/graphics/Model.cpp.o.d
+  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC
+  INCLUDES = -I/usr/include/glm -I../../../../src/main/cpp
   OBJECT_DIR = CMakeFiles/lesson-lib.dir
   OBJECT_FILE_DIR = CMakeFiles/lesson-lib.dir/src/main/cpp/graphics
 build CMakeFiles/lesson-lib.dir/src/main/cpp/utils/Scene.cpp.o: CXX_COMPILER__lesson-lib ../../../../src/main/cpp/utils/Scene.cpp || cmake_object_order_depends_target_lesson-lib
   DEFINES = -Dlesson_lib_EXPORTS
   DEP_FILE = CMakeFiles/lesson-lib.dir/src/main/cpp/utils/Scene.cpp.o.d
   FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC
-  INCLUDES = -I../../../../src/main/cpp
+  INCLUDES = -I/usr/include/glm -I../../../../src/main/cpp
   OBJECT_DIR = CMakeFiles/lesson-lib.dir
   OBJECT_FILE_DIR = CMakeFiles/lesson-lib.dir/src/main/cpp/utils
 build CMakeFiles/lesson-lib.dir/src/main/cpp/lesson1/Native1Lesson.cpp.o: CXX_COMPILER__lesson-lib ../../../../src/main/cpp/lesson1/Native1Lesson.cpp || cmake_object_order_depends_target_lesson-lib
   DEFINES = -Dlesson_lib_EXPORTS
   DEP_FILE = CMakeFiles/lesson-lib.dir/src/main/cpp/lesson1/Native1Lesson.cpp.o.d
   FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC
-  INCLUDES = -I../../../../src/main/cpp
+  INCLUDES = -I/usr/include/glm -I../../../../src/main/cpp
   OBJECT_DIR = CMakeFiles/lesson-lib.dir
   OBJECT_FILE_DIR = CMakeFiles/lesson-lib.dir/src/main/cpp/lesson1
 build CMakeFiles/lesson-lib.dir/src/main/cpp/lesson2/Native2Lesson.cpp.o: CXX_COMPILER__lesson-lib ../../../../src/main/cpp/lesson2/Native2Lesson.cpp || cmake_object_order_depends_target_lesson-lib
   DEFINES = -Dlesson_lib_EXPORTS
   DEP_FILE = CMakeFiles/lesson-lib.dir/src/main/cpp/lesson2/Native2Lesson.cpp.o.d
   FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC
-  INCLUDES = -I../../../../src/main/cpp
+  INCLUDES = -I/usr/include/glm -I../../../../src/main/cpp
   OBJECT_DIR = CMakeFiles/lesson-lib.dir
   OBJECT_FILE_DIR = CMakeFiles/lesson-lib.dir/src/main/cpp/lesson2
 build CMakeFiles/lesson-lib.dir/src/main/cpp/lesson3/Native3Lesson.cpp.o: CXX_COMPILER__lesson-lib ../../../../src/main/cpp/lesson3/Native3Lesson.cpp || cmake_object_order_depends_target_lesson-lib
   DEFINES = -Dlesson_lib_EXPORTS
   DEP_FILE = CMakeFiles/lesson-lib.dir/src/main/cpp/lesson3/Native3Lesson.cpp.o.d
   FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC
-  INCLUDES = -I../../../../src/main/cpp
+  INCLUDES = -I/usr/include/glm -I../../../../src/main/cpp
   OBJECT_DIR = CMakeFiles/lesson-lib.dir
   OBJECT_FILE_DIR = CMakeFiles/lesson-lib.dir/src/main/cpp/lesson3
 build CMakeFiles/lesson-lib.dir/src/main/cpp/lesson4/Native4Lesson.cpp.o: CXX_COMPILER__lesson-lib ../../../../src/main/cpp/lesson4/Native4Lesson.cpp || cmake_object_order_depends_target_lesson-lib
   DEFINES = -Dlesson_lib_EXPORTS
   DEP_FILE = CMakeFiles/lesson-lib.dir/src/main/cpp/lesson4/Native4Lesson.cpp.o.d
   FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC
-  INCLUDES = -I../../../../src/main/cpp
+  INCLUDES = -I/usr/include/glm -I../../../../src/main/cpp
   OBJECT_DIR = CMakeFiles/lesson-lib.dir
   OBJECT_FILE_DIR = CMakeFiles/lesson-lib.dir/src/main/cpp/lesson4
 build CMakeFiles/lesson-lib.dir/src/main/cpp/lesson5/Native5Lesson.cpp.o: CXX_COMPILER__lesson-lib ../../../../src/main/cpp/lesson5/Native5Lesson.cpp || cmake_object_order_depends_target_lesson-lib
   DEFINES = -Dlesson_lib_EXPORTS
   DEP_FILE = CMakeFiles/lesson-lib.dir/src/main/cpp/lesson5/Native5Lesson.cpp.o.d
   FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC
-  INCLUDES = -I../../../../src/main/cpp
+  INCLUDES = -I/usr/include/glm -I../../../../src/main/cpp
   OBJECT_DIR = CMakeFiles/lesson-lib.dir
   OBJECT_FILE_DIR = CMakeFiles/lesson-lib.dir/src/main/cpp/lesson5
 build CMakeFiles/lesson-lib.dir/src/main/cpp/lesson6/Native6Lesson.cpp.o: CXX_COMPILER__lesson-lib ../../../../src/main/cpp/lesson6/Native6Lesson.cpp || cmake_object_order_depends_target_lesson-lib
   DEFINES = -Dlesson_lib_EXPORTS
   DEP_FILE = CMakeFiles/lesson-lib.dir/src/main/cpp/lesson6/Native6Lesson.cpp.o.d
   FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC
-  INCLUDES = -I../../../../src/main/cpp
+  INCLUDES = -I/usr/include/glm -I../../../../src/main/cpp
   OBJECT_DIR = CMakeFiles/lesson-lib.dir
   OBJECT_FILE_DIR = CMakeFiles/lesson-lib.dir/src/main/cpp/lesson6
 build CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/Native7Lesson.cpp.o: CXX_COMPILER__lesson-lib ../../../../src/main/cpp/lesson7/Native7Lesson.cpp || cmake_object_order_depends_target_lesson-lib
   DEFINES = -Dlesson_lib_EXPORTS
   DEP_FILE = CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/Native7Lesson.cpp.o.d
   FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC
-  INCLUDES = -I../../../../src/main/cpp
+  INCLUDES = -I/usr/include/glm -I../../../../src/main/cpp
   OBJECT_DIR = CMakeFiles/lesson-lib.dir
   OBJECT_FILE_DIR = CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7
 build CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/Cubes.cpp.o: CXX_COMPILER__lesson-lib ../../../../src/main/cpp/lesson7/Cubes.cpp || cmake_object_order_depends_target_lesson-lib
   DEFINES = -Dlesson_lib_EXPORTS
   DEP_FILE = CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/Cubes.cpp.o.d
   FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC
-  INCLUDES = -I../../../../src/main/cpp
+  INCLUDES = -I/usr/include/glm -I../../../../src/main/cpp
   OBJECT_DIR = CMakeFiles/lesson-lib.dir
   OBJECT_FILE_DIR = CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7
 build CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/CubesClientSide.cpp.o: CXX_COMPILER__lesson-lib ../../../../src/main/cpp/lesson7/CubesClientSide.cpp || cmake_object_order_depends_target_lesson-lib
   DEFINES = -Dlesson_lib_EXPORTS
   DEP_FILE = CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/CubesClientSide.cpp.o.d
   FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC
-  INCLUDES = -I../../../../src/main/cpp
+  INCLUDES = -I/usr/include/glm -I../../../../src/main/cpp
   OBJECT_DIR = CMakeFiles/lesson-lib.dir
   OBJECT_FILE_DIR = CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7
 build CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/CubesClientSideWithStride.cpp.o: CXX_COMPILER__lesson-lib ../../../../src/main/cpp/lesson7/CubesClientSideWithStride.cpp || cmake_object_order_depends_target_lesson-lib
   DEFINES = -Dlesson_lib_EXPORTS
   DEP_FILE = CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/CubesClientSideWithStride.cpp.o.d
   FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC
-  INCLUDES = -I../../../../src/main/cpp
+  INCLUDES = -I/usr/include/glm -I../../../../src/main/cpp
   OBJECT_DIR = CMakeFiles/lesson-lib.dir
   OBJECT_FILE_DIR = CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7
 build CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/CubesWithVbo.cpp.o: CXX_COMPILER__lesson-lib ../../../../src/main/cpp/lesson7/CubesWithVbo.cpp || cmake_object_order_depends_target_lesson-lib
   DEFINES = -Dlesson_lib_EXPORTS
   DEP_FILE = CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/CubesWithVbo.cpp.o.d
   FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC
-  INCLUDES = -I../../../../src/main/cpp
+  INCLUDES = -I/usr/include/glm -I../../../../src/main/cpp
   OBJECT_DIR = CMakeFiles/lesson-lib.dir
   OBJECT_FILE_DIR = CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7
 build CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/CubesWithVboWithStride.cpp.o: CXX_COMPILER__lesson-lib ../../../../src/main/cpp/lesson7/CubesWithVboWithStride.cpp || cmake_object_order_depends_target_lesson-lib
   DEFINES = -Dlesson_lib_EXPORTS
   DEP_FILE = CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/CubesWithVboWithStride.cpp.o.d
   FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC
-  INCLUDES = -I../../../../src/main/cpp
+  INCLUDES = -I/usr/include/glm -I../../../../src/main/cpp
   OBJECT_DIR = CMakeFiles/lesson-lib.dir
   OBJECT_FILE_DIR = CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7
 build CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/GenData.cpp.o: CXX_COMPILER__lesson-lib ../../../../src/main/cpp/lesson7/GenData.cpp || cmake_object_order_depends_target_lesson-lib
   DEFINES = -Dlesson_lib_EXPORTS
   DEP_FILE = CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/GenData.cpp.o.d
   FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC
-  INCLUDES = -I../../../../src/main/cpp
+  INCLUDES = -I/usr/include/glm -I../../../../src/main/cpp
   OBJECT_DIR = CMakeFiles/lesson-lib.dir
   OBJECT_FILE_DIR = CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7
 build CMakeFiles/lesson-lib.dir/src/main/cpp/lesson8/Native8Lesson.cpp.o: CXX_COMPILER__lesson-lib ../../../../src/main/cpp/lesson8/Native8Lesson.cpp || cmake_object_order_depends_target_lesson-lib
   DEFINES = -Dlesson_lib_EXPORTS
   DEP_FILE = CMakeFiles/lesson-lib.dir/src/main/cpp/lesson8/Native8Lesson.cpp.o.d
   FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC
-  INCLUDES = -I../../../../src/main/cpp
+  INCLUDES = -I/usr/include/glm -I../../../../src/main/cpp
   OBJECT_DIR = CMakeFiles/lesson-lib.dir
   OBJECT_FILE_DIR = CMakeFiles/lesson-lib.dir/src/main/cpp/lesson8
 build CMakeFiles/lesson-lib.dir/src/main/cpp/lesson8/HeightMap.cpp.o: CXX_COMPILER__lesson-lib ../../../../src/main/cpp/lesson8/HeightMap.cpp || cmake_object_order_depends_target_lesson-lib
   DEFINES = -Dlesson_lib_EXPORTS
   DEP_FILE = CMakeFiles/lesson-lib.dir/src/main/cpp/lesson8/HeightMap.cpp.o.d
   FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC
-  INCLUDES = -I../../../../src/main/cpp
+  INCLUDES = -I/usr/include/glm -I../../../../src/main/cpp
   OBJECT_DIR = CMakeFiles/lesson-lib.dir
   OBJECT_FILE_DIR = CMakeFiles/lesson-lib.dir/src/main/cpp/lesson8
 build CMakeFiles/lesson-lib.dir/src/main/cpp/QuantizedColor/QuantizedColorNative.cpp.o: CXX_COMPILER__lesson-lib ../../../../src/main/cpp/QuantizedColor/QuantizedColorNative.cpp || cmake_object_order_depends_target_lesson-lib
   DEFINES = -Dlesson_lib_EXPORTS
   DEP_FILE = CMakeFiles/lesson-lib.dir/src/main/cpp/QuantizedColor/QuantizedColorNative.cpp.o.d
   FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC
-  INCLUDES = -I../../../../src/main/cpp
+  INCLUDES = -I/usr/include/glm -I../../../../src/main/cpp
   OBJECT_DIR = CMakeFiles/lesson-lib.dir
   OBJECT_FILE_DIR = CMakeFiles/lesson-lib.dir/src/main/cpp/QuantizedColor
 build CMakeFiles/lesson-lib.dir/src/main/cpp/BricksShader/BricksShaderNativeRenderer.cpp.o: CXX_COMPILER__lesson-lib ../../../../src/main/cpp/BricksShader/BricksShaderNativeRenderer.cpp || cmake_object_order_depends_target_lesson-lib
   DEFINES = -Dlesson_lib_EXPORTS
   DEP_FILE = CMakeFiles/lesson-lib.dir/src/main/cpp/BricksShader/BricksShaderNativeRenderer.cpp.o.d
   FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC
-  INCLUDES = -I../../../../src/main/cpp
+  INCLUDES = -I/usr/include/glm -I../../../../src/main/cpp
   OBJECT_DIR = CMakeFiles/lesson-lib.dir
   OBJECT_FILE_DIR = CMakeFiles/lesson-lib.dir/src/main/cpp/BricksShader
 build CMakeFiles/lesson-lib.dir/src/main/cpp/JuliaSet/JuliaSetRenderer.cpp.o: CXX_COMPILER__lesson-lib ../../../../src/main/cpp/JuliaSet/JuliaSetRenderer.cpp || cmake_object_order_depends_target_lesson-lib
   DEFINES = -Dlesson_lib_EXPORTS
   DEP_FILE = CMakeFiles/lesson-lib.dir/src/main/cpp/JuliaSet/JuliaSetRenderer.cpp.o.d
   FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC
-  INCLUDES = -I../../../../src/main/cpp
+  INCLUDES = -I/usr/include/glm -I../../../../src/main/cpp
   OBJECT_DIR = CMakeFiles/lesson-lib.dir
   OBJECT_FILE_DIR = CMakeFiles/lesson-lib.dir/src/main/cpp/JuliaSet
 build CMakeFiles/lesson-lib.dir/src/main/cpp/Polyhedrons/PolyhedronsRenderer.cpp.o: CXX_COMPILER__lesson-lib ../../../../src/main/cpp/Polyhedrons/PolyhedronsRenderer.cpp || cmake_object_order_depends_target_lesson-lib
   DEFINES = -Dlesson_lib_EXPORTS
   DEP_FILE = CMakeFiles/lesson-lib.dir/src/main/cpp/Polyhedrons/PolyhedronsRenderer.cpp.o.d
   FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC
-  INCLUDES = -I../../../../src/main/cpp
+  INCLUDES = -I/usr/include/glm -I../../../../src/main/cpp
+  OBJECT_DIR = CMakeFiles/lesson-lib.dir
+  OBJECT_FILE_DIR = CMakeFiles/lesson-lib.dir/src/main/cpp/Polyhedrons
+build CMakeFiles/lesson-lib.dir/src/main/cpp/Polyhedrons/Polyhedron.cpp.o: CXX_COMPILER__lesson-lib ../../../../src/main/cpp/Polyhedrons/Polyhedron.cpp || cmake_object_order_depends_target_lesson-lib
+  DEFINES = -Dlesson_lib_EXPORTS
+  DEP_FILE = CMakeFiles/lesson-lib.dir/src/main/cpp/Polyhedrons/Polyhedron.cpp.o.d
+  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC
+  INCLUDES = -I/usr/include/glm -I../../../../src/main/cpp
+  OBJECT_DIR = CMakeFiles/lesson-lib.dir
+  OBJECT_FILE_DIR = CMakeFiles/lesson-lib.dir/src/main/cpp/Polyhedrons
+build CMakeFiles/lesson-lib.dir/src/main/cpp/Polyhedrons/Tetrahedron.cpp.o: CXX_COMPILER__lesson-lib ../../../../src/main/cpp/Polyhedrons/Tetrahedron.cpp || cmake_object_order_depends_target_lesson-lib
+  DEFINES = -Dlesson_lib_EXPORTS
+  DEP_FILE = CMakeFiles/lesson-lib.dir/src/main/cpp/Polyhedrons/Tetrahedron.cpp.o.d
+  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG  -fPIC
+  INCLUDES = -I/usr/include/glm -I../../../../src/main/cpp
   OBJECT_DIR = CMakeFiles/lesson-lib.dir
   OBJECT_FILE_DIR = CMakeFiles/lesson-lib.dir/src/main/cpp/Polyhedrons
 
@@ -225,7 +253,7 @@ build CMakeFiles/lesson-lib.dir/src/main/cpp/Polyhedrons/PolyhedronsRenderer.cpp
 #############################################
 # Link the shared library ../../../../build/intermediates/cmake/release/obj/x86/liblesson-lib.so
 
-build ../../../../build/intermediates/cmake/release/obj/x86/liblesson-lib.so: CXX_SHARED_LIBRARY_LINKER__lesson-lib CMakeFiles/lesson-lib.dir/src/main/cpp/graphics/GLUtils.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/graphics/Matrix.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/graphics/Camera.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/utils/Scene.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson1/Native1Lesson.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson2/Native2Lesson.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson3/Native3Lesson.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson4/Native4Lesson.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson5/Native5Lesson.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson6/Native6Lesson.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/Native7Lesson.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/Cubes.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/CubesClientSide.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/CubesClientSideWithStride.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/CubesWithVbo.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/CubesWithVboWithStride.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/GenData.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson8/Native8Lesson.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson8/HeightMap.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/QuantizedColor/QuantizedColorNative.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/BricksShader/BricksShaderNativeRenderer.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/JuliaSet/JuliaSetRenderer.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/Polyhedrons/PolyhedronsRenderer.cpp.o | /home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/i686-linux-android/21/liblog.so
+build ../../../../build/intermediates/cmake/release/obj/x86/liblesson-lib.so: CXX_SHARED_LIBRARY_LINKER__lesson-lib CMakeFiles/lesson-lib.dir/src/main/cpp/graphics/GLUtils.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/graphics/Matrix.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/graphics/Camera.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/graphics/Material.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/graphics/Model.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/utils/Scene.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson1/Native1Lesson.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson2/Native2Lesson.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson3/Native3Lesson.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson4/Native4Lesson.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson5/Native5Lesson.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson6/Native6Lesson.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/Native7Lesson.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/Cubes.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/CubesClientSide.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/CubesClientSideWithStride.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/CubesWithVbo.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/CubesWithVboWithStride.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson7/GenData.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson8/Native8Lesson.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/lesson8/HeightMap.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/QuantizedColor/QuantizedColorNative.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/BricksShader/BricksShaderNativeRenderer.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/JuliaSet/JuliaSetRenderer.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/Polyhedrons/PolyhedronsRenderer.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/Polyhedrons/Polyhedron.cpp.o CMakeFiles/lesson-lib.dir/src/main/cpp/Polyhedrons/Tetrahedron.cpp.o | /home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/i686-linux-android/21/liblog.so
   LANGUAGE_COMPILE_FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG
   LINK_FLAGS = -Wl,--exclude-libs,libgcc_real.a -Wl,--exclude-libs,libatomic.a -static-libstdc++ -Wl,--build-id -Wl,--fatal-warnings -Wl,--no-undefined -Qunused-arguments
   LINK_LIBRARIES = -lEGL -lGLESv2 -landroid /home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/i686-linux-android/21/liblog.so -latomic -lm

@@ -4,7 +4,7 @@ void CubesClientSideWithStride::renderer() {
     int stride = (POSITION_DATA_SIZE + NORMAL_DATA_SIZE + TEXTURE_COORDINATE_DATA_SIZE) *
                  BYTES_PER_FLOAT;
 
-    // Pass in the position information
+    // Pass in the mPosition information
     glEnableVertexAttribArray(mPositionHandle);
     glVertexAttribPointer(mPositionHandle, Cubes::POSITION_DATA_SIZE, GL_FLOAT, GL_FALSE, stride,
                           mCubeBuffer->data());

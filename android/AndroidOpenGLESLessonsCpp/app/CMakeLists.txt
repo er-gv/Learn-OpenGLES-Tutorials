@@ -9,12 +9,13 @@ cmake_minimum_required(VERSION 3.4.1)
 # or SHARED, and provides the relative paths to its source code.
 # You can define multiple libraries, and CMake builds them for you.
 # Gradle automatically packages shared libraries with your APK.
-set(APP_STL "c++_static")
+set(APP_STL "c++_shared")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -fno-rtti -fno-exceptions -Wall")
 set(GLM_HOME "/usr/include/glm")
 
 include_directories(${GLM_HOME})
+
 
 add_library(
         # Sets the name of the library.
@@ -29,12 +30,18 @@ add_library(
         # src/main/cpp/AbstractSurfaceRendererNative.cpp
 
         # graphics
+        src/main/cpp/graphics/GLincludes.h
         src/main/cpp/graphics/GLUtils.h
         src/main/cpp/graphics/GLUtils.cpp
         src/main/cpp/graphics/Matrix.h
         src/main/cpp/graphics/Matrix.cpp
         src/main/cpp/graphics/Camera.h
         src/main/cpp/graphics/Camera.cpp
+        src/main/cpp/graphics/Material.h
+        src/main/cpp/graphics/Material.cpp
+        src/main/cpp/graphics/Model.h
+        src/main/cpp/graphics/Model.cpp
+        #src/main/cpp/graphics/transform.h
 
         # utils
         src/main/cpp/utils/Logger.h
@@ -103,23 +110,21 @@ add_library(
         #polyhedrons
         src/main/cpp/Polyhedrons/PolyhedronsRenderer.cpp
         src/main/cpp/Polyhedrons/PolyhedronsRenderer.h
-        src/main/cpp/Polyhedrons/Mesh.h
-        src/main/cpp/Polyhedrons/Mesh.cpp
         src/main/cpp/Polyhedrons/Polyhedron.h
         src/main/cpp/Polyhedrons/Polyhedron.cpp
         src/main/cpp/Polyhedrons/Tetrahedron.h
         src/main/cpp/Polyhedrons/Tetrahedron.cpp
-        src/main/cpp/Polyhedrons/Cube.h
-        src/main/cpp/Polyhedrons/Cube.cpp
-        src/main/cpp/Polyhedrons/Octahedron.h
-        src/main/cpp/Polyhedrons/Octahedron.cpp
-        src/main/cpp/Polyhedrons/Dodecahedron.h
-        src/main/cpp/Polyhedrons/Dodecahedron.cpp
-        src/main/cpp/Polyhedrons/Icosahedron.h
-        src/main/cpp/Polyhedrons/Icosahedron.cpp
+        #src/main/cpp/Polyhedrons/Cube.h
+        #src/main/cpp/Polyhedrons/Cube.cpp
+        #src/main/cpp/Polyhedrons/Octahedron.h
+        #src/main/cpp/Polyhedrons/Octahedron.cpp
+        #src/main/cpp/Polyhedrons/Dodecahedron.h
+        #src/main/cpp/Polyhedrons/Dodecahedron.cpp
+        #src/main/cpp/Polyhedrons/Icosahedron.h
+        #src/main/cpp/Polyhedrons/Icosahedron.cpp
 
-        src/main/cpp/graphics/PerlinNoiseGenerator.h
-        src/main/cpp/graphics/PerlinNoiseGenerator.cpp
+        #src/main/cpp/graphics/PerlinNoiseGenerator.h
+        #src/main/cpp/graphics/PerlinNoiseGenerator.cpp
 )
 
 include_directories(src/main/cpp/)

@@ -226,11 +226,11 @@ void Polyhedrons::Icosahedron::sendDataToGPU() {
             delete verticesData;
     }
 
-    void Polyhedrons::Icosahedron::initShaders() {
+    bool Polyhedrons::Icosahedron::initShaders() {
 
     }
 
-    void Polyhedrons::Icosahedron::create() {
+    bool Polyhedrons::Icosahedron::init() {
         buildGeometry();
         buildNormals();
         buildBuffers();

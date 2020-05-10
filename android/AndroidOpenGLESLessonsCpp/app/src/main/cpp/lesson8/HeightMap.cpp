@@ -44,7 +44,7 @@ HeightMap::HeightMap() : heightMapVertexData(nullptr), heightMapIndexData(nullpt
 
             // Cheap normal using a derivative of the function.
             // The slope for X will be 2X, for Y will be 2Y.
-            // Divide by 10 since the position's Z is also divided by 10.
+            // Divide by 10 since the mPosition's Z is also divided by 10.
             float xSlope = (2 * xPosition) / 10.0f;
             float ySlope = (2 * yPosition) / 10.0f;
 

@@ -33,3 +33,18 @@ GLfloat upx, GLfloat upy,  GLfloat upz){
 
 Camera::~Camera(){}
 
+glm::mat4 Camera::projection(float fov, float ratio, float near, float far) {
+    return glm::perspective(fov, ratio, near, far);
+}
+
+
+glm::mat4 Camera::projection() {
+    return glm::mat4();
+}
+
+glm::mat4 Camera::viewport() {
+    return glm::mat4();
+}
+
+
+

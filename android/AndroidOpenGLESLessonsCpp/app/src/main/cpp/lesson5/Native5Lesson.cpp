@@ -165,7 +165,7 @@ void Native5Lesson::draw() {
 
 void Native5Lesson::drawCube() {
 
-    // Pass in the position info
+    // Pass in the mPosition info
     glVertexAttribPointer(
             mPositionHandle,
             3,

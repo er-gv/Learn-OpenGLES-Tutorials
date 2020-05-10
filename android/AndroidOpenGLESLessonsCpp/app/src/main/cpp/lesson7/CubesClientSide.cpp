@@ -2,7 +2,7 @@
 
 void CubesClientSide::renderer() {
 
-    // Pass in the position information
+    // Pass in the mPosition information
     glEnableVertexAttribArray(mPositionHandle);
     glVertexAttribPointer(mPositionHandle, Cubes::POSITION_DATA_SIZE, GL_FLOAT, GL_FALSE, 0,
                           mCubePositions->data());

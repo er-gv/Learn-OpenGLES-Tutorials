@@ -45,7 +45,22 @@ public class TableOfContents extends ListActivity {
         final SparseArray<Class<? extends Activity>> activityMapping = new SparseArray<Class<? extends Activity>>();
 
         int i = 0;
-
+        {
+            final Map<String, Object> item = new HashMap<String, Object>();
+            item.put(ITEM_IMAGE, R.drawable.bricks_icon);
+            item.put(ITEM_TITLE, getText(R.string.spinning_polyhedrons));
+            item.put(ITEM_SUBTITLE, getText(R.string.spinning_polyhedrons_subtitle));
+            data.add(item);
+            activityMapping.put(i++, PolyhedronsActivity.class);
+        }
+        {
+            final Map<String, Object> item = new HashMap<String, Object>();
+            item.put(ITEM_IMAGE, R.drawable.ic_lesson_one);
+            item.put(ITEM_TITLE, getText(R.string.quantized_color));
+            item.put(ITEM_SUBTITLE, getText(R.string.quantized_color_subtitle));
+            data.add(item);
+            activityMapping.put(i++, QuantizedColorActivity.class);
+        }
         {
             final Map<String, Object> item = new HashMap<String, Object>();
             item.put(ITEM_IMAGE, R.drawable.bricks_icon);
@@ -53,14 +68,6 @@ public class TableOfContents extends ListActivity {
             item.put(ITEM_SUBTITLE, getText(R.string.julia_set_subtitle));
             data.add(item);
             activityMapping.put(i++, JuliaSetActivity.class);
-        }
-        {
-            final Map<String, Object> item = new HashMap<String, Object>();
-            item.put(ITEM_IMAGE, R.drawable.bricks_icon);
-            item.put(ITEM_TITLE, getText(R.string.polyhedrons));
-            item.put(ITEM_SUBTITLE, getText(R.string.polyhedrons_subtitle));
-            data.add(item);
-            activityMapping.put(i++, PolyhedronsActivity.class);
         }
         {
             final Map<String, Object> item = new HashMap<String, Object>();
@@ -142,14 +149,7 @@ public class TableOfContents extends ListActivity {
             activityMapping.put(i++, LessonEightActivity.class);
         }
 
-        {
-            final Map<String, Object> item = new HashMap<String, Object>();
-            item.put(ITEM_IMAGE, R.drawable.ic_lesson_one);
-            item.put(ITEM_TITLE, getText(R.string.quantized_color));
-            item.put(ITEM_SUBTITLE, getText(R.string.quantized_color_subtitle));
-            data.add(item);
-            activityMapping.put(i++, QuantizedColorActivity.class);
-        }
+
 
         final SimpleAdapter dataAdapter = new SimpleAdapter(this, data, R.layout.toc_item, new String[]{ITEM_IMAGE, ITEM_TITLE, ITEM_SUBTITLE}, new int[]{R.id.Image, R.id.Title, R.id.SubTitle});
         setListAdapter(dataAdapter);

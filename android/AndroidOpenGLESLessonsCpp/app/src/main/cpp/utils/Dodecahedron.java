@@ -41,10 +41,10 @@ public class Dodecahedron extends AbstractPolyhedron {
 		//GLES20.glEnableVertexAttribArray(normalAttributeHandle);
 		GLES20.glEnableVertexAttribArray(positionAttributeHandle);
 		
-		//verticesBuffer.position(POSITION_OFFSET);
+		//verticesBuffer.mPosition(POSITION_OFFSET);
 		glEs20.glVertexAttribPointer(positionAttributeHandle, 3, GLES20.GL_FLOAT, false, 0, 0);
 		
-		//verticesBuffer.position(this.NORMAL_OFFSET);
+		//verticesBuffer.mPosition(this.NORMAL_OFFSET);
 		//glEs20.glVertexAttribPointer(normalAttributeHandle, this.NORMAL_DATA_SIZE, GLES20.GL_FLOAT, false, stride, this.NORMAL_OFFSET);
 		
 		int colorLoc = shader.getUniformLoc("u_Color");
@@ -222,7 +222,7 @@ public class Dodecahedron extends AbstractPolyhedron {
 						 
 					
 				};
-				verticesBuffer.put(verticesData).position(0);	
+				verticesBuffer.put(verticesData).mPosition(0);
 				
 				trianglesIndexBuffer = ByteBuffer.allocateDirect(60*BYTES_PER_SHORT).
 										 order(ByteOrder.nativeOrder()).asShortBuffer();
@@ -241,7 +241,7 @@ public class Dodecahedron extends AbstractPolyhedron {
 									19,15,10,5,14, 
 									19,18,17,16,15
 						}
-				).position(0);
+				).mPosition(0);
 				
 	}
 			

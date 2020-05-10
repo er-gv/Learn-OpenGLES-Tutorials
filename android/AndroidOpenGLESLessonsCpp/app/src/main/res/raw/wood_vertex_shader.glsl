@@ -3,9 +3,9 @@ uniform mat4 u_MVMatrix;		// A constant representing the combined model/view/ ma
      		
 		  	
 uniform float u_LuminumScale;   // A factor that intensify or dim the light intensity.
-uniform vec3  u_LightPos;       //represent the light position in world coordinates.
+uniform vec3  u_LightPos;       //represent the light mPosition in world coordinates.
 		  			
-attribute vec3 a_Position;		// Per-vertex position information we will pass in.   								
+attribute vec3 a_Position;		// Per-vertex mPosition information we will pass in.
 attribute vec3 a_Normal;		// Per-vertex normal information we will pass in.
 attribute vec2 a_TexCoordinate; // Per vertex texture coordinate.        		
 		  

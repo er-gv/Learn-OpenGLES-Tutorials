@@ -38,14 +38,6 @@ int b(int i, int j, int k, int B) {
 
 
    
- 
-
-
-
-
-
-
-
 
 void main()                    		
 {                              

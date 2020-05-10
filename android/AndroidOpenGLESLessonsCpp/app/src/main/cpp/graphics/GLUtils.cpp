@@ -97,13 +97,14 @@ long GLUtils::currentTimeMillis() {
 
 GLuint GLUtils::loadTexture(const char *path) {
     GLuint textureId = 0;
-    jclass utilsClass = sEnv->FindClass("com/learnopengles/android/Utils");
+
+    jclass utilsClass = sEnv->FindClass("com/learnopengles/android/common/TextureHelper");
     if (utilsClass == NULL) {
         LOGE("Couldn't find utils class");
         return (GLuint) -1;
     }
     jmethodID loadTexture = sEnv->GetStaticMethodID(utilsClass, "loadTexture",
-                                                    "(Landroid/content/res/AssetManager;Ljava/lang/String;)I");
+                                                    "(Landroid/content/Context;I)I");
     if (loadTexture == NULL) {
         LOGE("Couldn't find loadTexture method");
         return (GLuint) -1;

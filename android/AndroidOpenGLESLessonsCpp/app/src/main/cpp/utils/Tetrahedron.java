@@ -25,7 +25,7 @@ public class Tetrahedron extends AbstractPolyhedron {
 	private static final int VERTEX_DATA_SIZE = BYTES_PER_FLOAT*(TEX_DATA_SIZE +NORMAL_DATA_SIZE +POSITION_DATA_SIZE);
 	
 	public Tetrahedron(){
-		//create new Vector3D arrays to hold vertex position and normal data.
+		//create new Vector3D arrays to hold vertex mPosition and normal data.
 		this.vertexNormals = new Vector3D[4];
 		this.vertices = new Vector3D[4];
 		for(int i=0; i<4; i++)

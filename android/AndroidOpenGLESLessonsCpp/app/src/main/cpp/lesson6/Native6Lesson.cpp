@@ -407,7 +407,7 @@ void Native6Lesson::draw() {
     mNormalHandle = (GLuint) glGetAttribLocation(mProgramHandle, "a_Normal");
     mTextureCoordinateHandle = (GLuint) glGetAttribLocation(mProgramHandle, "a_TexCoordinate");
 
-    // Calculate position of the light
+    // Calculate mPosition of the light
     // Rotate and then push into the distance.
     mLightModelMatrix->identity();
     mLightModelMatrix->translate(0, 0, -2);
@@ -499,7 +499,7 @@ void Native6Lesson::setMagFilter(int filter) {
 
 void Native6Lesson::drawCube() {
 
-    // Pass in the position info
+    // Pass in the mPosition info
     glVertexAttribPointer(
             mPositionHandle,
             POSITION_DATA_SIZE,
@@ -558,7 +558,7 @@ void Native6Lesson::drawCube() {
             mMVPMatrix->mData
     );
 
-    // Pass in the light position in eye space
+    // Pass in the light mPosition in eye space
     glUniform3f(mLightPosHandle,
                 mLightPosInEyeSpace[0],
                 mLightPosInEyeSpace[1],
@@ -574,7 +574,7 @@ void Native6Lesson::drawLight() {
     GLint pointMVPMatrixHandle = glGetUniformLocation(mPointProgramHandle, "u_MVPMatrix");
     GLint pointPositionHandle = glGetAttribLocation(mPointProgramHandle, "a_Position");
 
-    // Pass in the position
+    // Pass in the mPosition
     glVertexAttrib3f(
             pointPositionHandle,
             mLightPosInModelSpace[0],

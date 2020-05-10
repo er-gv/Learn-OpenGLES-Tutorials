@@ -6,7 +6,7 @@
 #include <jni.h>
 #include "utils/Logger.h"
 #include "graphics/GLUtils.h"
-#include "utils/Scene.h"
+//#include "utils/Scene.h"
 #include <cmath>
 #define  JULIA_TAG "JuliaSetRenderer"
 
@@ -14,7 +14,7 @@ static constexpr GLfloat defaultSeed[]= {0.5f, 0.5f};
 static constexpr float  mLightPosInModelSpace[] ={0.0f, 0.0f, 0.0f, 1.0f};
 
 JuliaSetRenderer::JuliaSetRenderer(){
-    Scene s;
+   // Scene s;
     JuliaLogger = new Logger(JULIA_TAG);
 }
 
@@ -161,7 +161,7 @@ void JuliaSetRenderer::drawScene(){
     // Tell the texture uniform sampler to use this texture in the shader by binding to texture unit 0.
     glUniform1i(mTextureUniformHandle, 0);
 
-    // Calculate position of the light. Rotate and then push into the distance.
+    // Calculate mPosition of the light. Rotate and then push into the distance.
     mLightModelMatrix->identity();
     mLightModelMatrix->translate(0.0f, 0.0f, -5.0f);
     mLightModelMatrix->rotate(angleInDegrees, 0.0f, 1.0f, 0.0f);
@@ -431,7 +431,7 @@ GLfloat* JuliaSetRenderer::getCubeTexData() {
  * Draws a cube.
  */
 void JuliaSetRenderer::drawCube(const float seed[]){
-    // Pass in the position information
+    // Pass in the mPosition information
 
     glVertexAttribPointer(mPositionHandle, mPositionDataSize, GL_FLOAT, false,
                                  0, getCubeGeometry());
@@ -469,7 +469,7 @@ void JuliaSetRenderer::drawCube(const float seed[]){
     // Pass in the model view projection matrix
     glUniformMatrix4fv(  mMVPMatrixHandle, 1, GL_FALSE, mMVPMatrix->mData);
 
-    // Pass in the light position in eye space
+    // Pass in the light mPosition in eye space
     glUniform3f(mLightPosHandle,
             mLightPosInEyeSpace[0],
             mLightPosInEyeSpace[1],
@@ -488,7 +488,7 @@ void JuliaSetRenderer::drawLight(){
     const int pointMVPMatrixHandle = glGetUniformLocation(mLightProgramHandle, "u_MVPMatrix");
     const int pointPositionHandle = glGetAttribLocation(mLightProgramHandle, "a_Position");
 
-    // Pass in the position.
+    // Pass in the mPosition.
     glVertexAttrib3f(pointPositionHandle, mLightPosInModelSpace[0], mLightPosInModelSpace[1], mLightPosInModelSpace[2]);
 
     // Since we are not using a buffer object, disable vertex arrays for this attribute.

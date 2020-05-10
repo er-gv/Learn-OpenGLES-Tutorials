@@ -24,13 +24,13 @@ static void checkGlError(const char *op) {
 
 const char *VERTEX_SHADER =
         "uniform mat4 u_MVPMatrix;        \n"     // A constant representing the combined model/view/projection matrix.
-                "attribute vec4 a_Position;     \n"     // Per-vertex position information we will pass in.
+                "attribute vec4 a_Position;     \n"     // Per-vertex mPosition information we will pass in.
                 "attribute vec4 a_Color;        \n"     // Per-vertex color information we will pass in.
                 "varying vec4 v_Color;          \n"     // This will be passed into the fragment shader.
                 "void main()                    \n"     // The entry point for our vertex shader.
                 "{                              \n"
                 "   v_Color = a_Color;          \n"     // Pass the color through to the fragment shader.
-                "   gl_Position = u_MVPMatrix * a_Position; \n"     // gl_Position is a special variable used to store the final position.
+                "   gl_Position = u_MVPMatrix * a_Position; \n"     // gl_Position is a special variable used to store the final mPosition.
                 "}                              \n";    // normalized screen coordinates.
 
 

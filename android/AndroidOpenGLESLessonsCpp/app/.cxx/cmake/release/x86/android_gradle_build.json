@@ -1,7 +1,7 @@
 {
   "stringTable": {
     "0": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/.cxx/cmake/release/x86",
-    "1": "--target=i686-none-linux-android21 --gcc-toolchain=/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/sysroot -Dlesson_lib_EXPORTS -I../../../../src/main/cpp -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG -fPIC"
+    "1": "--target=i686-none-linux-android21 --gcc-toolchain=/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/sysroot -Dlesson_lib_EXPORTS -I/usr/include/glm -I../../../../src/main/cpp -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security -frtti -fexceptions -std=c++11 -fno-rtti -fno-exceptions -Wall -O2 -DNDEBUG -fPIC"
   },
   "buildFiles": [
     "/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/build/cmake/android.toolchain.cmake",
@@ -32,6 +32,11 @@
         },
         {
           "src": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/graphics/Camera.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/graphics/Model.cpp",
           "flagsOrdinal": 1,
           "workingDirectoryOrdinal": 0
         },
@@ -134,6 +139,46 @@
           "src": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/Polyhedrons/PolyhedronsRenderer.cpp",
           "flagsOrdinal": 1,
           "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/Polyhedrons/Mesh.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/Polyhedrons/Polyhedron.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/Polyhedrons/Tetrahedron.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/Polyhedrons/Cube.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/Polyhedrons/Octahedron.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/Polyhedrons/Dodecahedron.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/Polyhedrons/Icosahedron.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/graphics/PerlinNoiseGenerator.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
         }
       ],
       "headers": [
@@ -147,6 +192,10 @@
         },
         {
           "header": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/graphics/Camera.h",
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "header": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/graphics/Model.h",
           "workingDirectoryOrdinal": 0
         },
         {
@@ -231,6 +280,38 @@
         },
         {
           "header": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/Polyhedrons/PolyhedronsRenderer.h",
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "header": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/Polyhedrons/Mesh.h",
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "header": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/Polyhedrons/Polyhedron.h",
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "header": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/Polyhedrons/Tetrahedron.h",
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "header": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/Polyhedrons/Cube.h",
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "header": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/Polyhedrons/Octahedron.h",
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "header": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/Polyhedrons/Dodecahedron.h",
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "header": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/Polyhedrons/Icosahedron.h",
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "header": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/graphics/PerlinNoiseGenerator.h",
           "workingDirectoryOrdinal": 0
         }
       ],

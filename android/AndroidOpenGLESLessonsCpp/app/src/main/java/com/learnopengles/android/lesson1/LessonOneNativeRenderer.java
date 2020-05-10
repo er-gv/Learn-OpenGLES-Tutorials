@@ -1,6 +1,7 @@
 package com.learnopengles.android.lesson1;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.opengl.GLSurfaceView;
 import android.os.Build;
 
@@ -11,6 +12,12 @@ public class LessonOneNativeRenderer implements GLSurfaceView.Renderer {
 
     static {
         System.loadLibrary("lesson-lib");
+    }
+
+    private Activity mActivity;
+
+    public LessonOneNativeRenderer(Activity activity) {
+        mActivity = activity;
     }
 
     public static native void nativeSurfaceCreate();

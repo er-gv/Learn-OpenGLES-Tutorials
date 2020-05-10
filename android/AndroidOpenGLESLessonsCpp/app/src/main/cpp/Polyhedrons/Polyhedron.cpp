@@ -3,62 +3,85 @@
 //
 
 #include "Polyhedron.h"
+#include <glm/glm.hpp>
+#include <glm/vec3.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <cstring>
 
 namespace Polyhedrons {
 
-    Polyhedron::Polyhedron() {
-        mPosition = glm::vec3(0.0f, 0.0f, 0.0f);
+    Polyhedron::Polyhedron() :Model() {
+        vertexDataBuffer = nullptr;
         vertices = nullptr;
-        vertexNormals = nullptr;
+        faces = nullptr;
+        ibo = vbo = nullptr;
     }
+
+    Polyhedron::Polyhedron(const glm::mat4& transform) :Model(transform) {
+        vertexDataBuffer = nullptr;
+        vertices = nullptr;
+        faces = nullptr;
+        ibo = vbo = nullptr;
+    }
+
+    Polyhedron::Polyhedron(const Polyhedron& p) : Model(p){
+        *this = p;
+    };
+
+    Polyhedron& Polyhedron::operator=(const Polyhedron& p){
+        destroy();
+        nVertices = p.nVertices;
+        delete vertices;
+        vertices = new glm::vec3[nVertices];
+        memcpy(vertices, p.vertices, nVertices*sizeof(glm::vec3));
+
+        for(int i=0; i<nFaces;--i)
+            delete faces[i];
+        delete faces;
+        nFaces = p.nFaces;
+        faces = new (Polygon*[nFaces]);
+        for(int i=0; i<nFaces;--i)
+            faces[i] = p.faces[i];
+
+    }
+
 
     Polyhedron::~Polyhedron() {
-        if(nullptr != vertices) {
+        destroy();
+    }
+
+    bool Polyhedron::init() {
+        if (initVertices() && initFaces() && initBuffers()){
+            return addMaterials();
+        }
+        return false;
+    }
+
+
+    void Polyhedron::destroy() {
+        if (nullptr !=  vertexDataBuffer) {
+            delete  vertexDataBuffer;
+            vertexDataBuffer = nullptr;
+        }
+
+        if (nullptr != vertices) {
             delete vertices;
+            vertices = nullptr;
         }
-        if(nullptr != vertexNormals) {
-            delete vertexNormals;
+        if (nullptr != faces){
+            for(int i=0; i<nFaces;--i)
+                delete faces[i];
+            delete faces;
+            faces = nullptr;
         }
-
-    }
-
-    void Polyhedron::init() {
-         buildVertices();
-         buildNormals();
-         buildBuffers();
-    }
-
-    void Polyhedron::setPosition(float x, float y, float z){
-        mPosition = glm::vec3(x, y, z);
-    }
-
-    void Polyhedron::setPosition(const glm::vec3& pos){
-        mPosition = pos;
-    }
-
-    void Polyhedron::translate(float dx, float dy, float dz) {
-        mPosition.x += dx;
-        mPosition.y += dy;
-        mPosition.z += dz;
-        glm::vec3 v;
-        mPosition+= v;
-    }
-
-    void Polyhedron::translate(const  glm::vec3& delta) {
-        mPosition+= delta;
-    }
-
-
-    void  Polyhedron::rotate(float angleInDegrees, float rx, float ry, float rz) {
-        glm::mat4 mat = glm::mat4(1.0f);
-        glm::rotate(glm::mat4(1.0f), glm::radians(angleInDegrees), glm::vec3(rx, ry, rz));
-        //mPosition*= mat;
-    }
-
-    void  Polyhedron::rotate(float angleInDegrees, glm::vec3& axis){
-        glm::mat4 mat = glm::mat4(1.0f);
-        glm::rotate(glm::mat4(1.0f), glm::radians(angleInDegrees), axis);
-       // mPosition*= mat;
+        if(nullptr != vbo){
+            delete vbo;
+            ibo = nullptr;
+        }
+        if(nullptr != ibo){
+            delete ibo;
+            ibo = nullptr;
+        }
     }
 
 
@@ -68,17 +91,27 @@ namespace Polyhedrons {
  ***********************************************************/
 
 
-    Polyhedron::Polygon::Polygon(int indices[]) {
+    Polyhedron::Polygon::Polygon(const Polyhedron& parent, int indices[]) :mParent(parent){
+
         mIndices = new int[sizeof(indices)/ sizeof(int)];
-        mNormal = glm::vec3(0.0f, 0.0f, 0.0f);
+        memcpy(mIndices, indices, sizeof(indices));
+
+        glm::vec3 p1 = mParent.vertices[mIndices[1]];
+        glm::vec3 p2 = mParent.vertices[mIndices[2]];
+
+        p1 -= mParent.vertices[mIndices[0]];
+        p2 -= mParent.vertices[mIndices[0]];
+        mNormal = computeNormal(mParent.vertices[mIndices[0]], mParent.vertices[mIndices[1]], mParent.vertices[mIndices[2]]);
+
+
     }
 
     Polyhedron::Polygon::~Polygon() {
         delete mIndices;
     }
 
-    glm::vec3& Polyhedron::Polygon::getVertex(const Polyhedron& parent, int index) {
-        return parent.vertices[mIndices[index]];
+    glm::vec3& Polyhedron::Polygon::getVertex(int index) {
+        return mParent.vertices[mIndices[index]];
     }
 
     const glm::vec3&  Polyhedron::Polygon::getNormal() {
@@ -87,5 +120,17 @@ namespace Polyhedrons {
 
     void Polyhedron::Polygon::setNormal(const glm::vec3& normal) {
         mNormal = normal;
+    }
+
+    Polyhedron::Polygon& Polyhedron::Polygon::operator=(const Polyhedron::Polygon& p){
+
+        int n_indices = sizeof(*p.mIndices)/ sizeof(int);
+        delete mIndices;
+        mIndices = new int[n_indices];
+        memcpy(mIndices, p.mIndices, sizeof(*p.mIndices));
+
+        mNormal = p.mNormal;
+
+        return *this;
     }
 }

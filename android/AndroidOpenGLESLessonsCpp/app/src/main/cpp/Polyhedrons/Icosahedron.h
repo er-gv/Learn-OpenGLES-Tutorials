@@ -58,7 +58,7 @@ namespace Polyhedrons {
 
 
         void buildBuffers();
-        void initShaders();
+        bool initShaders();
 
 
         public:
@@ -66,10 +66,14 @@ namespace Polyhedrons {
 
             virtual ~Icosahedron();
 
-            void create();
-            virtual void render();
 
-            void destroy();
+            virtual bool init();
+            virtual void render();
+            virtual void destroy();
+            virtual void update(); // call this to update the model's state before rendering
+            //virtual void postUpdate() = 0; // call this for post rendering update.
+            virtual bool initVerices();
+            virtual bool initFaceNormals();
 
             void printGLString(const char *msg, GLenum gle);
             void buildGeometry();

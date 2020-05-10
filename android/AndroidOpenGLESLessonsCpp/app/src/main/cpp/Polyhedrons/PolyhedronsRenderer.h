@@ -9,19 +9,22 @@
 #include <GLES2/gl2.h>
 #include "../graphics/GLUtils.h"
 #include "../graphics/Matrix.h"
+#include "utils/Scene.h"
 //#include "utils/Logger.h"
 
 class PolyhedronsRenderer {
+
 
     //Logger* logger;
 public:
     PolyhedronsRenderer();
     ~PolyhedronsRenderer();
-    void create();
+
+    /*void create();
     void change(int width, int height);
     void draw();
     void destroy();
-    void printGLString(const char* msg, GLenum gle);
+    void printGLString(const char* msg, GLenum gle);*/
 };
 
 
