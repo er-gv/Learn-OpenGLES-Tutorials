@@ -16,13 +16,13 @@ namespace Polyhedrons {
     Tetrahedron::Tetrahedron() : Polyhedron(), LogTag("TETRAHEDRON") {
         nVertices = 4;
         nFaces = 4;
-        faces = new Polyhedron::Polygon*[nFaces];
+        faces = nullptr;
     }
 
     Tetrahedron::Tetrahedron(glm::vec3 &position) : Polyhedron(), LogTag("TETRAHEDRON") {
         nVertices = 4;
         nFaces = 4;
-        faces = new Polyhedron::Polygon*[nFaces];
+        faces =  nullptr;
         translate(position);
     }
 
@@ -74,14 +74,12 @@ namespace Polyhedrons {
     bool Tetrahedron::initShaders() {
 
         {
-            const char *vertex_shader = GLUtils::openTextFile(
-                    "/shaders/vertex/point_vertex_shader");
-            const char *fragment_shader = GLUtils::openTextFile(
-                    "/shaders/fragment/monochrome_face_fragment");
+            const char vertex_shader[] = "shaders/vertex/point_vertex_shader.glsl";
+            const char fragment_shader[] = "shaders/fragment/monochrome_face_fragment.glsl";
             monochrome = Material::makeMaterial(
                     vertex_shader, fragment_shader,
-                    (const char*[]){"a_Position"},
-                    (const char*[]){"u_MVPMatrix", "u_mvMat", "u_LightPos", "u_FaceNormal"});
+                    (const char*[]){"a_Position"}, 1,
+                    (const char*[]){"u_MVPMatrix", "u_mvMat", "u_LightPos", "u_FaceNormal"}, 4);
 
             /*monochromePositionHandle = glGetAttribLocation(monochromeProgram, "a_Position");
             monochromeMVPHandle = glGetUniformLocation(monochromeProgram, "u_MVPMatrix");
@@ -91,18 +89,19 @@ namespace Polyhedrons {
             monochromeProgram = GLUtils::createProgram(&vertex_shader, &fragment_shader);*/
 
         }
+        /*
         {
             const char *vertex_shader = GLUtils::openTextFile(
-                    "/shaders/vertex/point_vertex_shader");
+                    "shaders/vertex/point_vertex_shader.glsl");
             const char *fragment_shader = GLUtils::openTextFile(
-                    "/shaders/fragment/point_fragment_shader");
+                    "shaders/fragment/point_fragment_shader.glsl");
             wireframeProgram = GLUtils::createProgram(&vertex_shader, &fragment_shader);
         }
         {
             const char *vertex_shader = GLUtils::openTextFile(
-                    "/shaders/vertex/point_vertex_shader");
+                    "shaders/vertex/point_vertex_shader.glsl");
             const char *fragment_shader = GLUtils::openTextFile(
-                    "/shaders/fragment/noise_fs");
+                    "shaders/fragment/noise_fs.glsl");
             cloudsProgram = GLUtils::createProgram(&vertex_shader, &fragment_shader);
         }
         if (wireframeProgram && monochromeProgram && cloudsProgram) {
@@ -125,17 +124,17 @@ namespace Polyhedrons {
             cloudsLightPosHandle = glGetUniformLocation(cloudsProgram, "u_LightPos");
             cloudsFaceNormHandle = glGetUniformLocation(cloudsProgram, "u_FaceNormal");
             return true;
-        }
-        return false;
+        }*/
+        return true;
     }
 
     bool Tetrahedron::initFaces() {
         char buffer[100];
-        faces = new (Polyhedron::Polygon*[nFaces]);
-        faces[0] = new Polygon(*this, (int[]) {0, 1, 2});
-        faces[1] = new Polygon(*this, (int[]) {0, 2, 3});
-        faces[2] = new Polygon(*this, (int[]) {0, 3, 1});
-        faces[3] = new Polygon(*this, (int[]) {1, 2, 3});
+        faces = new Polyhedron::Polygon*[nFaces];
+        faces[0] = new Polygon(*this, (int[]) {0, 1, 2}, 3);
+        faces[1] = new Polygon(*this, (int[]) {0, 2, 3}, 3);
+        faces[2] = new Polygon(*this, (int[]) {0, 3, 1}, 3);
+        faces[3] = new Polygon(*this, (int[]) {1, 2, 3}, 3);
 
         size_t sizeof_float = sizeof(float);
         size_t offset = 3*sizeof_float;
@@ -152,6 +151,8 @@ namespace Polyhedrons {
     }
 
     bool Tetrahedron::initBuffers() {
+        vbo = new GLuint[1];
+        ibo = new GLuint[2];
         glGenBuffers(1, vbo);
         glGenBuffers(2, ibo);
         short constexpr trianglesFanIndexBuffer[] ={0,1,2, 3,1};
@@ -159,7 +160,17 @@ namespace Polyhedrons {
         short constexpr wireFrameLinesIndexBuffer[] = {0,1,0,2,0,3,1,2,1,3,2,3};
 
         vertexDataBuffer = new GLfloat[nVertices*VERTEX_DATA_SIZE_IN_ELEMENTS];
+        char buffer[100];
         for(int i=0; i< nVertices; i++){
+            sprintf(buffer, "nVert[%d] = (%f, %f, %f).", vertices[i].x, vertices[i].y, vertices[i].z);
+            __android_log_print(ANDROID_LOG_INFO, Tetrahedron::LogTag.c_str(), "%s",
+                                buffer);
+
+            float val[3];
+            memcpy(val, glm::value_ptr(vertices[i]), sizeof(val));
+            sprintf(buffer, "glm::vec3 copied to arr[3]: = (%f, %f, %f).", val[0], val[1,1], val[2]);
+            __android_log_print(ANDROID_LOG_INFO, Tetrahedron::LogTag.c_str(), "%s",
+                                buffer);
             memcpy(& vertexDataBuffer[i*VERTEX_DATA_SIZE_IN_ELEMENTS], glm::value_ptr(vertices[i]), sizeof(glm::vec3));
         }
         if (vbo[0]>0 && ibo[0]>0 && ibo[1]>0) {
@@ -225,7 +236,7 @@ namespace Polyhedrons {
         //draw triangles
         glBindBuffer(GL_ARRAY_BUFFER, ibo[0]);
         glm::mat4 projecrion = camera.projection();
-        glm::mat4 view = camera.viewport();
+        glm::mat4 view = camera.lookAt();
         glUniformMatrix4fv(monochrome->getUniform("u_MVPMatrix"), 1, false, glm::value_ptr(activeTransform*view*projecrion));
         glUniformMatrix4fv(monochrome->getUniform("u_mvMat"), 1, false, glm::value_ptr(activeTransform*view));
 
@@ -262,6 +273,10 @@ namespace Polyhedrons {
 
     void Tetrahedron::printGLString(const char *msg, GLenum gle) {
         __android_log_print(ANDROID_LOG_INFO, Tetrahedron::LogTag.c_str(), msg, gle);
+    }
+
+    bool Tetrahedron::addMaterials() {
+        return true;
     }
 
 

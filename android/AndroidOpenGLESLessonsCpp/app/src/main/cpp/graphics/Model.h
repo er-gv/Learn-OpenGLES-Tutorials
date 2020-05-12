@@ -21,7 +21,7 @@ public:
     Model();
     Model(const glm::mat4& transform);
     Model(const Model& m);
-    ~Model();
+    virtual ~Model();
 
     virtual bool init()=0;
     //bool loadModel(char* const path);

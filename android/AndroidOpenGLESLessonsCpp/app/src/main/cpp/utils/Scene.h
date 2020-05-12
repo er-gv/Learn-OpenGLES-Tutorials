@@ -5,20 +5,14 @@
 #ifndef ANDROIDOPENGLESLESSONSCPP_SCEANE_H
 #define ANDROIDOPENGLESLESSONSCPP_SCEANE_H
 
-#include "../graphics/GLUtils.h"
+#include "graphics/GLUtils.h"
+#include "Bounderies.h"
 #include <jni.h>
 #include <vector>
 #include "graphics/Camera.h"
 #include "Polyhedrons/Polyhedron.h"
 #include "graphics/Model.h"
 
-
-struct Bounderies{
-
-    GLfloat front, back, left, right, top, bottom;
-    Bounderies(GLfloat front, GLfloat back, GLfloat left, GLfloat right, GLfloat top, GLfloat bottom);
-    Bounderies();
-};
 
 class Scene {
 

@@ -30,7 +30,7 @@ namespace Polyhedrons {
                 return glm::normalize(glm::cross(c-a, b-a));
             }
         public:
-            Polygon(const Polyhedron& parent, int vertices[]);
+            Polygon(const Polyhedron& parent, int vertices[], int nVerts);
 
             ~Polygon();
             Polyhedron::Polygon& operator=(const Polyhedron::Polygon& p);

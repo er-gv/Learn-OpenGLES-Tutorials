@@ -33,7 +33,7 @@ GLuint Material::getUniform(const char* name) {
 
 Material* Material::makeMaterial(
         const char* vertexSrc, const char* fragmentSrc,
-        const char* attribs[], const char* uniforms[]){
+        const char* attribs[], int nAttribs, const char* uniforms[], int nUniforms){
 
     Material* mat;
     const char *vertex = GLUtils::openTextFile(vertexSrc);
@@ -46,14 +46,16 @@ Material* Material::makeMaterial(
         return nullptr;
     }
     mat = new Material(program);
-    int k = sizeof(attribs)/ sizeof(attribs[0])-1;
+    int k = nAttribs-1;
     while(k>=0){
         mat->attribs[attribs[k]] = mat->getAttrib(attribs[k]);
+        k--;
     }
 
-    k = sizeof(uniforms)/ sizeof(uniforms[0])-1;
+    k = nUniforms -1;
     while(k>=0){
         mat->uniforms[uniforms[k]] = mat->getUniform(uniforms[k]);
+        k--;
     }
     return mat;
 }

@@ -7,10 +7,14 @@
 #include <vector>
 
 Scene::Scene(){}
-Scene::~Scene(){}
+Scene::~Scene(){
+    models.clear();
+    for(auto m : models)
+        delete( m);
+}
 
 void Scene::render() {
-    glClearColor(.8f, .65f, .65f, 1.0f);
+    glClearColor(.0f, .65f, .65f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
     for(auto model: models){
         model->render(camera);

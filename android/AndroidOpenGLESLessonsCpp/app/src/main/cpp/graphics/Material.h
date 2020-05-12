@@ -25,7 +25,8 @@ public:
     GLuint getAttrib(const char* name);
     GLuint getUniform(const char* name);
     static Material* makeMaterial(const char* vertexSrc, const char* fragmentSrc,
-            const char* attribs[], const char* uniforms[]);
+                                  const char* attribs[], int nAttribs,
+                                  const char* uniforms[], int nUniforms);
 };
 
 

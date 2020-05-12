@@ -25,8 +25,11 @@ Java_com_learnopengles_android_Polyhedrons_PolyhedronsRenderer_nativeSurfaceCrea
     renderer->printGLString("Vendor", GL_VENDOR);
     renderer->printGLString("Renderer", GL_RENDERER);
     renderer->printGLString("Extensions", GL_EXTENSIONS);*/
-
-    //scene.addModel(new Polyhedrons::Tetrahedron());
+    Polyhedrons::Tetrahedron* t = new Polyhedrons::Tetrahedron();
+    if(t->init()) {
+        scene.addModel(t);
+    } else
+        delete t;
     scene.setupCamera();
     scene.setLights();
 

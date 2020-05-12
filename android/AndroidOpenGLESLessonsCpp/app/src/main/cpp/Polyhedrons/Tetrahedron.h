@@ -85,6 +85,7 @@ namespace Polyhedrons {
         virtual void render(Camera& camera) ;
         virtual void destroy();
         virtual void update(); // call this to update the model's state before rendering
+        virtual bool addMaterials();
         //virtual void postUpdate() = 0; // call this for post rendering update.
 
         void printGLString(const char *msg, GLenum gle);

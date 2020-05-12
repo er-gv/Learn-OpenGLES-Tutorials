@@ -91,10 +91,10 @@ namespace Polyhedrons {
  ***********************************************************/
 
 
-    Polyhedron::Polygon::Polygon(const Polyhedron& parent, int indices[]) :mParent(parent){
+    Polyhedron::Polygon::Polygon(const Polyhedron& parent, int indices[], int nVerts) :mParent(parent){
 
-        mIndices = new int[sizeof(indices)/ sizeof(int)];
-        memcpy(mIndices, indices, sizeof(indices));
+        mIndices = new int[nVerts];
+        memcpy(mIndices, indices, nVerts*sizeof(int));
 
         glm::vec3 p1 = mParent.vertices[mIndices[1]];
         glm::vec3 p2 = mParent.vertices[mIndices[2]];

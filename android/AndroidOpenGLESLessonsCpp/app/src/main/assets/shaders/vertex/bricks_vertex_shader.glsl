@@ -32,6 +32,8 @@ void main(){
 	}
 	
 	LightIntensity = DiffuseContribution * diffuse + SpecularContribution * spec;
+	//project the vertex to the xz plane. use the same transform needed to project the normal
+	//to that plane
 	if(MCvertex.x != 0.0f)
 		MCposition = MCvertex.yz;
 	else if (MCvertex.y != 0.0f)
