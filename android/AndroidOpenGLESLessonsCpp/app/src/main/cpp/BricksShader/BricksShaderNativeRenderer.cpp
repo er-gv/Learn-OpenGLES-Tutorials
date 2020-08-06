@@ -24,7 +24,6 @@ static void checkGlError(const char *op) {
 }
 
 
-
 static const GLfloat CUBE_NORMAL_DATA[] = {
 
        0.0f,  0.0f, +1.0f,
@@ -258,7 +257,7 @@ void BricksShaderNativeRenderer::draw() {
     // center
     mModelMatrix->identity();
     mModelMatrix->translate(0.0f, 0.0f, -5.0f);
-    mModelMatrix->rotate(angleInDegrees, 0.0f, 1.0f, 0.0f);
+    mModelMatrix->rotate(angleInDegrees, 1.0f, 1.0f, 1.0f);
     drawCube(mBrickColor[4], mMortarColor[4],  mBrickSize[4], mBrickPct[4]);
 
     // Draw a point to indicate the light
@@ -289,13 +288,6 @@ void BricksShaderNativeRenderer::drawCube(
     glVertexAttribPointer(mPositionHandle, 4, GL_FLOAT, GL_FALSE, 0, 0);
     glEnableVertexAttribArray(mPositionHandle);
 
-
-    // Pass in the normal information
-    glVertexAttribPointer(mNormalHandle, 3,
-            GL_FLOAT, GL_FALSE, 0, CUBE_NORMAL_DATA
-    );
-    glEnableVertexAttribArray(mNormalHandle);
-*/
     // This multiplies the view by the model matrix
     // and stores the result the MVP matrix.
     // which currently contains model * view
@@ -328,9 +320,9 @@ void BricksShaderNativeRenderer::drawCube(
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
     for(int k=0; k<6; k++) {
         int n = 3*k;
-        glUniform3f(mNormalHandle, CUBE_NORMAL_DATA[n], CUBE_NORMAL_DATA[n+1],CUBE_NORMAL_DATA[n+2]);
-        glDrawElements(GL_TRIANGLE_STRIP, 4, GL_UNSIGNED_SHORT,
-                       reinterpret_cast<const void *>(k*4));
+        glUniform3fv(mNormalHandle, 1, &CUBE_NORMAL_DATA[n]);
+        glDrawElements(GL_TRIANGLE_STRIP, 4, GL_UNSIGNED_INT,
+                       reinterpret_cast<const void *>(4 * k * sizeof(GL_UNSIGNED_INT)));
     }
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -385,14 +377,15 @@ bool BricksShaderNativeRenderer::setupBuffers() {
     };
 
 
-    GLshort indices[]={
+    GLuint indices[]={
             0,1,2,3,
             2,3,6,7,
             6,7,4,5,
             4,5,0,1,
             4,0,6,2,
-            1,5,7,3
+            7,3,5,1
     };
+
 
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
     glBufferData(GL_ARRAY_BUFFER, sizeof(CUBE_POSITION_DATA), CUBE_POSITION_DATA, GL_STATIC_DRAW);
@@ -411,7 +404,6 @@ void BricksShaderNativeRenderer::initAttribsAndUniforms() {
     mLightPosHandle = (GLuint) glGetUniformLocation(mBricksProgram, "u_LightPosition");
 
     mPositionHandle = (GLuint) glGetAttribLocation(mBricksProgram, "MCvertex");
-    //mNormalHandle = (GLuint) glGetAttribLocation(mBricksProgram, "MCnormal");
     mNormalHandle = (GLuint) glGetUniformLocation(mBricksProgram, "u_MCnormal");
 
 

@@ -52,3 +52,7 @@
 157	219	0	../../../../build/intermediates/cmake/debug/obj/x86/liblesson-lib.so	4b25157c29a59fde
 2	162	0	CMakeFiles/lesson-lib.dir/src/main/cpp/BricksShader/BricksShaderNativeRenderer.cpp.o	7cb13788e4bf82fc
 162	230	0	../../../../build/intermediates/cmake/debug/obj/x86/liblesson-lib.so	4b25157c29a59fde
+29	696	0	CMakeFiles/lesson-lib.dir/src/main/cpp/BricksShader/BricksShaderNativeRenderer.cpp.o	7cb13788e4bf82fc
+696	1409	0	../../../../build/intermediates/cmake/debug/obj/x86/liblesson-lib.so	4b25157c29a59fde
+146	717	0	CMakeFiles/lesson-lib.dir/src/main/cpp/BricksShader/BricksShaderNativeRenderer.cpp.o	7cb13788e4bf82fc
+717	1660	0	../../../../build/intermediates/cmake/debug/obj/x86/liblesson-lib.so	4b25157c29a59fde
