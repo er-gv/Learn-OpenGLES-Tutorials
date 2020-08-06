@@ -25,181 +25,42 @@ static void checkGlError(const char *op) {
 
 
 
-const static GLfloat CUBE_POSITION_DATA[] = {
-        // Front face
-        -1.0f, 1.0f, 1.0f,
-        -1.0f, -1.0f, 1.0f,
-        1.0f, 1.0f, 1.0f,
-        -1.0f, -1.0f, 1.0f,
-        1.0f, -1.0f, 1.0f,
-        1.0f, 1.0f, 1.0f,
+static const GLfloat CUBE_NORMAL_DATA[] = {
 
-        // Right face
-        1.0f, 1.0f, 1.0f,
-        1.0f, -1.0f, 1.0f,
-        1.0f, 1.0f, -1.0f,
-        1.0f, -1.0f, 1.0f,
-        1.0f, -1.0f, -1.0f,
-        1.0f, 1.0f, -1.0f,
-
-        // Back face
-        1.0f, 1.0f, -1.0f,
-        1.0f, -1.0f, -1.0f,
-        -1.0f, 1.0f, -1.0f,
-        1.0f, -1.0f, -1.0f,
-        -1.0f, -1.0f, -1.0f,
-        -1.0f, 1.0f, -1.0f,
-
-        // Left face
-        -1.0f, 1.0f, -1.0f,
-        -1.0f, -1.0f, -1.0f,
-        -1.0f, 1.0f, 1.0f,
-        -1.0f, -1.0f, -1.0f,
-        -1.0f, -1.0f, 1.0f,
-        -1.0f, 1.0f, 1.0f,
-
-        // Top face
-        -1.0f, 1.0f, -1.0f,
-        -1.0f, 1.0f, 1.0f,
-        1.0f, 1.0f, -1.0f,
-        -1.0f, 1.0f, 1.0f,
-        1.0f, 1.0f, 1.0f,
-        1.0f, 1.0f, -1.0f,
-
-        // Bottom face
-        1.0f, -1.0f, -1.0f,
-        1.0f, -1.0f, 1.0f,
-        -1.0f, -1.0f, -1.0f,
-        1.0f, -1.0f, 1.0f,
-        -1.0f, -1.0f, 1.0f,
-        -1.0f, -1.0f, -1.0f,
+       0.0f,  0.0f, +1.0f,
+        +1.0f,  0.0f,  0.0f,
+        0.0f,  0.0f, -1.0f,
+        -1.0f,  0.0f,  0.0f,
+        0.0f, +1.0f,  0.0f,
+        0.0f, -1.0f,  0.0f
 };
-
-/*static const GLfloat CUBE_COLOR_DATA[] = {
-        // R, G, B, A
-
-        // Front face (red)
-        1.0f, 0.0f, 0.0f, 1.0f,
-        1.0f, 0.0f, 0.0f, 1.0f,
-        1.0f, 0.0f, 0.0f, 1.0f,
-        1.0f, 0.0f, 0.0f, 1.0f,
-        1.0f, 0.0f, 0.0f, 1.0f,
-        1.0f, 0.0f, 0.0f, 1.0f,
-
-        // Right face (green)
-        0.0f, 1.0f, 0.0f, 1.0f,
-        0.0f, 1.0f, 0.0f, 1.0f,
-        0.0f, 1.0f, 0.0f, 1.0f,
-        0.0f, 1.0f, 0.0f, 1.0f,
-        0.0f, 1.0f, 0.0f, 1.0f,
-        0.0f, 1.0f, 0.0f, 1.0f,
-
-        // Back face (blue)
-        0.0f, 0.0f, 1.0f, 1.0f,
-        0.0f, 0.0f, 1.0f, 1.0f,
-        0.0f, 0.0f, 1.0f, 1.0f,
-        0.0f, 0.0f, 1.0f, 1.0f,
-        0.0f, 0.0f, 1.0f, 1.0f,
-        0.0f, 0.0f, 1.0f, 1.0f,
-
-        // Left face (yellow)
-        1.0f, 1.0f, 0.0f, 1.0f,
-        1.0f, 1.0f, 0.0f, 1.0f,
-        1.0f, 1.0f, 0.0f, 1.0f,
-        1.0f, 1.0f, 0.0f, 1.0f,
-        1.0f, 1.0f, 0.0f, 1.0f,
-        1.0f, 1.0f, 0.0f, 1.0f,
-
-        // Top face (cyan)
-        0.0f, 1.0f, 1.0f, 1.0f,
-        0.0f, 1.0f, 1.0f, 1.0f,
-        0.0f, 1.0f, 1.0f, 1.0f,
-        0.0f, 1.0f, 1.0f, 1.0f,
-        0.0f, 1.0f, 1.0f, 1.0f,
-        0.0f, 1.0f, 1.0f, 1.0f,
-
-        // Bottom face (magenta)
-        1.0f, 0.0f, 1.0f, 1.0f,
-        1.0f, 0.0f, 1.0f, 1.0f,
-        1.0f, 0.0f, 1.0f, 1.0f,
-        1.0f, 0.0f, 1.0f, 1.0f,
-        1.0f, 0.0f, 1.0f, 1.0f,
-        1.0f, 0.0f, 1.0f, 1.0f
-};*/
 
 // X, Y, Z
 // The normal is used in light calculations and is a vector which points
 // orthogonal to the plane of the surface. For a cube model, the normals
 // should be orthogonal to the points of each face.
-static const GLfloat CUBE_NORMAL_DATA[] = {
-        // Front face
-        0.0f, 0.0f, 1.0f,
-        0.0f, 0.0f, 1.0f,
-        0.0f, 0.0f, 1.0f,
-        0.0f, 0.0f, 1.0f,
-        0.0f, 0.0f, 1.0f,
-        0.0f, 0.0f, 1.0f,
 
-        // Right face
-        1.0f, 0.0f, 0.0f,
-        1.0f, 0.0f, 0.0f,
-        1.0f, 0.0f, 0.0f,
-        1.0f, 0.0f, 0.0f,
-        1.0f, 0.0f, 0.0f,
-        1.0f, 0.0f, 0.0f,
+static const GLfloat mMortarColor[][3] {
 
-        // Back face
-        0.0f, 0.0f, -1.0f,
-        0.0f, 0.0f, -1.0f,
-        0.0f, 0.0f, -1.0f,
-        0.0f, 0.0f, -1.0f,
-        0.0f, 0.0f, -1.0f,
-        0.0f, 0.0f, -1.0f,
-
-        // Left face
-        -1.0f, 0.0f, 0.0f,
-        -1.0f, 0.0f, 0.0f,
-        -1.0f, 0.0f, 0.0f,
-        -1.0f, 0.0f, 0.0f,
-        -1.0f, 0.0f, 0.0f,
-        -1.0f, 0.0f, 0.0f,
-
-        // Top face
-        0.0f, 1.0f, 0.0f,
-        0.0f, 1.0f, 0.0f,
-        0.0f, 1.0f, 0.0f,
-        0.0f, 1.0f, 0.0f,
-        0.0f, 1.0f, 0.0f,
-        0.0f, 1.0f, 0.0f,
-
-        // Bottom face
-        0.0f, -1.0f, 0.0f,
-        0.0f, -1.0f, 0.0f,
-        0.0f, -1.0f, 0.0f,
-        0.0f, -1.0f, 0.0f,
-        0.0f, -1.0f, 0.0f,
-        0.0f, -1.0f, 0.0f
+        {0.359375f, 0.26953125f, 0.05078125f},
+        {0.050f, 0.368f, 0.647f},
+        {0.988f, 0.870f, 0.909f},
+        {0.007f, 0.588f, 0.635f},
+        {0.007f, 0.635f, 0.49f}
 };
 
 static const GLfloat mBrickColor[][3] {
-        {0.75390625f, 0.73828125f, 0.69921875f},
-        {0.952f, 0.0901f, 0.188f},
-        {0.117f, 0.094f, 0.129f},
+        {0.952f, 0.6901f, 0.188f},
+        {0.75390625f, 0.53828125f, 0.69921875f},
+
+        {0.557f, 0.094f, 0.129f},
         {0.635f, 0.305f, 0.007f},
         {0.788f, 0.968f, 0.0392f}
 };
 
-static const GLfloat mMortarColor[][3] {
-    {0.359375f, 0.26953125f, 0.05078125f},
-    {0.050f, 0.368f, 0.647f},
-    {0.988f, 0.870f, 0.909f},
-    {0.007f, 0.588f, 0.635f},
-    {0.007f, 0.635f, 0.349f}
-};
-
 static const GLfloat mBrickSize[][2]{
     {0.3f, 0.15f},
-    {0.15f, 0.075f},
+    {0.7, 0.65f},
     {0.3f, 0.15f},
     {0.3f, 0.15f},
     {0.3f, 0.15f}
@@ -207,7 +68,7 @@ static const GLfloat mBrickSize[][2]{
 
 static const GLfloat mBrickPct[][2] {
     {0.9f, 0.85},
-    {0.45f, 0.4},
+    {0.9, 0.85},
     {0.9f, 0.85},
     {0.9f, 0.85},
     {0.9f, 0.85}
@@ -320,6 +181,8 @@ void BricksShaderNativeRenderer::create() {
 
     // Set the view matrix.
     mViewMatrix = Matrix::newLookAt(eyeX, eyeY, eyeZ, centerX, centerY, centerZ, upX, upY, upZ);
+    initAttribsAndUniforms();
+    setupBuffers();
 }
 
 void BricksShaderNativeRenderer::change(int width, int height) {
@@ -356,20 +219,6 @@ void BricksShaderNativeRenderer::draw() {
 
     // Set out pre-vertex lighting program.
     glUseProgram(mBricksProgram);
-
-    // Set program handle for cube drawing.
-    mMVPMatrixHandle = (GLuint) glGetUniformLocation(mBricksProgram, "u_MVPMatrix");
-    mMVMatrixHandle = (GLuint) glGetUniformLocation(mBricksProgram, "u_MVMatrix");
-    mLightPosHandle = (GLuint) glGetUniformLocation(mBricksProgram, "u_LightPosition");
-
-    mPositionHandle = (GLuint) glGetAttribLocation(mBricksProgram, "MCvertex");
-    mNormalHandle = (GLuint) glGetAttribLocation(mBricksProgram, "MCnormal");
-
-
-    mBrickColorHandle = (GLuint) glGetUniformLocation(mBricksProgram, "u_BrickColor");
-    mMortarColorHandle = (GLuint) glGetUniformLocation(mBricksProgram, "u_MortarColor");
-    mBrickSizeHandle = (GLuint) glGetUniformLocation(mBricksProgram, "u_BrickSize");
-    mBrickPctHandle = (GLuint) glGetUniformLocation(mBricksProgram, "u_BrickPct");
 
     // Calculate mPosition of the light
     // Rotate and then push into the distance.
@@ -409,7 +258,7 @@ void BricksShaderNativeRenderer::draw() {
     // center
     mModelMatrix->identity();
     mModelMatrix->translate(0.0f, 0.0f, -5.0f);
-    mModelMatrix->rotate(angleInDegrees, 1.0f, 1.0f, 1.0f);
+    mModelMatrix->rotate(angleInDegrees, 0.0f, 1.0f, 0.0f);
     drawCube(mBrickColor[4], mMortarColor[4],  mBrickSize[4], mBrickPct[4]);
 
     // Draw a point to indicate the light
@@ -436,19 +285,17 @@ void BricksShaderNativeRenderer::drawCube(
         const GLfloat brickColor[3], const GLfloat mortarColor[3],
         const GLfloat brickSize[2], const GLfloat brickPct[2]) {
 
-    // Pass in the mPosition info
-    glVertexAttribPointer(
-            mPositionHandle, 3,
-            GL_FLOAT, GL_FALSE, 0, CUBE_POSITION_DATA
-    );
+    glBindBuffer(GL_ARRAY_BUFFER, vbo);
+    glVertexAttribPointer(mPositionHandle, 4, GL_FLOAT, GL_FALSE, 0, 0);
     glEnableVertexAttribArray(mPositionHandle);
+
 
     // Pass in the normal information
     glVertexAttribPointer(mNormalHandle, 3,
             GL_FLOAT, GL_FALSE, 0, CUBE_NORMAL_DATA
     );
     glEnableVertexAttribArray(mNormalHandle);
-
+*/
     // This multiplies the view by the model matrix
     // and stores the result the MVP matrix.
     // which currently contains model * view
@@ -473,21 +320,25 @@ void BricksShaderNativeRenderer::drawCube(
     );
 
     glUniform3f(mBrickColorHandle, brickColor[0], brickColor[1], brickColor[2]);
-
     glUniform3f(mMortarColorHandle, mortarColor[0], mortarColor[1], mortarColor[2]);
-
     glUniform2f(mBrickSizeHandle, brickSize[0], brickSize[1]);
-
     glUniform2f( mBrickPctHandle, brickPct[0], brickPct[1]);
 
     // Draw the cube
-    glDrawArrays(GL_TRIANGLES, 0, 36);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
+    for(int k=0; k<6; k++) {
+        int n = 3*k;
+        glUniform3f(mNormalHandle, CUBE_NORMAL_DATA[n], CUBE_NORMAL_DATA[n+1],CUBE_NORMAL_DATA[n+2]);
+        glDrawElements(GL_TRIANGLE_STRIP, 4, GL_UNSIGNED_SHORT,
+                       reinterpret_cast<const void *>(k*4));
+    }
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+
 }
 
 void BricksShaderNativeRenderer::drawLight() {
 
-    GLint pointMVPMatrixHandle = glGetUniformLocation(mLightProgram, "u_MVPMatrix");
-    GLint pointPositionHandle = glGetAttribLocation(mLightProgram, "a_Position");
 
     // Pass in the mPosition
     glVertexAttrib3f(
@@ -513,6 +364,65 @@ void BricksShaderNativeRenderer::drawLight() {
     );
 
     glDrawArrays(GL_POINTS, 0, 1);
+}
+
+bool BricksShaderNativeRenderer::setupBuffers() {
+    glGenBuffers(1, &vbo);
+    glGenBuffers(1, &ibo);
+    if(0== vbo || 0 == ibo){
+        return false;
+    }
+    GLfloat CUBE_POSITION_DATA[] = {
+            -1.0f, +1.0f, +1.0f, 1.0f,  //0
+            -1.0f, -1.0f, +1.0f, 1.0f,  //1
+            +1.0f, +1.0f, +1.0f, 1.0f, //2
+            +1.0f, -1.0f, +1.0f, 1.0f, //3
+
+            -1.0f, +1.0f, -1.0f, 1.0f,  //4
+            -1.0f, -1.0f, -1.0f, 1.0f,  //5
+            +1.0f, +1.0f, -1.0f, 1.0f, //6
+            +1.0f, -1.0f, -1.0f, 1.0f //7
+    };
+
+
+    GLshort indices[]={
+            0,1,2,3,
+            2,3,6,7,
+            6,7,4,5,
+            4,5,0,1,
+            4,0,6,2,
+            1,5,7,3
+    };
+
+    glBindBuffer(GL_ARRAY_BUFFER, vbo);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(CUBE_POSITION_DATA), CUBE_POSITION_DATA, GL_STATIC_DRAW);
+
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+    return true;
+}
+
+void BricksShaderNativeRenderer::initAttribsAndUniforms() {
+
+    // Set program handle for cube drawing.
+    mMVPMatrixHandle = (GLuint) glGetUniformLocation(mBricksProgram, "u_MVPMatrix");
+    mMVMatrixHandle = (GLuint) glGetUniformLocation(mBricksProgram, "u_MVMatrix");
+    mLightPosHandle = (GLuint) glGetUniformLocation(mBricksProgram, "u_LightPosition");
+
+    mPositionHandle = (GLuint) glGetAttribLocation(mBricksProgram, "MCvertex");
+    //mNormalHandle = (GLuint) glGetAttribLocation(mBricksProgram, "MCnormal");
+    mNormalHandle = (GLuint) glGetUniformLocation(mBricksProgram, "u_MCnormal");
+
+
+    mBrickColorHandle = (GLuint) glGetUniformLocation(mBricksProgram, "u_BrickColor");
+    mMortarColorHandle = (GLuint) glGetUniformLocation(mBricksProgram, "u_MortarColor");
+    mBrickSizeHandle = (GLuint) glGetUniformLocation(mBricksProgram, "u_BrickSize");
+    mBrickPctHandle = (GLuint) glGetUniformLocation(mBricksProgram, "u_BrickPct");
+
+    pointMVPMatrixHandle = glGetUniformLocation(mLightProgram, "u_MVPMatrix");
+    pointPositionHandle = glGetAttribLocation(mLightProgram, "a_Position");
+
 }
 
 

@@ -31,7 +31,9 @@ private:
                   const GLfloat brickSize[2], const GLfloat brickPct[2]);
     void drawLight();
 
-    static const GLint POSITION_DATA_SIZE = 3;
+    void initAttribsAndUniforms();
+    bool setupBuffers();
+    static const GLint POSITION_DATA_SIZE = 4;
     static const GLint NORMAL_DATA_SIZE = 3;
 
     //scene size
@@ -55,6 +57,12 @@ private:
     //attrib handlers
     GLuint mPositionHandle;
     GLuint mNormalHandle;
+
+    GLint pointMVPMatrixHandle;
+    GLint pointPositionHandle;
+
+    //buffer objects
+    GLuint vbo, ibo;
 
     //matricias
     Matrix *mViewMatrix;

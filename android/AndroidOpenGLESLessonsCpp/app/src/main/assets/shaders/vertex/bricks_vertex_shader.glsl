@@ -1,8 +1,8 @@
 
 
-attribute vec3 MCvertex;
-attribute vec3 MCnormal;
-
+attribute vec4 MCvertex;
+//attribute vec3 MCnormal;
+uniform vec3 u_MCnormal;
 uniform mat4 u_MVMatrix;
 uniform mat4 u_MVPMatrix;
 
@@ -14,7 +14,7 @@ varying float LightIntensity;
 varying vec2 MCposition;
 
 vec2 projectToXYPlane(vec4 vertex){
-	vec3 deltaNormal = MCnormal-vec3(0.0, 0.0, 1.0);
+	vec3 deltaNormal = u_MCnormal-vec3(0.0, 0.0, 1.0);
 	float len = length(deltaNormal);
 	if(0.05>=len){
 		return vertex.xy;
@@ -45,8 +45,8 @@ float computeLight(float ambiant){
 	const float SpecularContribution = 0.3;
 	const float DiffuseContribution = 1.0 - SpecularContribution;
 
-	vec3 ecPosition = vec3(u_MVMatrix * vec4(MCvertex, 1.0));
-	vec3 tnorm = normalize(MCnormal);
+	vec3 ecPosition = vec3(u_MVMatrix * MCvertex);
+	vec3 tnorm = normalize(u_MCnormal);
 	vec3 lightVec = normalize(u_LightPosition - ecPosition);
 	vec3 reflectVec = reflect(-lightVec, tnorm);
 	vec3 viewVec = normalize(-ecPosition);
@@ -66,6 +66,6 @@ void main(){
 	//project the vertex to the xz plane. use the same transform needed to project the normal
 	//to that plane
 	LightIntensity = computeLight(0.1f);
-	MCposition = projectToXYPlane(vec4(MCvertex, 1.0));
-	gl_Position = u_MVPMatrix * vec4(MCvertex, 1.0);
+	MCposition = projectToXYPlane(MCvertex);
+	gl_Position = u_MVPMatrix * MCvertex;
 }
