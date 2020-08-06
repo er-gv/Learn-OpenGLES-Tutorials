@@ -31,19 +31,19 @@
   },
   {
     "level": "INFO",
-    "message": "- force flag, will remove stale json folder",
+    "message": "- a dependent build file changed",
     "file": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/CMakeLists.txt",
     "tag": "release|armeabi-v7a"
   },
   {
     "level": "INFO",
-    "message": "removing stale contents from \u0027/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/.cxx/cmake/release/armeabi-v7a\u0027",
+    "message": "  - /home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/CMakeLists.txt",
     "file": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/CMakeLists.txt",
     "tag": "release|armeabi-v7a"
   },
   {
     "level": "INFO",
-    "message": "created folder \u0027/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/.cxx/cmake/release/armeabi-v7a\u0027",
+    "message": "keeping json folder \u0027/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/.cxx/cmake/release/armeabi-v7a\u0027 but regenerating project",
     "file": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/CMakeLists.txt",
     "tag": "release|armeabi-v7a"
   },

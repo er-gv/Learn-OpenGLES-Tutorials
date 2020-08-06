@@ -12,7 +12,7 @@ cmake_minimum_required(VERSION 3.4.1)
 set(APP_STL "c++_shared")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -fno-rtti -fno-exceptions -Wall")
-set(GLM_HOME "/usr/include/glm")
+set(GLM_HOME "/usr/include/GL/glm")
 
 include_directories(${GLM_HOME})
 
@@ -41,7 +41,7 @@ add_library(
         src/main/cpp/graphics/Material.cpp
         src/main/cpp/graphics/Model.h
         src/main/cpp/graphics/Model.cpp
-        #src/main/cpp/graphics/transform.h
+        src/main/cpp/graphics/transform.h
 
         # utils
         src/main/cpp/utils/Logger.h
@@ -108,12 +108,14 @@ add_library(
         src/main/cpp/JuliaSet/JuliaSetRenderer.h
 
         #polyhedrons
-        src/main/cpp/Polyhedrons/PolyhedronsRenderer.cpp
-        src/main/cpp/Polyhedrons/PolyhedronsRenderer.h
-        src/main/cpp/Polyhedrons/Polyhedron.h
-        src/main/cpp/Polyhedrons/Polyhedron.cpp
-        src/main/cpp/Polyhedrons/Tetrahedron.h
-        src/main/cpp/Polyhedrons/Tetrahedron.cpp
+        #src/main/cpp/Polyhedrons/PolyhedronsRenderer.cpp
+        #src/main/cpp/Polyhedrons/PolyhedronsRenderer.h
+        #src/main/cpp/Polyhedrons/Polyhedron.h
+        #src/main/cpp/Polyhedrons/Polyhedron.cpp
+        #src/main/cpp/Polyhedrons/Tetrahedron.h
+        #src/main/cpp/Polyhedrons/Tetrahedron.cpp
+        #src/main/cpp/Polyhedrons/TestCube.h
+        #src/main/cpp/Polyhedrons/TestCube.cpp
         #src/main/cpp/Polyhedrons/Cube.h
         #src/main/cpp/Polyhedrons/Cube.cpp
         #src/main/cpp/Polyhedrons/Octahedron.h
@@ -146,6 +148,7 @@ target_link_libraries( # Specifies the target library.
         lesson-lib
         EGL
         GLESv2
+        GLESv3
         android
         # Links the target library to the log library
         # included in the NDK.

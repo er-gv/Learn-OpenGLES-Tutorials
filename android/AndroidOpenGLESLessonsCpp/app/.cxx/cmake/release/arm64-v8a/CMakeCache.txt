@@ -214,7 +214,7 @@ Project_BINARY_DIR:STATIC=/home/nathan/Programming/Projects/Android/Learn-OpenGL
 Project_SOURCE_DIR:STATIC=/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app
 
 //Dependencies for the target
-lesson-lib_LIB_DEPENDS:STATIC=general;EGL;general;GLESv2;general;android;general;/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android/21/liblog.so;
+lesson-lib_LIB_DEPENDS:STATIC=general;EGL;general;GLESv2;general;GLESv3;general;android;general;/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android/21/liblog.so;
 
 //Path to a library.
 log-lib:FILEPATH=/home/nathan/DevTool/Android-SDK/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android/21/liblog.so

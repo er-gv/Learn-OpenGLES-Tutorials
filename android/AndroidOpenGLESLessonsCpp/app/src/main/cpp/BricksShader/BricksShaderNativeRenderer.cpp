@@ -386,31 +386,31 @@ void BricksShaderNativeRenderer::draw() {
     mModelMatrix->translate(4.0f, 0.0f, -7.0f);
     mModelMatrix->rotate(angleInDegrees, 1.0f, 0.0f, 0.0f);
 
-    drawCube(mBrickColor[0], mMortarColor[0], mBrickPct[0], mBrickPct[0]);
+    drawCube(mBrickColor[0], mMortarColor[0],  mBrickSize[0], mBrickPct[0]);
 
     // left
     mModelMatrix->identity();
     mModelMatrix->translate(-4.0f, 0.0f, -7.0f);
     mModelMatrix->rotate(angleInDegrees, 0.0f, 1.0f, 0.0f);
-    drawCube(mBrickColor[1], mMortarColor[1], mBrickPct[1], mBrickPct[1]);
+    drawCube(mBrickColor[1], mMortarColor[1],  mBrickSize[1], mBrickPct[1]);
 
     // top
     mModelMatrix->identity();
     mModelMatrix->translate(0.0f, 4.0f, -7.0f);
     mModelMatrix->rotate(angleInDegrees, 0.0f, 1.0f, 0.0f);
-    drawCube(mBrickColor[2], mMortarColor[2], mBrickPct[2], mBrickPct[2]);
+    drawCube(mBrickColor[2], mMortarColor[2],  mBrickSize[2], mBrickPct[2]);
 
     // bottom
     mModelMatrix->identity();
     mModelMatrix->translate(0.0f, -4.0f, -7.0f);
     mModelMatrix->rotate(angleInDegrees, 0.0f, 1.0f, 0.0f);
-    drawCube(mBrickColor[3], mMortarColor[3], mBrickPct[3], mBrickPct[3]);
+    drawCube(mBrickColor[3], mMortarColor[3],  mBrickSize[3], mBrickPct[3]);
 
     // center
     mModelMatrix->identity();
     mModelMatrix->translate(0.0f, 0.0f, -5.0f);
     mModelMatrix->rotate(angleInDegrees, 1.0f, 1.0f, 1.0f);
-    drawCube(mBrickColor[4], mMortarColor[4], mBrickPct[4], mBrickPct[4]);
+    drawCube(mBrickColor[4], mMortarColor[4],  mBrickSize[4], mBrickPct[4]);
 
     // Draw a point to indicate the light
     glUseProgram(mLightProgram);
@@ -438,13 +438,13 @@ void BricksShaderNativeRenderer::drawCube(
 
     // Pass in the mPosition info
     glVertexAttribPointer(
-            mPositionHandle, POSITION_DATA_SIZE,
+            mPositionHandle, 3,
             GL_FLOAT, GL_FALSE, 0, CUBE_POSITION_DATA
     );
     glEnableVertexAttribArray(mPositionHandle);
 
     // Pass in the normal information
-    glVertexAttribPointer(mNormalHandle, NORMAL_DATA_SIZE,
+    glVertexAttribPointer(mNormalHandle, 3,
             GL_FLOAT, GL_FALSE, 0, CUBE_NORMAL_DATA
     );
     glEnableVertexAttribArray(mNormalHandle);

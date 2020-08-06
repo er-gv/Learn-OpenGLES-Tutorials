@@ -27,7 +27,15 @@
     },
     {
       "level": "INFO",
+      "message": "Considering /home/nathan/DevTool/Android-SDK/ndk/21.2.6472646 in SDK ndk folder"
+    },
+    {
+      "level": "INFO",
       "message": "Considering /home/nathan/DevTool/Android-SDK/ndk/21.0.6113669 in SDK ndk folder"
+    },
+    {
+      "level": "INFO",
+      "message": "Considering /home/nathan/DevTool/Android-SDK/ndk/21.3.6528147 in SDK ndk folder"
     },
     {
       "level": "INFO",

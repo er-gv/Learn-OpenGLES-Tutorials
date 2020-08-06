@@ -1,21 +1,21 @@
-[1/5] Building CXX object CMakeFiles/lesson-lib.dir/src/main/cpp/utils/Scene.cpp.o
-[2/5] Building CXX object CMakeFiles/lesson-lib.dir/src/main/cpp/Polyhedrons/PolyhedronsRenderer.cpp.o
-[3/5] Building CXX object CMakeFiles/lesson-lib.dir/src/main/cpp/Polyhedrons/Polyhedron.cpp.o
-/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/Polyhedrons/Polyhedron.cpp:42:31: warning: when type is in parentheses, array cannot have dynamic size
-        faces = new (Polygon*[nFaces]);
-                    ~         ^~~~~~ ~
-/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/Polyhedrons/Polyhedron.cpp:46:5: warning: control reaches end of non-void function [-Wreturn-type]
-    }
-    ^
-2 warnings generated.
-[4/5] Building CXX object CMakeFiles/lesson-lib.dir/src/main/cpp/Polyhedrons/Tetrahedron.cpp.o
-In file included from /home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/utils/Scene.cpp:5:
-../../../../src/main/cpp/utils/Scene.h:29:15: warning: private field 'MVPmatrix' is not used [-Wunused-private-field]
-    glm::mat4 MVPmatrix;
+[1/2] Building CXX object CMakeFiles/lesson-lib.dir/src/main/cpp/BricksShader/BricksShaderNativeRenderer.cpp.o
+/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/BricksShader/BricksShaderNativeRenderer.cpp:16:19: warning: data argument not used by format string [-Wformat-extra-args]
+    LOGD(LOG_TAG, "GL %s = %s \n", name, v);
+         ~~~~~~~  ^
+/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/BricksShader/BricksShaderNativeRenderer.cpp:11:67: note: expanded from macro 'LOGD'
+#define  LOGD(...)  __android_log_print(ANDROID_LOG_DEBUG,LOG_TAG,__VA_ARGS__)
+                                                                  ^~~~~~~~~~~
+/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/BricksShader/BricksShaderNativeRenderer.cpp:17:15: warning: unused variable 'viki' [-Wunused-variable]
+    glm::vec3 viki = glm::vec3(2,4,66);
               ^
-1 warning generated.
-/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/Polyhedrons/Tetrahedron.cpp:159:25: warning: unused variable 'trianglesFanIndexBuffer' [-Wunused-variable]
-        short constexpr trianglesFanIndexBuffer[] ={0,1,2, 3,1};
-                        ^
-1 warning generated.
-[5/5] Linking CXX shared library ../../../../build/intermediates/cmake/debug/obj/x86/liblesson-lib.so
+/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/BricksShader/BricksShaderNativeRenderer.cpp:22:23: warning: data argument not used by format string [-Wformat-extra-args]
+        LOGI(LOG_TAG, "after %s() glError (0x%x)\n", op, error);
+             ~~~~~~~  ^
+/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/BricksShader/BricksShaderNativeRenderer.cpp:10:66: note: expanded from macro 'LOGI'
+#define  LOGI(...)  __android_log_print(ANDROID_LOG_INFO,LOG_TAG,__VA_ARGS__)
+                                                                 ^~~~~~~~~~~
+/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/BricksShader/BricksShaderNativeRenderer.cpp:20:13: warning: unused function 'checkGlError' [-Wunused-function]
+static void checkGlError(const char *op) {
+            ^
+4 warnings generated.
+[2/2] Linking CXX shared library ../../../../build/intermediates/cmake/debug/obj/x86/liblesson-lib.so

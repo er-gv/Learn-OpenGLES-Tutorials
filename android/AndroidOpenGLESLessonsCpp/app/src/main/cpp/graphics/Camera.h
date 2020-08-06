@@ -26,15 +26,15 @@ public:
     Camera(GLfloat eyex, GLfloat eyey, GLfloat eyez,
            GLfloat lookatx, GLfloat lookaty, GLfloat lookatz,
            GLfloat upx, GLfloat upy,  GLfloat upz);
-    Camera(const Camera& c);
+    Camera(Camera const & c);
 
     ~Camera();
 
-    glm::vec3& eye() const;
+    glm::vec3& eye() ;
     void eye(glm::vec3& e);
-    glm::vec3& bearing() const;
+    glm::vec3& bearing() ;
     void bearing(glm::vec3& b);
-    glm::vec3& up() const;
+    glm::vec3& up();
     void up(glm::vec3& u);
 
     glm::mat4 lookAt();

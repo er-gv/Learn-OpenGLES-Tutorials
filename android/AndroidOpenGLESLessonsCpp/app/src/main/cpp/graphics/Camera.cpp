@@ -32,23 +32,24 @@ Camera::Camera( GLfloat eyex, GLfloat eyey, GLfloat eyez,
 
 }
 
-Camera::Camera(const Camera& c){
-    eye(c.eye());
-    bearing(c.bearing());
-    up(c.up());
+Camera::Camera(Camera const & c){
+    m_eye=c.m_eye;
+    m_bearing=c.m_bearing;
+    m_up=c.m_up;
 }
 
 Camera::~Camera(){}
 
 
-glm::vec3& Camera::eye() const{
+glm::vec3& Camera::eye() {
     return m_eye;
 }
+
 void Camera::eye(glm::vec3& e){
     m_eye = e;
 }
 
-glm::vec3& Camera::bearing() const{
+glm::vec3& Camera::bearing() {
     return m_bearing;
 }
 
@@ -56,7 +57,7 @@ void Camera::bearing(glm::vec3& b){
     m_bearing = b;
 }
 
-glm::vec3& Camera::up() const{
+glm::vec3& Camera::up() {
     return m_up;
 }
 void Camera::up(glm::vec3& u){
@@ -85,7 +86,7 @@ glm::mat4 Camera::projection() {
 }
 
 glm::mat4 Camera::frustum(const Bounderies &b) {
-    return glm::frustum(b.left, b.right, );
+    return glm::frustum(b.left, b.right, b.bottom, b.top, b.front, b.back);
 }
 
 
