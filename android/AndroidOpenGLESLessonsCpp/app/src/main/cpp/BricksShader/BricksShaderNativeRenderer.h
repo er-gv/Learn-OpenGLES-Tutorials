@@ -8,8 +8,8 @@
 
 #include <jni.h>
 #include <GLES2/gl2.h>
-#include "../graphics/GLUtils.h"
-#include "../graphics/Matrix.h"
+#include "graphics/GLUtils.h"
+#include "graphics/Matrix.h"
 //#include "utils/Logger.h"
 
 class BricksShaderNativeRenderer {

@@ -24,6 +24,10 @@
           "value": "-frtti -fexceptions"
         },
         {
+          "name": "CMAKE_FIND_ROOT_PATH",
+          "value": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/.cxx/cmake/release/prefab/x86/prefab"
+        },
+        {
           "name": "CMAKE_BUILD_TYPE",
           "value": "Release"
         },
@@ -181,6 +185,7 @@
         "X86",
         "X86_64"
       ],
+      "ndkDefaultStl": "LIBCXX_STATIC",
       "ndkVersion": "21.0.6113669",
       "project": {
         "compilerSettingsCacheFolder": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/.cxx",
@@ -189,7 +194,8 @@
         "isCmakeBuildCohabitationEnabled": false,
         "isNativeCompilerSettingsCacheEnabled": false,
         "rootBuildGradleFolder": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp",
-        "sdkFolder": "/home/nathan/DevTool/Android-SDK"
+        "sdkFolder": "/home/nathan/DevTool/Android-SDK",
+        "isPrefabEnabled": false
       },
       "splitsAbiFilterSet": [],
       "stlSharedObjectMap": {
@@ -211,6 +217,9 @@
       "ARM64_V8A",
       "X86",
       "X86_64"
-    ]
-  }
+    ],
+    "prefabDirectory": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/.cxx/cmake/release/prefab",
+    "prefabPackageDirectoryList": []
+  },
+  "prefabFolder": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/.cxx/cmake/release/prefab/x86"
 }

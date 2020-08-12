@@ -13,13 +13,13 @@
 #define LOGD(fmt, args...) __android_log_print(ANDROID_LOG_DEBUG, LOG_TAG, fmt, ##args)
 #define LOGE(fmt, args...) __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, fmt, ##args)
 
-static JNIEnv *sEnv = NULL;
-static jobject sAssetManager = NULL;
+static JNIEnv *sEnv = nullptr;
+static jobject sAssetManager = nullptr;
 
 static AAsset *loadAsset(const char *path) {
     AAssetManager *nativeManager = AAssetManager_fromJava(sEnv, sAssetManager);
-    if (nativeManager == NULL) {
-        return NULL;
+    if (nativeManager == nullptr) {
+        return nullptr;
     }
     return AAssetManager_open(nativeManager, path, AASSET_MODE_UNKNOWN);
 }
@@ -97,14 +97,14 @@ long GLUtils::currentTimeMillis() {
 
 GLuint GLUtils::loadTexture(const char *path) {
     GLuint textureId = 0;
-
     jclass utilsClass = sEnv->FindClass("com/learnopengles/android/common/TextureHelper");
-    if (utilsClass == NULL) {
+
+    if (utilsClass == nullptr) {
         LOGE("Couldn't find utils class");
         return (GLuint) -1;
     }
     jmethodID loadTexture = sEnv->GetStaticMethodID(utilsClass, "loadTexture",
-                                                    "(Landroid/content/Context;I)I");
+                                                    "(Landroid/content/res/AssetManager;Ljava/lang/String;)I");
     if (loadTexture == NULL) {
         LOGE("Couldn't find loadTexture method");
         return (GLuint) -1;

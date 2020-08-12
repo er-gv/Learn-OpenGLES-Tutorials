@@ -1,10 +1,10 @@
 precision mediump float;       	// Set the default precision to medium. We don't need as high of a 
 								// precision in the fragment shader.
-uniform vec3 u_LightPos;       	// The mPosition of the light in eye space.
+uniform vec3 u_LightPos;       	// The position of the light in eye space.
 uniform sampler2D u_Texture;    // The input texture.
-uniform vec2 c_seed;
 
-varying vec3 v_Position;		// Interpolated mPosition for this fragment.
+  
+varying vec3 v_Position;		// Interpolated position for this fragment.
 varying vec4 v_Color;          	// This is the color from the vertex shader interpolated across the 
   								// triangle per fragment.
 varying vec3 v_Normal;         	// Interpolated normal for this fragment.
@@ -35,9 +35,9 @@ void main()
 	//first let's see if this pixel is a part of the Julia set. if not it will be black.
 	vec2 z;
 	int max_itr = 60;
-	vec2 c;
-    c.x = 1.3333 * (v_TexCoordinate.x - c_seed.x)*1.4 -c_seed.x;
-    c.y = (v_TexCoordinate.y - c_seed.y)*1.4;////
+	vec2 c;	
+    c.x = 1.3333 * (v_TexCoordinate.x - 0.5)*1.4 -0.5;
+    c.y = (v_TexCoordinate.y - 0.5)*1.4;////
 
     int i;
     float normelizedDist = 0.05;//

@@ -51,6 +51,8 @@ bool JuliaSetRenderer::compileShaders(){
         LOG_D(JULIA_TAG, "Could not create program");
         return false;
     }
+    initAttribsAndUniforms();
+    setupBuffers();
     return true;
 }
 
@@ -96,7 +98,7 @@ void JuliaSetRenderer::create(){
     mViewMatrix = Matrix::newLookAt(eyeX, eyeY, eyeZ, centerX, centerY, centerZ, upX, upY, upZ);
 
     // Load the texture
-    mTextureDataHandle = GLUtils::loadTexture("texture/bumpy_bricks_public_domain.jpg");
+    mTextureDataHandle = GLUtils::loadTexture("texture/stone_wall_public_domain.png");
 }
 
 void JuliaSetRenderer::surfaceChange(int width, int height){
@@ -426,6 +428,55 @@ GLfloat* JuliaSetRenderer::getCubeTexData() {
     return cubeTextureCoordinateData;
 }
 
+
+bool JuliaSetRenderer::setupBuffers() {
+    glGenBuffers(1, &vbo);
+    glGenBuffers(1, &ibo);
+    if(0== vbo || 0 == ibo){
+        return false;
+    }
+    GLfloat CUBE_POSITION_DATA[] = {
+            -1.0f, +1.0f, +1.0f, 1.0f,  //0
+            -1.0f, -1.0f, +1.0f, 1.0f,  //1
+            +1.0f, +1.0f, +1.0f, 1.0f, //2
+            +1.0f, -1.0f, +1.0f, 1.0f, //3
+
+            -1.0f, +1.0f, -1.0f, 1.0f,  //4
+            -1.0f, -1.0f, -1.0f, 1.0f,  //5
+            +1.0f, +1.0f, -1.0f, 1.0f, //6
+            +1.0f, -1.0f, -1.0f, 1.0f //7
+    };
+
+
+    GLuint indices[]={
+            0,1,2,3,
+            2,3,6,7,
+            6,7,4,5,
+            4,5,0,1,
+            4,0,6,2,
+            7,3,5,1
+    };
+
+
+    glBindBuffer(GL_ARRAY_BUFFER, vbo);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(CUBE_POSITION_DATA), CUBE_POSITION_DATA, GL_STATIC_DRAW);
+
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+    return true;
+}
+
+void JuliaSetRenderer::initAttribsAndUniforms() {
+
+    // Set program handle for cube drawing.
+    mMVPMatrixHandle = (GLuint) glGetUniformLocation(mJuliaProgramHandle, "u_MVPMatrix");
+    mMVMatrixHandle = (GLuint) glGetUniformLocation(mJuliaProgramHandle, "u_MVMatrix");
+    mLightPosHandle = (GLuint) glGetUniformLocation(mJuliaProgramHandle, "u_LightPosition");
+
+    mPositionHandle = (GLuint) glGetAttribLocation(mJuliaProgramHandle, "MCvertex");
+    mNormalHandle = (GLuint) glGetUniformLocation(mJuliaProgramHandle, "u_MCnormal");
+}
 
 /**
  * Draws a cube.

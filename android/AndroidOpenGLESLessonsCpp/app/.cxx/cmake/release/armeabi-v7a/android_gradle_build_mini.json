@@ -10,7 +10,8 @@
       "artifactName": "lesson-lib",
       "buildCommand": "/home/nathan/DevTool/Android-SDK/cmake/3.6.4111459/bin/cmake --build /home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/.cxx/cmake/release/armeabi-v7a --target lesson-lib",
       "abi": "armeabi-v7a",
-      "output": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/build/intermediates/cmake/release/obj/armeabi-v7a/liblesson-lib.so"
+      "output": "/home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/build/intermediates/cmake/release/obj/armeabi-v7a/liblesson-lib.so",
+      "runtimeFiles": []
     }
   }
 }
