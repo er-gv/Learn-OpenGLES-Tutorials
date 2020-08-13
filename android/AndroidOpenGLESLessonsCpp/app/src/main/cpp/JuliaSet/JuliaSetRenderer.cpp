@@ -98,7 +98,7 @@ void JuliaSetRenderer::create(){
     mViewMatrix = Matrix::newLookAt(eyeX, eyeY, eyeZ, centerX, centerY, centerZ, upX, upY, upZ);
 
     // Load the texture
-    mTextureDataHandle = GLUtils::loadTexture("texture/stone_wall_public_domain.png");
+    mTextureDataHandle = GLUtils::loadTexture("texture/bumpy_bricks_public_domain.jpg");
 }
 
 void JuliaSetRenderer::surfaceChange(int width, int height){
@@ -124,36 +124,21 @@ void JuliaSetRenderer::surfaceChange(int width, int height){
 }
 
 void JuliaSetRenderer::drawScene(){
+    glClearColor(0.8f, 0.8f, 0.765f, 1);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     // Do a complete rotation every 10 seconds.
     long time = GLUtils::currentTimeMillis() % 10000L;
     float angleInDegrees = (360.0f / 10000.0f) * ((int) time);
     double radians = angleInDegrees*(M_PI/180.0f);
+
     // Set our per-vertex lighting program.
     char buff[80];
     char* msg = strdup(buff);
-    sprintf(buff, "DEG/RAD %f / %f.\n", angleInDegrees, radians);
+    sprintf(buff, "DEG/RAD %f.4 / %f.4.\n", angleInDegrees, radians);
     __android_log_print(ANDROID_LOG_INFO, JULIA_TAG, "%s", msg);
     free (msg);
-    glUseProgram(mJuliaProgramHandle);
 
-    // Set program handles for cube drawing.
-    // attribs
-    mPositionHandle = glGetAttribLocation(mJuliaProgramHandle, "a_Position");
-    mColorHandle = glGetAttribLocation(mJuliaProgramHandle, "a_Color");
-    mNormalHandle = glGetAttribLocation(mJuliaProgramHandle, "a_Normal");
-    mTextureCoordinateHandle = glGetAttribLocation(mJuliaProgramHandle, "a_TexCoordinate");
-
-    //uniforms
-    mMVPMatrixHandle = glGetUniformLocation(mJuliaProgramHandle, "u_MVPMatrix");
-    mMVMatrixHandle = glGetUniformLocation(mJuliaProgramHandle, "u_MVMatrix");
-    mLightPosHandle = glGetUniformLocation(mJuliaProgramHandle, "u_LightPos");
-    mTextureUniformHandle = glGetUniformLocation(mJuliaProgramHandle, "u_Texture");
-    mJuliaSeedHandle = glGetUniformLocation(mJuliaProgramHandle, "c_seed");
-
-
-    float rotatedSeed[2]= {defaultSeed[0], defaultSeed[1]};
     // Set the active texture unit to texture unit 0.
     glActiveTexture(GL_TEXTURE0);
 
@@ -176,29 +161,28 @@ void JuliaSetRenderer::drawScene(){
     mModelMatrix->identity();
     mModelMatrix->translate(4.0f, 0.0f, -7.0f);
     mModelMatrix->rotate(angleInDegrees, 1.0f, 0.0f, 0.0f);
-    rotatedSeed[0]=(float)(cos(radians));
-    rotatedSeed[1]=(float)(sin(radians));
-    drawCube(defaultSeed);
+    drawCube(radians, 0);
 
     mModelMatrix->identity();
     mModelMatrix->translate(-4.0f, 0.0f, -7.0f);
     mModelMatrix->rotate(angleInDegrees, 0.0f, 1.0f, 0.0f);
-    drawCube(rotatedSeed);
+    drawCube(radians, 1);
 
     mModelMatrix->identity();
     mModelMatrix->translate(0.0f, 4.0f, -7.0f);
     mModelMatrix->rotate(angleInDegrees, 0.0f, 0.0f, 1.0f);
-    drawCube(rotatedSeed);
+    drawCube(radians, 2);
 
     mModelMatrix->identity();
     mModelMatrix->translate( 0.0f, -4.0f, -7.0f);
     mModelMatrix->rotate(angleInDegrees, 1.0f, 1.0f, 0.0f);
-    drawCube(rotatedSeed);
+    drawCube(radians, 3);
 
     mModelMatrix->identity();
-    mModelMatrix->translate(0.0f, 0.0f, -5.0f);
+    mModelMatrix->translate(0.0f, 0.0f, -8.0f);
+    mModelMatrix->scale(3.0f, 3.0f, 3.0f);
     mModelMatrix->rotate(angleInDegrees, sqrt2_over_2, sqrt2_over_2, sqrt2_over_2);
-    drawCube(defaultSeed);
+    drawCube(radians, 4);
 
     // Draw a point to indicate the light.
     drawLight();
@@ -210,59 +194,16 @@ void JuliaSetRenderer::drawScene(){
 // X, Y, Z
 GLfloat* JuliaSetRenderer::getCubeGeometry(){
     static GLfloat geometry[]= {
-                // In OpenGL counter-clockwise winding is default. This means that when we look at a triangle,
-                // if the points are counter-clockwise we are looking at the "front". If not we are looking at
-                // the back. OpenGL has an optimization where all back-facing triangles are culled, since they
-                // usually represent the backside of an object and aren't visible anyways.
+                -1.0f, +1.0f, +1.0f, 1.0f, //0
+                -1.0f, -1.0f, +1.0f, 1.0f, //1
+                +1.0f, +1.0f, +1.0f, 1.0f, //2
+                +1.0f, -1.0f, +1.0f, 1.0f, //3
 
-                // Front face
-                -1.0f, 1.0f, 1.0f,
-                -1.0f, -1.0f, 1.0f,
-                1.0f, 1.0f, 1.0f,
-                -1.0f, -1.0f, 1.0f,
-                1.0f, -1.0f, 1.0f,
-                1.0f, 1.0f, 1.0f,
-
-                // Right face
-                1.0f, 1.0f, 1.0f,
-                1.0f, -1.0f, 1.0f,
-                1.0f, 1.0f, -1.0f,
-                1.0f, -1.0f, 1.0f,
-                1.0f, -1.0f, -1.0f,
-                1.0f, 1.0f, -1.0f,
-
-                // Back face
-                1.0f, 1.0f, -1.0f,
-                1.0f, -1.0f, -1.0f,
-                -1.0f, 1.0f, -1.0f,
-                1.0f, -1.0f, -1.0f,
-                -1.0f, -1.0f, -1.0f,
-                -1.0f, 1.0f, -1.0f,
-
-                // Left face
-                -1.0f, 1.0f, -1.0f,
-                -1.0f, -1.0f, -1.0f,
-                -1.0f, 1.0f, 1.0f,
-                -1.0f, -1.0f, -1.0f,
-                -1.0f, -1.0f, 1.0f,
-                -1.0f, 1.0f, 1.0f,
-
-                // Top face
-                -1.0f, 1.0f, -1.0f,
-                -1.0f, 1.0f, 1.0f,
-                1.0f, 1.0f, -1.0f,
-                -1.0f, 1.0f, 1.0f,
-                1.0f, 1.0f, 1.0f,
-                1.0f, 1.0f, -1.0f,
-
-                // Bottom face
-                1.0f, -1.0f, -1.0f,
-                1.0f, -1.0f, 1.0f,
-                -1.0f, -1.0f, -1.0f,
-                1.0f, -1.0f, 1.0f,
-                -1.0f, -1.0f, 1.0f,
-                -1.0f, -1.0f, -1.0f
-        };
+                -1.0f, +1.0f, -1.0f, 1.0f, //4
+                -1.0f, -1.0f, -1.0f, 1.0f, //5
+                +1.0f, +1.0f, -1.0f, 1.0f, //6
+                +1.0f, -1.0f, -1.0f, 1.0f  //7
+            };
     return  geometry;
 }
 
@@ -270,52 +211,17 @@ GLfloat* JuliaSetRenderer::getCubeColors() {
 // R, G, B, A
     static GLfloat cubeColorData[] = {
             // Front face (red)
-            1.0f, 0.0f, 0.0f, 1.0f,
-            1.0f, 0.0f, 0.0f, 1.0f,
-            1.0f, 0.0f, 0.0f, 1.0f,
-            1.0f, 0.0f, 0.0f, 1.0f,
-            1.0f, 0.0f, 0.0f, 1.0f,
-            1.0f, 0.0f, 0.0f, 1.0f,
-
+            1.0f, 0.0f, 0.0f,
             // Right face (green)
-            0.0f, 1.0f, 0.0f, 1.0f,
-            0.0f, 1.0f, 0.0f, 1.0f,
-            0.0f, 1.0f, 0.0f, 1.0f,
-            0.0f, 1.0f, 0.0f, 1.0f,
-            0.0f, 1.0f, 0.0f, 1.0f,
-            0.0f, 1.0f, 0.0f, 1.0f,
-
+            0.0f, 1.0f, 0.0f,
             // Back face (blue)
-            0.0f, 0.0f, 1.0f, 1.0f,
-            0.0f, 0.0f, 1.0f, 1.0f,
-            0.0f, 0.0f, 1.0f, 1.0f,
-            0.0f, 0.0f, 1.0f, 1.0f,
-            0.0f, 0.0f, 1.0f, 1.0f,
-            0.0f, 0.0f, 1.0f, 1.0f,
-
+            0.0f, 0.0f, 1.0f,
             // Left face (yellow)
-            1.0f, 1.0f, 0.0f, 1.0f,
-            1.0f, 1.0f, 0.0f, 1.0f,
-            1.0f, 1.0f, 0.0f, 1.0f,
-            1.0f, 1.0f, 0.0f, 1.0f,
-            1.0f, 1.0f, 0.0f, 1.0f,
-            1.0f, 1.0f, 0.0f, 1.0f,
-
+            1.0f, 1.0f, 0.0f,
             // Top face (cyan)
-            0.0f, 1.0f, 1.0f, 1.0f,
-            0.0f, 1.0f, 1.0f, 1.0f,
-            0.0f, 1.0f, 1.0f, 1.0f,
-            0.0f, 1.0f, 1.0f, 1.0f,
-            0.0f, 1.0f, 1.0f, 1.0f,
-            0.0f, 1.0f, 1.0f, 1.0f,
-
+            0.0f, 1.0f, 1.0f,
             // Bottom face (magenta)
-            1.0f, 0.0f, 1.0f, 1.0f,
-            1.0f, 0.0f, 1.0f, 1.0f,
-            1.0f, 0.0f, 1.0f, 1.0f,
-            1.0f, 0.0f, 1.0f, 1.0f,
-            1.0f, 0.0f, 1.0f, 1.0f,
-            1.0f, 0.0f, 1.0f, 1.0f
+            1.0f, 0.0f, 1.0f
     };
     return cubeColorData;
 }
@@ -327,45 +233,12 @@ GLfloat* JuliaSetRenderer::getCubeNormals() {
 // should be orthogonal to the points of each face.
     static GLfloat cubeNormalData[] = {
 
-            // Front face
-            0.0f, 0.0f, 1.0f,
-            0.0f, 0.0f, 1.0f,
-            0.0f, 0.0f, 1.0f,
-            0.0f, 0.0f, 1.0f,
-
-
-            // Right face
-            1.0f, 0.0f, 0.0f,
-            1.0f, 0.0f, 0.0f,
-            1.0f, 0.0f, 0.0f,
-            1.0f, 0.0f, 0.0f,
-
-
-            // Back face
-            0.0f, 0.0f, -1.0f,
-            0.0f, 0.0f, -1.0f,
-            0.0f, 0.0f, -1.0f,
-            0.0f, 0.0f, -1.0f,
-
-
-            // Left face
-            -1.0f, 0.0f, 0.0f,
-            -1.0f, 0.0f, 0.0f,
-            -1.0f, 0.0f, 0.0f,
-            -1.0f, 0.0f, 0.0f,
-
-            // Top face
-            0.0f, 1.0f, 0.0f,
-            0.0f, 1.0f, 0.0f,
-            0.0f, 1.0f, 0.0f,
-            0.0f, 1.0f, 0.0f,
-
-
-            // Bottom face
-            0.0f, -1.0f, 0.0f,
-            0.0f, -1.0f, 0.0f,
-            0.0f, -1.0f, 0.0f,
-            0.0f, -1.0f, 0.0f
+                 0.0f,  0.0f, +1.0f,
+                +1.0f,  0.0f,  0.0f,
+                 0.0f,  0.0f, -1.0f,
+                -1.0f,  0.0f,  0.0f,
+                 0.0f, +1.0f,  0.0f,
+                 0.0f, -1.0f,  0.0f
     };
     return cubeNormalData;
 }
@@ -381,10 +254,8 @@ GLfloat* JuliaSetRenderer::getCubeTexData() {
             0.0f, 0.0f,
             0.0f, 1.0f,
             1.0f, 0.0f,
-            0.0f, 1.0f,
-            1.0f, 1.0f,
-            1.0f, 0.0f,
-
+            1.0f, 1.0f
+/*
             // Right face
             0.0f, 0.0f,
             0.0f, 1.0f,
@@ -423,7 +294,7 @@ GLfloat* JuliaSetRenderer::getCubeTexData() {
             1.0f, 0.0f,
             0.0f, 1.0f,
             1.0f, 1.0f,
-            1.0f, 0.0f
+            1.0f, 0.0f*/
     };
     return cubeTextureCoordinateData;
 }
@@ -435,18 +306,52 @@ bool JuliaSetRenderer::setupBuffers() {
     if(0== vbo || 0 == ibo){
         return false;
     }
-    GLfloat CUBE_POSITION_DATA[] = {
-            -1.0f, +1.0f, +1.0f, 1.0f,  //0
-            -1.0f, -1.0f, +1.0f, 1.0f,  //1
+
+    GLfloat modelData[]{
+        //front
+            -1.0f, +1.0f, +1.0f, 1.0f, 0,0, 0,0,1,//0
+            -1.0f, -1.0f, +1.0f, 1.0f, 0,1, 0,0,1, //1
+            +1.0f, +1.0f, +1.0f, 1.0f, 1,0, 0,0,1, //2
+            +1.0f, -1.0f, +1.0f, 1.0f, 1,1, 0,0,1, //3
+        //right
+            +1.0f, +1.0f, +1.0f, 1.0f, 0,0, 1,0,0,//0
+            +1.0f, -1.0f, +1.0f, 1.0f, 0,1, 1,0,0, //1
+            +1.0f, +1.0f, -1.0f, 1.0f, 1,0, 1,0,0, //2
+            +1.0f, -1.0f, -1.0f, 1.0f, 1,1, 1,0,0, //3
+        //back
+            +1.0f, +1.0f, -1.0f, 1.0f, 0,0, 0,0,-1,//0
+            +1.0f, -1.0f, -1.0f, 1.0f, 0,1, 0,0,-1, //1
+            -1.0f, +1.0f, -1.0f, 1.0f, 1,0, 0,0,-1, //2
+            -1.0f, -1.0f, -1.0f, 1.0f, 1,1, 0,0,-1, //3
+        //left
+            -1.0f, +1.0f, -1.0f, 1.0f, 0,0, -1,0,0,//0
+            -1.0f, -1.0f, -1.0f, 1.0f, 0,1, -1,0,0, //1
+            -1.0f, +1.0f, +1.0f, 1.0f, 1,0, -1,0,0, //2
+            -1.0f, -1.0f, +1.0f, 1.0f, 1,1, -1,0,0, //3
+        //top
+            -1.0f, +1.0f, -1.0f, 1.0f, 0,0, 0,1,0,//0
+            -1.0f, +1.0f, +1.0f, 1.0f, 0,1, 0,1,0, //1
+            +1.0f, +1.0f, -1.0f, 1.0f, 1,0, 0,1,0, //2
+            +1.0f, +1.0f, +1.0f, 1.0f, 1,1, 0,1,0, //3
+        //bottom
+            -1.0f, -1.0f, +1.0f, 1.0f, 0,0, 0,-1,0,//0
+            -1.0f, -1.0f, -1.0f, 1.0f, 0,1, 0,-1,0, //1
+            +1.0f, -1.0f, +1.0f, 1.0f, 1,0, 0,-1,0, //2
+            +1.0f, -1.0f, -1.0f, 1.0f, 1,1, 0,-1,0 //3
+
+
+    };
+ /*   GLfloat geometry[]= {
+            -1.0f, +1.0f, +1.0f, 1.0f, //0
+            -1.0f, -1.0f, +1.0f, 1.0f, //1
             +1.0f, +1.0f, +1.0f, 1.0f, //2
             +1.0f, -1.0f, +1.0f, 1.0f, //3
 
-            -1.0f, +1.0f, -1.0f, 1.0f,  //4
-            -1.0f, -1.0f, -1.0f, 1.0f,  //5
+            -1.0f, +1.0f, -1.0f, 1.0f, //4
+            -1.0f, -1.0f, -1.0f, 1.0f, //5
             +1.0f, +1.0f, -1.0f, 1.0f, //6
-            +1.0f, -1.0f, -1.0f, 1.0f //7
+            +1.0f, -1.0f, -1.0f, 1.0f  //7
     };
-
 
     GLuint indices[]={
             0,1,2,3,
@@ -456,61 +361,65 @@ bool JuliaSetRenderer::setupBuffers() {
             4,0,6,2,
             7,3,5,1
     };
-
+*/
 
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(CUBE_POSITION_DATA), CUBE_POSITION_DATA, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(modelData), modelData, GL_STATIC_DRAW);
 
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+    //glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
+    //glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+    //glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
     return true;
 }
 
 void JuliaSetRenderer::initAttribsAndUniforms() {
 
     // Set program handle for cube drawing.
-    mMVPMatrixHandle = (GLuint) glGetUniformLocation(mJuliaProgramHandle, "u_MVPMatrix");
-    mMVMatrixHandle = (GLuint) glGetUniformLocation(mJuliaProgramHandle, "u_MVMatrix");
-    mLightPosHandle = (GLuint) glGetUniformLocation(mJuliaProgramHandle, "u_LightPosition");
 
-    mPositionHandle = (GLuint) glGetAttribLocation(mJuliaProgramHandle, "MCvertex");
-    mNormalHandle = (GLuint) glGetUniformLocation(mJuliaProgramHandle, "u_MCnormal");
+    //first, Julia attribs
+    mPositionHandle = (GLuint) glGetAttribLocation(mJuliaProgramHandle, "a_Position");
+    mTextureCoordinateHandle = glGetAttribLocation(mJuliaProgramHandle, "a_TexCoordinate");
+    mNormalHandle = glGetAttribLocation(mJuliaProgramHandle, "a_Normal");
+
+    //next, Julia uniforms. matrices handles, then vectors.
+    mMVPMatrixHandle = glGetUniformLocation(mJuliaProgramHandle, "u_MVPMatrix");
+    mMVMatrixHandle  = glGetUniformLocation(mJuliaProgramHandle, "u_MVMatrix");
+
+    mColorHandle  = glGetUniformLocation(mJuliaProgramHandle, "u_Color");
+    mLightPosHandle = (GLuint) glGetUniformLocation(mJuliaProgramHandle, "u_LightPos");
+    mJuliaSeedHandle = glGetUniformLocation(mJuliaSeedHandle, "u_JuliaSeed");
+
+    mPointLightPosHandle = glGetAttribLocation(mLightProgramHandle, "a_Position");
+    mLightMVPMatHandle = glGetUniformLocation(mLightProgramHandle, "u_MVPMatrix");
 }
 
 /**
  * Draws a cube.
  */
-void JuliaSetRenderer::drawCube(const float seed[]){
-    // Pass in the mPosition information
+void JuliaSetRenderer::drawCube(const double radians, int idx){
+    //First thing first - turn on the shader.
+    glUseProgram(mJuliaProgramHandle);
 
-    glVertexAttribPointer(mPositionHandle, mPositionDataSize, GL_FLOAT, false,
-                                 0, getCubeGeometry());
+    // Pass in the mPosition information
+    glBindBuffer(GL_ARRAY_BUFFER, vbo);
+    glVertexAttribPointer(mPositionHandle, 4, GL_FLOAT, GL_FALSE, 9* sizeof(GLfloat), 0);
     glEnableVertexAttribArray(mPositionHandle);
 
-    // Pass in the color information
-
-    glVertexAttribPointer(mColorHandle, mColorDataSize, GL_FLOAT, false,
-                                 0, getCubeColors());
-    glEnableVertexAttribArray(mColorHandle);
-
-    // Pass in the normal information
-    glVertexAttribPointer(mNormalHandle, mNormalDataSize, GL_FLOAT, false,
-                                 0, getCubeNormals());
+    glVertexAttribPointer(mNormalHandle, 3, GL_FLOAT, GL_FALSE, 9* sizeof(GLfloat),
+                          reinterpret_cast<const void *>(6 * sizeof(GLfloat)));
     glEnableVertexAttribArray(mNormalHandle);
 
-    // Pass in the texture coordinate information
-    glVertexAttribPointer(mTextureCoordinateHandle,
-                          mTextureCoordinateDataSize, GL_FLOAT, false,
-                                 0, getCubeTexData());
+    glVertexAttribPointer(mTextureCoordinateHandle, 2, GL_FLOAT, GL_FALSE, 9* sizeof(GLfloat),
+                          reinterpret_cast<const void *>(4 * sizeof(GLfloat)));
     glEnableVertexAttribArray(mTextureCoordinateHandle);
 
-    //Multiplies the view by the model matrix and stores the result the MVP matrix.
+    // This multiplies the view by the model matrix
+    // and stores the result the MVP matrix.
     // which currently contains model * view
     mMVPMatrix->multiply(*mViewMatrix, *mModelMatrix);
 
     // Pass in the model view matrix
-    glUniformMatrix4fv(mMVMatrixHandle, 1, GL_FALSE, mMVPMatrix->mData);
+    glUniformMatrix4fv( mMVMatrixHandle, 1, GL_FALSE, mMVPMatrix->mData );
 
     // This multiplies the model view matrix by the projection matrix
     // and stores the result in the MVP matrix.
@@ -518,17 +427,26 @@ void JuliaSetRenderer::drawCube(const float seed[]){
     mMVPMatrix->multiply(*mProjectionMatrix, *mMVPMatrix);
 
     // Pass in the model view projection matrix
-    glUniformMatrix4fv(  mMVPMatrixHandle, 1, GL_FALSE, mMVPMatrix->mData);
+    glUniformMatrix4fv(mMVPMatrixHandle, 1, GL_FALSE, mMVPMatrix->mData);
 
     // Pass in the light mPosition in eye space
     glUniform3f(mLightPosHandle,
-            mLightPosInEyeSpace[0],
-            mLightPosInEyeSpace[1],
-            mLightPosInEyeSpace[2]
+                mLightPosInEyeSpace[0],
+                mLightPosInEyeSpace[1],
+                mLightPosInEyeSpace[2]
     );
 
-    // Draw the cube.
-    glDrawArrays(GL_TRIANGLES, 0, 36);
+    // Draw the cube
+    //glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
+    int c = idx*3;
+    glUniform2f(mJuliaSeedHandle, cos(radians), sin(radians));
+    for (int i = 0; i <6; ++i) {
+        glUniform3fv(mColorHandle, 1, &(getCubeColors()[c]));
+        glDrawArrays(GL_TRIANGLE_STRIP, 4*i, 4);
+    }
+    glUseProgram(0);
+    //glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
 /**
@@ -536,14 +454,13 @@ void JuliaSetRenderer::drawCube(const float seed[]){
  */
 void JuliaSetRenderer::drawLight(){
 
-    const int pointMVPMatrixHandle = glGetUniformLocation(mLightProgramHandle, "u_MVPMatrix");
-    const int pointPositionHandle = glGetAttribLocation(mLightProgramHandle, "a_Position");
+    glUseProgram(mLightProgramHandle);
 
     // Pass in the mPosition.
-    glVertexAttrib3f(pointPositionHandle, mLightPosInModelSpace[0], mLightPosInModelSpace[1], mLightPosInModelSpace[2]);
+    glVertexAttrib3f( mPointLightPosHandle, mLightPosInModelSpace[0], mLightPosInModelSpace[1], mLightPosInModelSpace[2]);
 
     // Since we are not using a buffer object, disable vertex arrays for this attribute.
-    glDisableVertexAttribArray(pointPositionHandle);
+    glDisableVertexAttribArray( mPointLightPosHandle);
 
     // Pass in the transformation matrix.
     mMVPMatrix->identity();
@@ -551,15 +468,16 @@ void JuliaSetRenderer::drawLight(){
     mMVPMatrix->multiply(*mProjectionMatrix, *mMVPMatrix);
 
     glUniformMatrix4fv(
-            pointMVPMatrixHandle,
+            mLightMVPMatHandle,
             1,
             GL_FALSE,
             mMVPMatrix->mData
     );
 
     // Draw the point.
-    glUseProgram(mLightProgramHandle);
+
     glDrawArrays(GL_POINTS, 0, 1);
+    glUseProgram(0);
 }
 
 

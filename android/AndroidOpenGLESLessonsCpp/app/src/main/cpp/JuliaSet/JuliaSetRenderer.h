@@ -27,21 +27,23 @@ private:
     Matrix* mMVPMatrix;
     Matrix* mLightModelMatrix;
 
-    /** handlers for shader attribs and uniforms. */
+    /** the julia program handle accompanied by the relevant attribs and uniforms */
+    GLuint mJuliaProgramHandle;
     GLuint mMVPMatrixHandle;
     GLuint mMVMatrixHandle;
-    GLuint mLightPosHandle;
     GLuint mTextureUniformHandle;
-
     GLuint mPositionHandle;
+    GLuint mLightPosHandle;
     GLuint mColorHandle;
     GLuint mNormalHandle;
     GLuint mTextureCoordinateHandle;
     GLuint mJuliaSeedHandle;
 
     /** and the two handlers for the point light the julia shader programs */
-    GLuint mJuliaProgramHandle;
+    /** the light program handle accompanied by the relevant attribs and uniforms */
     GLuint mLightProgramHandle;
+    GLuint mLightMVPMatHandle;
+    GLint mPointLightPosHandle;
 
     /** This will be used to pass in seed complex position for the julia renderer. */
 
@@ -83,7 +85,7 @@ private:
 
     void create();
     bool compileShaders();
-    void drawCube(const float seed[]);
+    void drawCube(const double seed, int idx);
     void drawLight();
 
 public:

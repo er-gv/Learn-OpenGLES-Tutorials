@@ -26,3 +26,7 @@
 8611	8930	0	../../../../build/intermediates/cmake/debug/obj/arm64-v8a/liblesson-lib.so	6f1868a239243846
 2	1756	0	CMakeFiles/lesson-lib.dir/src/main/cpp/JuliaSet/JuliaSetRenderer.cpp.o	3065246932554702
 1756	2863	0	../../../../build/intermediates/cmake/debug/obj/arm64-v8a/liblesson-lib.so	6f1868a239243846
+112	841	0	CMakeFiles/lesson-lib.dir/src/main/cpp/JuliaSet/JuliaSetRenderer.cpp.o	3065246932554702
+841	1449	0	../../../../build/intermediates/cmake/debug/obj/arm64-v8a/liblesson-lib.so	6f1868a239243846
+5	801	0	CMakeFiles/lesson-lib.dir/src/main/cpp/JuliaSet/JuliaSetRenderer.cpp.o	3065246932554702
+801	992	0	../../../../build/intermediates/cmake/debug/obj/arm64-v8a/liblesson-lib.so	6f1868a239243846
