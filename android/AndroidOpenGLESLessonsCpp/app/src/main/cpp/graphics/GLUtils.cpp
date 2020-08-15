@@ -105,7 +105,7 @@ GLuint GLUtils::loadTexture(const char *path) {
     }
     jmethodID loadTexture = sEnv->GetStaticMethodID(utilsClass, "loadTexture",
                                                     "(Landroid/content/res/AssetManager;Ljava/lang/String;)I");
-    if (loadTexture == NULL) {
+    if (loadTexture == nullptr) {
         LOGE("Couldn't find loadTexture method");
         return (GLuint) -1;
     }

@@ -5,44 +5,47 @@ uniform mat4 u_MVPMatrix;		// A constant representing the combined model/view/pr
 uniform mat4 u_MVMatrix;		// A constant representing the combined model/view matrix.
 
 uniform vec3 u_LightPos;
-uniform sampler2D u_Texture;    // The input texture.
-uniform vec2 u_JuliaSeed;
-uniform vec3 u_Color;
+uniform sampler2D u_Spectrum;    // The spectrum texture.
+uniform float u_JuliaSeed;
+uniform vec2 u_SpectrumCoords;
 
 varying vec3 v_Position;
 varying vec3 v_Normal;
 varying vec2 v_TexCoordinate;
 
+vec2 complex_squared(vec2 c){
+    vec2 result;
+    result.x = c.x*c.x-c.y*c.y;
+    result.y = 2.0*c.x*c.y;
+    return result;
+}
 
-float juliaTester(float threashold, int max_itr, vec2 seed){
+float juliaTester(float threashold, int max_itr, vec3 resulotion){
 
 	//first let's see if this pixel is a part of the Julia set. if not it will be black.
 
-	vec2 c;
-    c.x = 1.3333 * (v_TexCoordinate.x - 0.5)*1.4-0.5;
-    c.y = (v_TexCoordinate.y - 0.5)*1.4;////
-    vec2 z=vec2(v_TexCoordinate.x-0.5, v_TexCoordinate.y-0.5);
+	vec2 z,c;
+    c.x = (v_TexCoordinate.x - 0.5)*2.7-0.75;
+    c.y = (v_TexCoordinate.y - 0.5)*2.7;////
+    z = c;
     int i;
-    float normelizedDist = 0.05;//
-    //float threashold = 1.9*1.9;//
-    //z = c;
+    float normelizedDist = 0.0;//
     for(i=0; i<max_itr; i++) {
-        float x = (z.x * z.x - z.y * z.y)+c.x;
-        float y = (z.y * z.x + z.x * z.y)+c.y;
-        normelizedDist = x * x + y * y;
+        vec2 new_z = (complex_squared(z))+c;
+        normelizedDist = (new_z.x * new_z.x) + (new_z.y * new_z.y);
 		if(normelizedDist > threashold){
         	break;
         }//
-        z.x = x;
-        z.y = y;
+        z = new_z;
+
     }
     if(i==max_itr) return 1.0;
     return float(i)/float(max_itr);
 
 }
 // The entry point for our fragment shader.
-void main()                    		
-{
+
+void main(){
 
 
     // Transform the normal's orientation into eye space.
@@ -63,14 +66,9 @@ void main()
     // Add ambient lighting
     diffuse = diffuse + 0.5;
     //gl_FragColor = vec4(u_Color, 1.0f)*diffuse* texture2D(u_Texture, v_TexCoordinate);
-    float mask = juliaTester(4.0, 60, u_JuliaSeed);
-    if(mask<1.0){
 
-		gl_FragColor = vec4(mask*u_Color, 1.0f) * (diffuse+1.0);//
-	}
-	else{
-		// Multiply the color by the diffuse illumination level and texture value to get final output color.
-    	gl_FragColor = vec4(u_Color, 1.0f) * diffuse * texture2D(u_Texture, v_TexCoordinate);
-    }
-  }                                                                     	
+    float mask = juliaTester(4.0, 65, vec3(0,0,0));
+    float coord = u_SpectrumCoords.x+mask*u_SpectrumCoords.y;
+  	gl_FragColor = texture2D(u_Spectrum, vec2(coord, 0)) *1.5;//
+}
 

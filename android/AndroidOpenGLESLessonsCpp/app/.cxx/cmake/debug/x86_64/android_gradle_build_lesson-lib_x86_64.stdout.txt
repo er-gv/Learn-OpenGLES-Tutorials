@@ -1,1 +1,8 @@
-ninja: no work to do.
+[1/2] Building CXX object CMakeFiles/lesson-lib.dir/src/main/cpp/JuliaSet/JuliaSetRenderer.cpp.o
+In file included from /home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/JuliaSet/JuliaSetRenderer.cpp:5:
+In file included from /home/nathan/Programming/Projects/Android/Learn-OpenGLES-Tutorials/android/AndroidOpenGLESLessonsCpp/app/src/main/cpp/JuliaSet/JuliaSetRenderer.h:14:
+../../../../src/main/cpp/utils/Logger.h:34:5: warning: 'static' is not permitted on a declaration of a type [-Wmissing-declarations]
+    static enum SEVERITY {
+    ^
+1 warning generated.
+[2/2] Linking CXX shared library ../../../../build/intermediates/cmake/debug/obj/x86_64/liblesson-lib.so

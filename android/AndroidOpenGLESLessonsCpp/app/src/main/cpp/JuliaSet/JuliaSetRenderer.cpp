@@ -10,7 +10,6 @@
 #include <cmath>
 #define  JULIA_TAG "JuliaSetRenderer"
 
-static constexpr GLfloat defaultSeed[]= {0.5f, 0.5f};
 static constexpr float  mLightPosInModelSpace[] ={0.0f, 0.0f, 0.0f, 1.0f};
 
 JuliaSetRenderer::JuliaSetRenderer(){
@@ -65,7 +64,7 @@ void JuliaSetRenderer::create(){
     LOG_D(JULIA_TAG, "Renderer create");
 
     // Set the background clear color to black.
-    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+    glClearColor(0.20f, 0.20f, 0.20f, 0.0f);
 
    // Enable texture mapping
     glEnable(GL_TEXTURE_2D);
@@ -98,7 +97,7 @@ void JuliaSetRenderer::create(){
     mViewMatrix = Matrix::newLookAt(eyeX, eyeY, eyeZ, centerX, centerY, centerZ, upX, upY, upZ);
 
     // Load the texture
-    mTextureDataHandle = GLUtils::loadTexture("texture/bumpy_bricks_public_domain.jpg");
+    mSpectrumTexHandle = GLUtils::loadTexture("texture/spectrum.jpg");
 }
 
 void JuliaSetRenderer::surfaceChange(int width, int height){
@@ -124,29 +123,25 @@ void JuliaSetRenderer::surfaceChange(int width, int height){
 }
 
 void JuliaSetRenderer::drawScene(){
-    glClearColor(0.8f, 0.8f, 0.765f, 1);
+    glClearColor(0.2f, 0.2f, 0.2f, 1);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     // Do a complete rotation every 10 seconds.
     long time = GLUtils::currentTimeMillis() % 10000L;
     float angleInDegrees = (360.0f / 10000.0f) * ((int) time);
-    double radians = angleInDegrees*(M_PI/180.0f);
+    float radians = tick();
 
     // Set our per-vertex lighting program.
-    char buff[80];
-    char* msg = strdup(buff);
-    sprintf(buff, "DEG/RAD %f.4 / %f.4.\n", angleInDegrees, radians);
-    __android_log_print(ANDROID_LOG_INFO, JULIA_TAG, "%s", msg);
-    free (msg);
+    //char buff[80];
+    //sprintf(buff, "DEG/RAD %f.4 %f/4\n");
+    //char* msg = strdup(buff);
+    __android_log_print(ANDROID_LOG_DEBUG, JULIA_TAG, "radians tick()-> %.4ff\n", radians);
+    //free (msg);
 
-    // Set the active texture unit to texture unit 0.
+    // Set the active texture.
     glActiveTexture(GL_TEXTURE0);
-
-    // Bind the texture to this unit.
-    glBindTexture(GL_TEXTURE_2D, mTextureDataHandle);
-
-    // Tell the texture uniform sampler to use this texture in the shader by binding to texture unit 0.
-    glUniform1i(mTextureUniformHandle, 0);
+    glBindTexture(GL_TEXTURE_2D, mSpectrumTexHandle);
+    glUniform1i(mSpectrumTexHandle, 0);
 
     // Calculate mPosition of the light. Rotate and then push into the distance.
     mLightModelMatrix->identity();
@@ -159,28 +154,28 @@ void JuliaSetRenderer::drawScene(){
 
     // Draw some cubes.
     mModelMatrix->identity();
-    mModelMatrix->translate(4.0f, 0.0f, -7.0f);
+    mModelMatrix->translate(4.0f, 6.0f, -7.0f);
     mModelMatrix->rotate(angleInDegrees, 1.0f, 0.0f, 0.0f);
     drawCube(radians, 0);
 
     mModelMatrix->identity();
-    mModelMatrix->translate(-4.0f, 0.0f, -7.0f);
+    mModelMatrix->translate(-4.0f, 6.0f, -7.0f);
     mModelMatrix->rotate(angleInDegrees, 0.0f, 1.0f, 0.0f);
     drawCube(radians, 1);
 
     mModelMatrix->identity();
-    mModelMatrix->translate(0.0f, 4.0f, -7.0f);
+    mModelMatrix->translate(4.0f, -6.0f, -7.0f);
     mModelMatrix->rotate(angleInDegrees, 0.0f, 0.0f, 1.0f);
     drawCube(radians, 2);
 
     mModelMatrix->identity();
-    mModelMatrix->translate( 0.0f, -4.0f, -7.0f);
+    mModelMatrix->translate( -4.0f, -6.0f, -7.0f);
     mModelMatrix->rotate(angleInDegrees, 1.0f, 1.0f, 0.0f);
     drawCube(radians, 3);
 
     mModelMatrix->identity();
     mModelMatrix->translate(0.0f, 0.0f, -8.0f);
-    mModelMatrix->scale(3.0f, 3.0f, 3.0f);
+    mModelMatrix->scale(2.8f, 2.8f, 2.8f);
     mModelMatrix->rotate(angleInDegrees, sqrt2_over_2, sqrt2_over_2, sqrt2_over_2);
     drawCube(radians, 4);
 
@@ -188,117 +183,18 @@ void JuliaSetRenderer::drawScene(){
     drawLight();
 }
 
-/** Used for debug logs. */
 
-
-// X, Y, Z
-GLfloat* JuliaSetRenderer::getCubeGeometry(){
-    static GLfloat geometry[]= {
-                -1.0f, +1.0f, +1.0f, 1.0f, //0
-                -1.0f, -1.0f, +1.0f, 1.0f, //1
-                +1.0f, +1.0f, +1.0f, 1.0f, //2
-                +1.0f, -1.0f, +1.0f, 1.0f, //3
-
-                -1.0f, +1.0f, -1.0f, 1.0f, //4
-                -1.0f, -1.0f, -1.0f, 1.0f, //5
-                +1.0f, +1.0f, -1.0f, 1.0f, //6
-                +1.0f, -1.0f, -1.0f, 1.0f  //7
-            };
-    return  geometry;
-}
-
-GLfloat* JuliaSetRenderer::getCubeColors() {
+GLfloat* JuliaSetRenderer::getSpectrumParams() {
 // R, G, B, A
-    static GLfloat cubeColorData[] = {
-            // Front face (red)
-            1.0f, 0.0f, 0.0f,
-            // Right face (green)
-            0.0f, 1.0f, 0.0f,
-            // Back face (blue)
-            0.0f, 0.0f, 1.0f,
-            // Left face (yellow)
-            1.0f, 1.0f, 0.0f,
-            // Top face (cyan)
-            0.0f, 1.0f, 1.0f,
-            // Bottom face (magenta)
-            1.0f, 0.0f, 1.0f
+    static GLfloat spectrumData[] = {
+        0.29296875f, 0.44921875f,
+        0.1953125f, 0.5859375f,
+        0.0390625f, 0.3125f,
+        0.5859375f, 0.31640625f,
+        0.0f, 1.0f
     };
-    return cubeColorData;
+    return spectrumData;
 }
-
-GLfloat* JuliaSetRenderer::getCubeNormals() {
-// X, Y, Z
-// The normal is used in light calculations and is a vector which points
-// orthogonal to the plane of the surface. For a cube model, the normals
-// should be orthogonal to the points of each face.
-    static GLfloat cubeNormalData[] = {
-
-                 0.0f,  0.0f, +1.0f,
-                +1.0f,  0.0f,  0.0f,
-                 0.0f,  0.0f, -1.0f,
-                -1.0f,  0.0f,  0.0f,
-                 0.0f, +1.0f,  0.0f,
-                 0.0f, -1.0f,  0.0f
-    };
-    return cubeNormalData;
-}
-
-GLfloat* JuliaSetRenderer::getCubeTexData() {
-// S, T (or X, Y)
-// Texture coordinate data.
-// Because images have a Y axis pointing downward (values increase as you move down the image) while
-// OpenGL has a Y axis pointing upward, we adjust for that here by flipping the Y axis.
-// What's more is that the texture coordinates are the same for every face.
-    static GLfloat cubeTextureCoordinateData[] = {
-            // Front face
-            0.0f, 0.0f,
-            0.0f, 1.0f,
-            1.0f, 0.0f,
-            1.0f, 1.0f
-/*
-            // Right face
-            0.0f, 0.0f,
-            0.0f, 1.0f,
-            1.0f, 0.0f,
-            0.0f, 1.0f,
-            1.0f, 1.0f,
-            1.0f, 0.0f,
-
-            // Back face
-            0.0f, 0.0f,
-            0.0f, 1.0f,
-            1.0f, 0.0f,
-            0.0f, 1.0f,
-            1.0f, 1.0f,
-            1.0f, 0.0f,
-
-            // Left face
-            0.0f, 0.0f,
-            0.0f, 1.0f,
-            1.0f, 0.0f,
-            0.0f, 1.0f,
-            1.0f, 1.0f,
-            1.0f, 0.0f,
-
-            // Top face
-            0.0f, 0.0f,
-            0.0f, 1.0f,
-            1.0f, 0.0f,
-            0.0f, 1.0f,
-            1.0f, 1.0f,
-            1.0f, 0.0f,
-
-            // Bottom face
-            0.0f, 0.0f,
-            0.0f, 1.0f,
-            1.0f, 0.0f,
-            0.0f, 1.0f,
-            1.0f, 1.0f,
-            1.0f, 0.0f*/
-    };
-    return cubeTextureCoordinateData;
-}
-
 
 bool JuliaSetRenderer::setupBuffers() {
     glGenBuffers(1, &vbo);
@@ -385,7 +281,7 @@ void JuliaSetRenderer::initAttribsAndUniforms() {
     mMVPMatrixHandle = glGetUniformLocation(mJuliaProgramHandle, "u_MVPMatrix");
     mMVMatrixHandle  = glGetUniformLocation(mJuliaProgramHandle, "u_MVMatrix");
 
-    mColorHandle  = glGetUniformLocation(mJuliaProgramHandle, "u_Color");
+    mColorHandle  = glGetUniformLocation(mJuliaProgramHandle, "u_SpectrumCoords");
     mLightPosHandle = (GLuint) glGetUniformLocation(mJuliaProgramHandle, "u_LightPos");
     mJuliaSeedHandle = glGetUniformLocation(mJuliaSeedHandle, "u_JuliaSeed");
 
@@ -396,7 +292,7 @@ void JuliaSetRenderer::initAttribsAndUniforms() {
 /**
  * Draws a cube.
  */
-void JuliaSetRenderer::drawCube(const double radians, int idx){
+void JuliaSetRenderer::drawCube(float radians, int idx){
     //First thing first - turn on the shader.
     glUseProgram(mJuliaProgramHandle);
 
@@ -437,15 +333,13 @@ void JuliaSetRenderer::drawCube(const double radians, int idx){
     );
 
     // Draw the cube
-    //glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
-    int c = idx*3;
-    glUniform2f(mJuliaSeedHandle, cos(radians), sin(radians));
+    int c = idx*2;
+    glUniform1f(mJuliaSeedHandle, radians);
     for (int i = 0; i <6; ++i) {
-        glUniform3fv(mColorHandle, 1, &(getCubeColors()[c]));
+        glUniform2fv(mColorHandle, 1, &(getSpectrumParams()[c]));
         glDrawArrays(GL_TRIANGLE_STRIP, 4*i, 4);
     }
     glUseProgram(0);
-    //glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
@@ -478,6 +372,14 @@ void JuliaSetRenderer::drawLight(){
 
     glDrawArrays(GL_POINTS, 0, 1);
     glUseProgram(0);
+}
+
+GLfloat JuliaSetRenderer::tick() {
+    static GLfloat radian=0.0f;
+    radian +=0.001;
+    if(radian>1.0)
+        radian = 0.0f;
+    return radian;
 }
 
 

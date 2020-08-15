@@ -31,7 +31,7 @@ private:
     GLuint mJuliaProgramHandle;
     GLuint mMVPMatrixHandle;
     GLuint mMVMatrixHandle;
-    GLuint mTextureUniformHandle;
+    GLuint mSpectrumTexHandle;
     GLuint mPositionHandle;
     GLuint mLightPosHandle;
     GLuint mColorHandle;
@@ -44,25 +44,6 @@ private:
     GLuint mLightProgramHandle;
     GLuint mLightMVPMatHandle;
     GLint mPointLightPosHandle;
-
-    /** This will be used to pass in seed complex position for the julia renderer. */
-
-
-    /** How many bytes per float. */
-    static int const mBytesPerFloat = sizeof(float );
-
-    /** Size of the position data in elements. */
-    static const int mPositionDataSize = 3;
-
-    /** Size of the color data in elements. */
-    static const int mColorDataSize = 4;
-
-    /** Size of the normal data in elements. */
-    static const int mNormalDataSize = 3;
-
-    /** Size of the texture coordinate data in elements. */
-    static const int mTextureCoordinateDataSize = 2;
-
     /** Used to hold a light centered on the origin in model space. We need a 4th coordinate so we can get translations to work when
      *  we multiply this by our transformation matrices. */
 
@@ -71,23 +52,20 @@ private:
 
     static constexpr float sqrt2_over_2 = M_SQRT2/2.0f;
     /** This is a handle to our texture data. */
-    int mTextureDataHandle;
 
     //scene dimensions
     GLsizei mWidth;
     GLsizei mHeight;
 
-
-    static GLfloat* getCubeGeometry();
-    static GLfloat* getCubeColors();
-    static GLfloat* getCubeNormals();
-    static GLfloat* getCubeTexData();
+    GLfloat tick();
 
     void create();
     bool compileShaders();
-    void drawCube(const double seed, int idx);
+    void drawCube(float seed, int idx);
     void drawLight();
-
+/*
+ * 0.29296875f, 0.44921875f, good
+            0.1953125f, 0.5859375f,*/
 public:
     static constexpr char TAG[] = "JuliaSetRenderer";
     JuliaSetRenderer();
@@ -108,6 +86,8 @@ private:
     bool setupBuffers();
     GLuint vbo;
     GLuint ibo;
+
+    static GLfloat *getSpectrumParams();
 };
 
 
